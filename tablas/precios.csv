@@ -1,0 +1,992 @@
+﻿colegio;PRODUCTO;TALLA;VALOR AÑO PRESENTE;ID_BUSQUEDA;2022;2023;2024;2025;2026;2027;2028;2029
+liceo pupo jimenez;blusa;2;37000;liceo pupo jimenez_blusa_2;27000;30000;33000;33000;37000;41000;46000;51000
+liceo pupo jimenez;blusa;4;37000;liceo pupo jimenez_blusa_4;27000;30000;33000;33000;37000;41000;46000;51000
+liceo pupo jimenez;blusa;6;37000;liceo pupo jimenez_blusa_6;27000;30000;33000;33000;37000;41000;46000;51000
+liceo pupo jimenez;blusa;8;37000;liceo pupo jimenez_blusa_8;27000;30000;33000;33000;37000;41000;46000;51000
+liceo pupo jimenez;blusa;10;40000;liceo pupo jimenez_blusa_10;28000;32000;35000;35000;40000;44000;49000;54000
+liceo pupo jimenez;blusa;12;40000;liceo pupo jimenez_blusa_12;28000;32000;39000;35000;40000;44000;49000;54000
+liceo pupo jimenez;blusa;14;42000;liceo pupo jimenez_blusa_14;29000;34000;38000;37000;42000;47000;52000;58000
+liceo pupo jimenez;blusa;16;42000;liceo pupo jimenez_blusa_16;29000;34000;38000;37000;42000;47000;52000;58000
+liceo pupo jimenez;blusa;S;45000;liceo pupo jimenez_blusa_S;31000;31000;40000;40000;45000;50000;55000;61000
+liceo pupo jimenez;blusa;M;45000;liceo pupo jimenez_blusa_M;31000;36000;40000;40000;45000;50000;55000;61000
+liceo pupo jimenez;blusa;L;48000;liceo pupo jimenez_blusa_L;32000;37000;41000;42000;48000;53000;59000;65000
+liceo pupo jimenez;blusa;XL;48000;liceo pupo jimenez_blusa_XL;32000;;;42000;48000;53000;59000;65000
+liceo pupo jimenez;falda;2;96000;liceo pupo jimenez_falda_2;67000;76000;;85000;96000;106000;117000;129000
+liceo pupo jimenez;falda;4;96000;liceo pupo jimenez_falda_4;67000;15000;85000;85000;96000;106000;117000;129000
+liceo pupo jimenez;falda;6;100000;liceo pupo jimenez_falda_6;70000;80000;79000;89000;100000;110000;121000;134000
+liceo pupo jimenez;falda;8;100000;liceo pupo jimenez_falda_8;70000;80000;80000;89000;100000;110000;121000;134000
+liceo pupo jimenez;falda;10;108000;liceo pupo jimenez_falda_10;76000;86000;89000;96000;108000;119000;131000;145000
+liceo pupo jimenez;falda;12;108000;liceo pupo jimenez_falda_12;76000;86000;72000;96000;108000;119000;131000;145000
+liceo pupo jimenez;falda;14;112000;liceo pupo jimenez_falda_14;79000;90000;96000;100000;112000;124000;137000;151000
+liceo pupo jimenez;falda;16;112000;liceo pupo jimenez_falda_16;79000;90000;100000;100000;112000;124000;137000;151000
+liceo pupo jimenez;falda;S;121000;liceo pupo jimenez_falda_S;85000;97000;108000;108000;121000;134000;148000;163000
+liceo pupo jimenez;falda;M;121000;liceo pupo jimenez_falda_M;85000;97000;108000;108000;121000;134000;148000;163000
+liceo pupo jimenez;falda;L;130000;liceo pupo jimenez_falda_L;102000;104000;116000;116000;130000;143000;158000;174000
+liceo pupo jimenez;falda;XL;130000;liceo pupo jimenez_falda_XL;;;;116000;130000;143000;158000;174000
+liceo pupo jimenez;camiseta diario;2;46000;liceo pupo jimenez_camiseta diario_2;;0;;41000;46000;51000;57000;63000
+liceo pupo jimenez;camiseta diario;4;46000;liceo pupo jimenez_camiseta diario_4;32000;37000;41000;41000;46000;51000;57000;63000
+liceo pupo jimenez;camiseta diario;6;46000;liceo pupo jimenez_camiseta diario_6;32000;37000;41000;41000;46000;51000;57000;63000
+liceo pupo jimenez;camiseta diario;8;46000;liceo pupo jimenez_camiseta diario_8;32000;37000;41000;41000;46000;51000;57000;63000
+liceo pupo jimenez;camiseta diario;10;48000;liceo pupo jimenez_camiseta diario_10;34000;38000;42000;42000;48000;53000;59000;65000
+liceo pupo jimenez;camiseta diario;12;48000;liceo pupo jimenez_camiseta diario_12;34000;38000;42000;42000;48000;53000;59000;65000
+liceo pupo jimenez;camiseta diario;14;50000;liceo pupo jimenez_camiseta diario_14;35000;40000;44800;44000;50000;55000;61000;68000
+liceo pupo jimenez;camiseta diario;16;50000;liceo pupo jimenez_camiseta diario_16;35000;40000;44000;44000;50000;55000;61000;68000
+liceo pupo jimenez;camiseta diario;S;53000;liceo pupo jimenez_camiseta diario_S;37000;42000;47040;47000;53000;59000;65000;72000
+liceo pupo jimenez;camiseta diario;M;53000;liceo pupo jimenez_camiseta diario_M;37000;42000;47040;47000;53000;59000;65000;72000
+liceo pupo jimenez;camiseta diario;L;56000;liceo pupo jimenez_camiseta diario_L;39000;45000;50000;50000;56000;62000;69000;76000
+liceo pupo jimenez;camiseta diario;XL;56000;liceo pupo jimenez_camiseta diario_XL;39000;45000;50000;50000;56000;62000;69000;76000
+liceo pupo jimenez;camiseta fisica;2;41000;liceo pupo jimenez_camiseta fisica_2;29000;33000;36000;36000;41000;46000;51000;57000
+liceo pupo jimenez;camiseta fisica;4;41000;liceo pupo jimenez_camiseta fisica_4;29000;33000;36000;36000;41000;46000;51000;57000
+liceo pupo jimenez;camiseta fisica;6;44000;liceo pupo jimenez_camiseta fisica_6;31000;35000;39000;39000;44000;49000;54000;60000
+liceo pupo jimenez;camiseta fisica;8;44000;liceo pupo jimenez_camiseta fisica_8;31000;35000;35000;39000;44000;49000;54000;60000
+liceo pupo jimenez;camiseta fisica;10;46000;liceo pupo jimenez_camiseta fisica_10;32000;32000;41000;41000;46000;51000;57000;63000
+liceo pupo jimenez;camiseta fisica;12;46000;liceo pupo jimenez_camiseta fisica_12;32000;37000;41000;41000;46000;51000;57000;63000
+liceo pupo jimenez;camiseta fisica;14;49000;liceo pupo jimenez_camiseta fisica_14;35000;39000;41440;43000;49000;54000;60000;66000
+liceo pupo jimenez;camiseta fisica;16;49000;liceo pupo jimenez_camiseta fisica_16;35000;39000;43000;43000;49000;54000;60000;66000
+liceo pupo jimenez;camiseta fisica;S;53000;liceo pupo jimenez_camiseta fisica_S;37000;42000;47040;47000;53000;59000;65000;72000
+liceo pupo jimenez;camiseta fisica;M;53000;liceo pupo jimenez_camiseta fisica_M;37000;42000;47040;47000;53000;59000;65000;72000
+liceo pupo jimenez;camiseta fisica;L;56000;liceo pupo jimenez_camiseta fisica_L;39000;45000;50000;50000;56000;62000;69000;76000
+liceo pupo jimenez;camiseta fisica;XL;56000;liceo pupo jimenez_camiseta fisica_XL;39000;;50000;50000;56000;62000;69000;76000
+liceo pupo jimenez;bombacho;2;48000;liceo pupo jimenez_bombacho_2;32000;38000;42000;42000;48000;53000;59000;65000
+liceo pupo jimenez;bombacho;4;48000;liceo pupo jimenez_bombacho_4;32000;38000;42000;42000;48000;53000;59000;65000
+liceo pupo jimenez;bombacho;6;48000;liceo pupo jimenez_bombacho_6;34000;38000;42000;42000;48000;53000;59000;65000
+liceo pupo jimenez;bombacho;8;48000;liceo pupo jimenez_bombacho_8;34000;38000;38000;42000;48000;53000;59000;65000
+liceo pupo jimenez;bombacho;10;50000;liceo pupo jimenez_bombacho_10;35000;40000;44000;44000;50000;55000;61000;68000
+liceo pupo jimenez;bombacho;12;50000;liceo pupo jimenez_bombacho_12;35000;40000;44800;44000;50000;55000;61000;68000
+liceo pupo jimenez;bombacho;14;54000;liceo pupo jimenez_bombacho_14;36000;43000;48000;48000;54000;60000;66000;73000
+liceo pupo jimenez;bombacho;16;54000;liceo pupo jimenez_bombacho_16;36000;43000;48000;48000;54000;60000;66000;73000
+liceo pupo jimenez;bombacho;S;56000;liceo pupo jimenez_bombacho_S;37000;45000;50400;50000;56000;62000;69000;76000
+liceo pupo jimenez;bombacho;M;56000;liceo pupo jimenez_bombacho_M;37000;45000;50000;50000;56000;62000;69000;76000
+liceo pupo jimenez;bombacho;L;59000;liceo pupo jimenez_bombacho_L;38000;45000;52000;52000;59000;65000;72000;80000
+liceo pupo jimenez;bombacho;XL;59000;liceo pupo jimenez_bombacho_XL;38000;;52000;52000;59000;65000;72000;80000
+liceo pupo jimenez;Medias;2;16000;liceo pupo jimenez_Medias_2;;;10000;14000;16000;18000;20000;22000
+liceo pupo jimenez;Medias;4;16000;liceo pupo jimenez_Medias_4;12000;12000;10000;14000;16000;18000;20000;22000
+liceo pupo jimenez;Medias;6;16000;liceo pupo jimenez_Medias_6;12000;12000;10000;14000;16000;18000;20000;22000
+liceo pupo jimenez;Medias;8;16000;liceo pupo jimenez_Medias_8;12000;12000;10000;14000;16000;18000;20000;22000
+liceo pupo jimenez;Medias;10;16000;liceo pupo jimenez_Medias_10;12000;12000;13000;14000;16000;18000;20000;22000
+liceo universitario;blusa;2;41000;liceo universitario_blusa_2;;;;36000;41000;46000;51000;57000
+liceo universitario;blusa;4;41000;liceo universitario_blusa_4;;33000;;36000;41000;46000;51000;57000
+liceo universitario;blusa;6;41000;liceo universitario_blusa_6;   ;33000;36000;36000;41000;46000;51000;57000
+liceo universitario;blusa;8;41000;liceo universitario_blusa_8;29000;33000;36000;36000;41000;46000;51000;57000
+liceo universitario;blusa;10;44000;liceo universitario_blusa_10;31000;35000;39000;39000;44000;49000;54000;60000
+liceo universitario;blusa;12;44000;liceo universitario_blusa_12;31000;35000;35000;39000;44000;49000;54000;60000
+liceo universitario;blusa;14;46000;liceo universitario_blusa_14;32000;37000;41000;41000;46000;51000;57000;63000
+liceo universitario;blusa;16;46000;liceo universitario_blusa_16;32000;37000;41000;41000;46000;51000;57000;63000
+liceo universitario;blusa;S;49000;liceo universitario_blusa_S;35000;39000;43000;43000;49000;54000;60000;66000
+liceo universitario;blusa;M;49000;liceo universitario_blusa_M;35000;39000;40000;43000;49000;54000;60000;66000
+liceo universitario;blusa;L;53000;liceo universitario_blusa_L;37000;42000;47000;47000;53000;59000;65000;72000
+liceo universitario;blusa;XL;53000;liceo universitario_blusa_XL;;42000;;47000;53000;59000;65000;72000
+liceo universitario;falda;2;88000;liceo universitario_falda_2;59000;;;78000;88000;97000;107000;118000
+liceo universitario;falda;4;88000;liceo universitario_falda_4;;;;78000;88000;97000;107000;118000
+liceo universitario;falda;6;88000;liceo universitario_falda_6;;;;78000;88000;97000;107000;118000
+liceo universitario;falda;8;88000;liceo universitario_falda_8;;70000;;78000;88000;97000;107000;118000
+liceo universitario;falda;10;95000;liceo universitario_falda_10;63000;26000;;84000;95000;105000;116000;128000
+liceo universitario;falda;12;95000;liceo universitario_falda_12;;75000;75000;84000;95000;105000;116000;128000
+liceo universitario;falda;14;100000;liceo universitario_falda_14;68000;50000;89000;89000;100000;110000;121000;134000
+liceo universitario;falda;16;100000;liceo universitario_falda_16;68000;80000;40000;89000;100000;110000;121000;134000
+liceo universitario;falda;S;106000;liceo universitario_falda_S;73000;84000;30000;94000;106000;117000;129000;142000
+liceo universitario;falda;M;106000;liceo universitario_falda_M;;84000;30000;94000;106000;117000;129000;142000
+liceo universitario;falda;L;112000;liceo universitario_falda_L;;90000;;100000;112000;124000;137000;151000
+liceo universitario;falda;XL;112000;liceo universitario_falda_XL;;;;100000;112000;124000;137000;151000
+liceo universitario;guayabera;2;55000;liceo universitario_guayabera_2;;;;49000;55000;61000;68000;75000
+liceo universitario;guayabera;4;55000;liceo universitario_guayabera_4;;;;49000;55000;61000;68000;75000
+liceo universitario;guayabera;6;55000;liceo universitario_guayabera_6;43000;;51520;49000;55000;61000;68000;75000
+liceo universitario;guayabera;8;56000;liceo universitario_guayabera_8;43000;48000;53000;50000;56000;62000;69000;76000
+liceo universitario;guayabera;10;56000;liceo universitario_guayabera_10;45000;48000;53000;50000;56000;62000;69000;76000
+liceo universitario;guayabera;12;60000;liceo universitario_guayabera_12;45000;48000;53000;53000;60000;66000;73000;81000
+liceo universitario;guayabera;14;60000;liceo universitario_guayabera_14;48000;50000;48000;53000;60000;66000;73000;81000
+liceo universitario;guayabera;16;60000;liceo universitario_guayabera_16;48000;50000;50000;53000;60000;66000;73000;81000
+liceo universitario;guayabera;S;62000;liceo universitario_guayabera_S;52000;56000;50000;55000;62000;69000;76000;84000
+liceo universitario;guayabera;M;62000;liceo universitario_guayabera_M;52000;56000;55000;55000;62000;69000;76000;84000
+liceo universitario;guayabera;L;62000;liceo universitario_guayabera_L;55000;60000;52800;55000;62000;69000;76000;84000
+liceo universitario;guayabera;XL;62000;liceo universitario_guayabera_XL;;60000;55000;55000;62000;69000;76000;84000
+liceo universitario;pantalon;2;44000;liceo universitario_pantalon_2;;;;39000;44000;49000;54000;60000
+liceo universitario;pantalon;4;44000;liceo universitario_pantalon_4;;35000;;39000;44000;49000;54000;60000
+liceo universitario;pantalon;6;44000;liceo universitario_pantalon_6;29000;35000;39000;39000;44000;49000;54000;60000
+liceo universitario;pantalon;8;44000;liceo universitario_pantalon_8;29000;35000;39000;39000;44000;49000;54000;60000
+liceo universitario;pantalon;10;48000;liceo universitario_pantalon_10;34000;38000;42000;42000;48000;53000;59000;65000
+liceo universitario;pantalon;12;48000;liceo universitario_pantalon_12;34000;38000;40320;42000;48000;53000;59000;65000
+liceo universitario;pantalon;14;51000;liceo universitario_pantalon_14;36000;41000;45000;45000;51000;57000;63000;70000
+liceo universitario;pantalon;16;51000;liceo universitario_pantalon_16;36000;41000;43200;45000;51000;57000;63000;70000
+liceo universitario;pantalon;28;56000;liceo universitario_pantalon_28;39000;45000;50000;50000;56000;62000;69000;76000
+liceo universitario;pantalon;30;56000;liceo universitario_pantalon_30;39000;45000;50000;50000;56000;62000;69000;76000
+liceo universitario;pantalon;32;56000;liceo universitario_pantalon_32;39000;45000;50000;50000;56000;62000;69000;76000
+liceo universitario;pantalon;34;59000;liceo universitario_pantalon_34;42000;47000;52000;52000;59000;65000;72000;80000
+liceo universitario;pantalon;36;59000;liceo universitario_pantalon_36;42000;47000;;52000;59000;65000;72000;80000
+liceo universitario;pantalon;38;64000;liceo universitario_pantalon_38;;;;57000;64000;71000;79000;87000
+liceo universitario;camiseta fisica;2;40000;liceo universitario_camiseta fisica_2;;;;35000;40000;44000;49000;54000
+liceo universitario;camiseta fisica;4;40000;liceo universitario_camiseta fisica_4;;32000;;35000;40000;44000;49000;54000
+liceo universitario;camiseta fisica;6;41000;liceo universitario_camiseta fisica_6;29000;33000;;36000;41000;46000;51000;57000
+liceo universitario;camiseta fisica;8;41000;liceo universitario_camiseta fisica_8;29000;33000;36000;36000;41000;46000;51000;57000
+liceo universitario;camiseta fisica;10;45000;liceo universitario_camiseta fisica_10;31000;36000;40000;40000;45000;50000;55000;61000
+liceo universitario;camiseta fisica;12;45000;liceo universitario_camiseta fisica_12;31000;36000;40000;40000;45000;50000;55000;61000
+liceo universitario;camiseta fisica;14;48000;liceo universitario_camiseta fisica_14;34000;38000;42000;42000;48000;53000;59000;65000
+liceo universitario;camiseta fisica;16;48000;liceo universitario_camiseta fisica_16;34000;38000;42000;42000;48000;53000;59000;65000
+liceo universitario;camiseta fisica;S;51000;liceo universitario_camiseta fisica_S;36000;41000;45000;45000;51000;57000;63000;70000
+liceo universitario;camiseta fisica;M;51000;liceo universitario_camiseta fisica_M;36000;41000;43200;45000;51000;57000;63000;70000
+liceo universitario;camiseta fisica;L;56000;liceo universitario_camiseta fisica_L;39000;45000;50000;50000;56000;62000;69000;76000
+liceo universitario;camiseta fisica;XL;56000;liceo universitario_camiseta fisica_XL;39000;45000;50000;50000;56000;62000;69000;76000
+liceo universitario;bombacho;2;46000;liceo universitario_bombacho_2;;37000;;41000;46000;51000;57000;63000
+liceo universitario;bombacho;4;46000;liceo universitario_bombacho_4;;37000;;41000;46000;51000;57000;63000
+liceo universitario;bombacho;6;46000;liceo universitario_bombacho_6;;37000;41000;41000;46000;51000;57000;63000
+liceo universitario;bombacho;8;46000;liceo universitario_bombacho_8;32000;37000;41000;41000;46000;51000;57000;63000
+liceo universitario;bombacho;10;49000;liceo universitario_bombacho_10;35000;39000;43000;43000;49000;54000;60000;66000
+liceo universitario;bombacho;12;49000;liceo universitario_bombacho_12;35000;39000;43000;43000;49000;54000;60000;66000
+liceo universitario;bombacho;14;53000;liceo universitario_bombacho_14;37000;42000;47000;47000;53000;59000;65000;72000
+liceo universitario;bombacho;16;53000;liceo universitario_bombacho_16;37000;42000;47000;47000;53000;59000;65000;72000
+liceo universitario;bombacho;S;56000;liceo universitario_bombacho_S;39000;45000;50000;50000;56000;62000;69000;76000
+liceo universitario;bombacho;M;56000;liceo universitario_bombacho_M;39000;45000;50000;50000;56000;62000;69000;76000
+liceo universitario;bombacho;L;61000;liceo universitario_bombacho_L;43000;49000;51840;54000;61000;68000;75000;83000
+liceo universitario;bombacho;XL;61000;liceo universitario_bombacho_XL;43000;49000;54000;54000;61000;68000;75000;83000
+liceo universitario;medias;2;16000;liceo universitario_medias_2;10000;14000;12000;14000;16000;18000;20000;22000
+liceo universitario;medias;4;16000;liceo universitario_medias_4;;;;14000;16000;18000;20000;22000
+liceo universitario;medias;6;16000;liceo universitario_medias_6;10000;14000;12000;14000;16000;18000;20000;22000
+liceo universitario;medias;8;16000;liceo universitario_medias_8;10000;14000;15000;14000;16000;18000;20000;22000
+liceo universitario;medias;10;16000;liceo universitario_medias_10;10000;14000;14000;14000;16000;18000;20000;22000
+nuestra señora del carmen;blusa;2;37000;nuestra señora del carmen_blusa_2;;30000;33000;33000;37000;41000;46000;51000
+nuestra señora del carmen;blusa;4;37000;nuestra señora del carmen_blusa_4;25000;30000;33000;33000;37000;41000;46000;51000
+nuestra señora del carmen;blusa;6;37000;nuestra señora del carmen_blusa_6;25000;30000;33000;33000;37000;41000;46000;51000
+nuestra señora del carmen;blusa;8;37000;nuestra señora del carmen_blusa_8;86000;30000;33000;33000;37000;41000;46000;51000
+nuestra señora del carmen;blusa;10;40000;nuestra señora del carmen_blusa_10;27000;32000;32000;35000;40000;44000;49000;54000
+nuestra señora del carmen;blusa;12;40000;nuestra señora del carmen_blusa_12;27000;32000;35000;35000;40000;44000;49000;54000
+nuestra señora del carmen;blusa;14;42000;nuestra señora del carmen_blusa_14;29000;33000;36000;37000;42000;47000;52000;58000
+nuestra señora del carmen;blusa;16;42000;nuestra señora del carmen_blusa_16;29000;33000;36000;37000;42000;47000;52000;58000
+nuestra señora del carmen;blusa;S;45000;nuestra señora del carmen_blusa_S;31000;30000;40000;40000;45000;50000;55000;61000
+nuestra señora del carmen;blusa;M;45000;nuestra señora del carmen_blusa_M;31000;36000;36000;40000;45000;50000;55000;61000
+nuestra señora del carmen;blusa;L;48000;nuestra señora del carmen_blusa_L;32000;37000;41000;42000;48000;53000;59000;65000
+nuestra señora del carmen;blusa;XL;48000;nuestra señora del carmen_blusa_XL;;;;42000;48000;53000;59000;65000
+nuestra señora del carmen;jumper;2;106000;nuestra señora del carmen_jumper_2;84000;;;94000;106000;117000;129000;142000
+nuestra señora del carmen;jumper;4;106000;nuestra señora del carmen_jumper_4;;84000;94000;94000;106000;117000;129000;142000
+nuestra señora del carmen;jumper;6;106000;nuestra señora del carmen_jumper_6;84000;55000;94000;94000;106000;117000;129000;142000
+nuestra señora del carmen;jumper;8;108000;nuestra señora del carmen_jumper_8;86000;86000;53000;96000;108000;119000;131000;145000
+nuestra señora del carmen;jumper;10;108000;nuestra señora del carmen_jumper_10;86000;86000;96000;96000;108000;119000;131000;145000
+nuestra señora del carmen;jumper;12;108000;nuestra señora del carmen_jumper_12;86000;86000;100000;96000;108000;119000;131000;145000
+nuestra señora del carmen;jumper;14;114000;nuestra señora del carmen_jumper_14;91000;91000;101000;101000;114000;126000;139000;153000
+nuestra señora del carmen;jumper;16;114000;nuestra señora del carmen_jumper_16;91000;91000;50000;101000;114000;126000;139000;153000
+nuestra señora del carmen;jumper;S;118000;nuestra señora del carmen_jumper_S;94000;94000;105000;105000;118000;130000;143000;158000
+nuestra señora del carmen;jumper;M;118000;nuestra señora del carmen_jumper_M;94000;94000;100000;105000;118000;130000;143000;158000
+nuestra señora del carmen;jumper;L;124000;nuestra señora del carmen_jumper_L;94000;94000;101000;110000;124000;137000;151000;167000
+nuestra señora del carmen;jumper;XL;129000;nuestra señora del carmen_jumper_XL;;;;115000;129000;142000;157000;173000
+nuestra señora del carmen;guayabera;2;58000;nuestra señora del carmen_guayabera_2;42000;;;51000;58000;64000;71000;79000
+nuestra señora del carmen;guayabera;4;58000;nuestra señora del carmen_guayabera_4;42000;46000;51000;51000;58000;64000;71000;79000
+nuestra señora del carmen;guayabera;6;58000;nuestra señora del carmen_guayabera_6;25000;46000;51000;51000;58000;64000;71000;79000
+nuestra señora del carmen;guayabera;8;60000;nuestra señora del carmen_guayabera_8;48000;48000;48000;53000;60000;66000;73000;81000
+nuestra señora del carmen;guayabera;10;60000;nuestra señora del carmen_guayabera_10;48000;48000;53000;53000;60000;66000;73000;81000
+nuestra señora del carmen;guayabera;12;60000;nuestra señora del carmen_guayabera_12;48000;48000;53000;53000;60000;66000;73000;81000
+nuestra señora del carmen;guayabera;14;63000;nuestra señora del carmen_guayabera_14;50000;50000;56000;56000;63000;70000;77000;85000
+nuestra señora del carmen;guayabera;16;63000;nuestra señora del carmen_guayabera_16;50000;50000;56000;56000;63000;70000;77000;85000
+nuestra señora del carmen;guayabera;S;70000;nuestra señora del carmen_guayabera_S;50000;56000;40000;62000;70000;77000;85000;94000
+nuestra señora del carmen;guayabera;M;70000;nuestra señora del carmen_guayabera_M;50000;56000;61000;62000;70000;77000;85000;94000
+nuestra señora del carmen;guayabera;L;76000;nuestra señora del carmen_guayabera_L;57000;60000;67000;67000;76000;84000;93000;103000
+nuestra señora del carmen;guayabera;XL;76000;nuestra señora del carmen_guayabera_XL;57000;60000;67000;67000;76000;84000;93000;103000
+nuestra señora del carmen;pantalon;2;65000;nuestra señora del carmen_pantalon_2;;;;58000;65000;72000;80000;88000
+nuestra señora del carmen;pantalon;4;70000;nuestra señora del carmen_pantalon_4;;;;62000;70000;77000;85000;94000
+nuestra señora del carmen;pantalon;6;70000;nuestra señora del carmen_pantalon_6;;56000;62000;62000;70000;77000;85000;94000
+nuestra señora del carmen;pantalon;8;72000;nuestra señora del carmen_pantalon_8;56000;58000;58000;64000;72000;80000;88000;97000
+nuestra señora del carmen;pantalon;10;72000;nuestra señora del carmen_pantalon_10;56000;58000;64000;64000;72000;80000;88000;97000
+nuestra señora del carmen;pantalon;12;72000;nuestra señora del carmen_pantalon_12;56000;58000;64000;64000;72000;80000;88000;97000
+nuestra señora del carmen;pantalon;14;76000;nuestra señora del carmen_pantalon_14;60000;60000;67000;67000;76000;84000;93000;103000
+nuestra señora del carmen;pantalon;16;76000;nuestra señora del carmen_pantalon_16;60000;60000;67000;67000;76000;84000;93000;103000
+nuestra señora del carmen;pantalon;28;80000;nuestra señora del carmen_pantalon_28;64000;64000;41000;71000;80000;88000;97000;107000
+nuestra señora del carmen;pantalon;30;80000;nuestra señora del carmen_pantalon_30;64000;64000;71000;71000;80000;88000;97000;107000
+nuestra señora del carmen;pantalon;32;80000;nuestra señora del carmen_pantalon_32;64000;64000;71000;71000;80000;88000;97000;107000
+nuestra señora del carmen;pantalon;34;88000;nuestra señora del carmen_pantalon_34;;70000;75000;78000;88000;97000;107000;118000
+nuestra señora del carmen;pantalon;36;88000;nuestra señora del carmen_pantalon_36;70000;70000;;78000;88000;97000;107000;118000
+nuestra señora del carmen;pantalon;38;93000;nuestra señora del carmen_pantalon_38;;;;83000;93000;103000;114000;126000
+nuestra señora del carmen;bermuda;2;48000;nuestra señora del carmen_bermuda_2;;38000;42000;42000;48000;53000;59000;65000
+nuestra señora del carmen;bermuda;4;48000;nuestra señora del carmen_bermuda_4;36000;38000;42000;42000;48000;53000;59000;65000
+nuestra señora del carmen;bermuda;6;50000;nuestra señora del carmen_bermuda_6;42000;40000;44000;44000;50000;55000;61000;68000
+nuestra señora del carmen;bermuda;8;50000;nuestra señora del carmen_bermuda_8;36000;40000;44000;44000;50000;55000;61000;68000
+nuestra señora del carmen;bermuda;10;50000;nuestra señora del carmen_bermuda_10;;;;44000;50000;55000;61000;68000
+nuestra señora del carmen;bermuda;12;50000;nuestra señora del carmen_bermuda_12;;46000;;44000;50000;55000;61000;68000
+nuestra señora del carmen;camiseta fisica;2;48000;nuestra señora del carmen_camiseta fisica_2;36000;36000;;42000;48000;53000;59000;65000
+nuestra señora del carmen;camiseta fisica;4;48000;nuestra señora del carmen_camiseta fisica_4;36000;36000;40000;42000;48000;53000;59000;65000
+nuestra señora del carmen;camiseta fisica;6;48000;nuestra señora del carmen_camiseta fisica_6;36000;36000;40000;42000;48000;53000;59000;65000
+nuestra señora del carmen;camiseta fisica;8;50000;nuestra señora del carmen_camiseta fisica_8;38000;38000;38000;44000;50000;55000;61000;68000
+nuestra señora del carmen;camiseta fisica;10;50000;nuestra señora del carmen_camiseta fisica_10;38000;38000;42000;44000;50000;55000;61000;68000
+nuestra señora del carmen;camiseta fisica;12;50000;nuestra señora del carmen_camiseta fisica_12;38000;38000;42000;44000;50000;55000;61000;68000
+nuestra señora del carmen;camiseta fisica;14;52000;nuestra señora del carmen_camiseta fisica_14;40000;40000;44000;46000;52000;58000;64000;71000
+nuestra señora del carmen;camiseta fisica;16;52000;nuestra señora del carmen_camiseta fisica_16;40000;40000;44000;46000;52000;58000;64000;71000
+nuestra señora del carmen;camiseta fisica;S;55000;nuestra señora del carmen_camiseta fisica_S;42000;42000;42000;49000;55000;61000;68000;75000
+nuestra señora del carmen;camiseta fisica;M;55000;nuestra señora del carmen_camiseta fisica_M;42000;42000;47000;49000;55000;61000;68000;75000
+nuestra señora del carmen;camiseta fisica;L;58000;nuestra señora del carmen_camiseta fisica_L;42000;42000;47000;51000;58000;64000;71000;79000
+nuestra señora del carmen;camiseta fisica;XL;58000;nuestra señora del carmen_camiseta fisica_XL;42000;;;51000;58000;64000;71000;79000
+nuestra señora del carmen;bombacho;2;52000;nuestra señora del carmen_bombacho_2;39000;39000;43000;46000;52000;58000;64000;71000
+nuestra señora del carmen;bombacho;4;52000;nuestra señora del carmen_bombacho_4;39000;39000;43000;46000;52000;58000;64000;71000
+nuestra señora del carmen;bombacho;6;52000;nuestra señora del carmen_bombacho_6;39000;39000;43000;46000;52000;58000;64000;71000
+nuestra señora del carmen;bombacho;8;54000;nuestra señora del carmen_bombacho_8;41000;41000;41000;48000;54000;60000;66000;73000
+nuestra señora del carmen;bombacho;10;54000;nuestra señora del carmen_bombacho_10;41000;41000;41000;48000;54000;60000;66000;73000
+nuestra señora del carmen;bombacho;12;56000;nuestra señora del carmen_bombacho_12;41000;41000;45000;50000;56000;62000;69000;76000
+nuestra señora del carmen;bombacho;14;56000;nuestra señora del carmen_bombacho_14;42000;42000;47000;50000;56000;62000;69000;76000
+nuestra señora del carmen;bombacho;16;59000;nuestra señora del carmen_bombacho_16;42000;42000;47000;52000;59000;65000;72000;80000
+nuestra señora del carmen;bombacho;S;59000;nuestra señora del carmen_bombacho_S;43000;43000;48000;52000;59000;65000;72000;80000
+nuestra señora del carmen;bombacho;M;61000;nuestra señora del carmen_bombacho_M;43000;43000;43000;54000;61000;68000;75000;83000
+nuestra señora del carmen;bombacho;L;61000;nuestra señora del carmen_bombacho_L;44000;44000;49000;54000;61000;68000;75000;83000
+nuestra señora del carmen;bombacho;XL;62000;nuestra señora del carmen_bombacho_XL;44000;;;55000;62000;69000;76000;84000
+nuestra señora del carmen;cordon;NA;8000;nuestra señora del carmen_cordon_NA;;;;7000;8000;9000;10000;11000
+gimnasio plaza feliz;blusa;2;41000;gimnasio plaza feliz_blusa_2;;32000;25000;36000;41000;46000;51000;57000
+gimnasio plaza feliz;blusa;4;41000;gimnasio plaza feliz_blusa_4;28000;32000;31000;36000;41000;46000;51000;57000
+gimnasio plaza feliz;blusa;6;41000;gimnasio plaza feliz_blusa_6;28000;32000;35000;36000;41000;46000;51000;57000
+gimnasio plaza feliz;blusa;8;41000;gimnasio plaza feliz_blusa_8;28000;32000;35000;36000;41000;46000;51000;57000
+gimnasio plaza feliz;blusa;10;43000;gimnasio plaza feliz_blusa_10;31000;36000;40000;38000;43000;48000;53000;59000
+gimnasio plaza feliz;blusa;12;43000;gimnasio plaza feliz_blusa_12;31000;36000;38000;38000;43000;48000;53000;59000
+gimnasio plaza feliz;blusa;14;44000;gimnasio plaza feliz_blusa_14;34000;38000;42000;39000;44000;49000;54000;60000
+gimnasio plaza feliz;blusa;16;44000;gimnasio plaza feliz_blusa_16;34000;38000;39000;39000;44000;49000;54000;60000
+gimnasio plaza feliz;blusa;S;53000;gimnasio plaza feliz_blusa_S;37000;42000;47000;47000;53000;59000;65000;72000
+gimnasio plaza feliz;blusa;M;53000;gimnasio plaza feliz_blusa_M;37000;42000;47000;47000;53000;59000;65000;72000
+gimnasio plaza feliz;blusa;L;56000;gimnasio plaza feliz_blusa_L;32000;45000;;50000;56000;62000;69000;76000
+gimnasio plaza feliz;blusa;XL;56000;gimnasio plaza feliz_blusa_XL;;;;50000;56000;62000;69000;76000
+gimnasio plaza feliz;jumper;2;79000;gimnasio plaza feliz_jumper_2;;;;70000;79000;87000;96000;106000
+gimnasio plaza feliz;jumper;4;79000;gimnasio plaza feliz_jumper_4;62000;63000;60000;70000;79000;87000;96000;106000
+gimnasio plaza feliz;jumper;6;84000;gimnasio plaza feliz_jumper_6;59000;50000;50000;75000;84000;93000;103000;114000
+gimnasio plaza feliz;jumper;8;84000;gimnasio plaza feliz_jumper_8;59000;67000;50000;75000;84000;93000;103000;114000
+gimnasio plaza feliz;jumper;10;90000;gimnasio plaza feliz_jumper_10;82000;72000;80000;80000;90000;99000;109000;120000
+gimnasio plaza feliz;jumper;12;90000;gimnasio plaza feliz_jumper_12;63000;20000;80000;80000;90000;99000;109000;120000
+gimnasio plaza feliz;jumper;14;96000;gimnasio plaza feliz_jumper_14;67000;76000;89000;85000;96000;106000;117000;129000
+gimnasio plaza feliz;jumper;16;96000;gimnasio plaza feliz_jumper_16;;76000;50000;85000;96000;106000;117000;129000
+gimnasio plaza feliz;jumper;S;100000;gimnasio plaza feliz_jumper_S;70000;80000;89000;89000;100000;110000;121000;134000
+gimnasio plaza feliz;jumper;M;100000;gimnasio plaza feliz_jumper_M;79000;80000;;89000;100000;110000;121000;134000
+gimnasio plaza feliz;jumper;L;106000;gimnasio plaza feliz_jumper_L;;84000;84000;94000;106000;117000;129000;142000
+gimnasio plaza feliz;jumper;XL;106000;gimnasio plaza feliz_jumper_XL;;;;94000;106000;117000;129000;142000
+gimnasio plaza feliz;guayabera;2;65000;gimnasio plaza feliz_guayabera_2;46000;52000;58000;58000;65000;72000;80000;88000
+gimnasio plaza feliz;guayabera;4;65000;gimnasio plaza feliz_guayabera_4;46000;52000;;58000;65000;72000;80000;88000
+gimnasio plaza feliz;guayabera;6;65000;gimnasio plaza feliz_guayabera_6;46000;52000;58000;58000;65000;72000;80000;88000
+gimnasio plaza feliz;guayabera;8;65000;gimnasio plaza feliz_guayabera_8;46000;52000;58000;58000;65000;72000;80000;88000
+gimnasio plaza feliz;guayabera;10;69000;gimnasio plaza feliz_guayabera_10;48000;55000;61000;61000;69000;76000;84000;93000
+gimnasio plaza feliz;guayabera;12;69000;gimnasio plaza feliz_guayabera_12;48000;55000;61000;61000;69000;76000;84000;93000
+gimnasio plaza feliz;guayabera;14;76000;gimnasio plaza feliz_guayabera_14;53000;60000;60000;67000;76000;84000;93000;103000
+gimnasio plaza feliz;guayabera;16;76000;gimnasio plaza feliz_guayabera_16;53000;60000;67000;67000;76000;84000;93000;103000
+gimnasio plaza feliz;guayabera;S;78000;gimnasio plaza feliz_guayabera_S;55000;63000;50000;69000;78000;86000;95000;105000
+gimnasio plaza feliz;guayabera;M;78000;gimnasio plaza feliz_guayabera_M;55000;63000;50000;69000;78000;86000;95000;105000
+gimnasio plaza feliz;guayabera;L;79000;gimnasio plaza feliz_guayabera_L;60000;68000;53000;70000;79000;87000;96000;106000
+gimnasio plaza feliz;guayabera;XL;79000;gimnasio plaza feliz_guayabera_XL;60000;68000;66000;70000;79000;87000;96000;106000
+gimnasio plaza feliz;camiseta fisica;2;41000;gimnasio plaza feliz_camiseta fisica_2;;33000;;36000;41000;46000;51000;57000
+gimnasio plaza feliz;camiseta fisica;4;41000;gimnasio plaza feliz_camiseta fisica_4;29000;33000;36000;36000;41000;46000;51000;57000
+gimnasio plaza feliz;camiseta fisica;6;45000;gimnasio plaza feliz_camiseta fisica_6;31000;36000;40000;40000;45000;50000;55000;61000
+gimnasio plaza feliz;camiseta fisica;8;45000;gimnasio plaza feliz_camiseta fisica_8;31000;36000;40000;40000;45000;50000;55000;61000
+gimnasio plaza feliz;camiseta fisica;10;46000;gimnasio plaza feliz_camiseta fisica_10;32000;37000;41000;41000;46000;51000;57000;63000
+gimnasio plaza feliz;camiseta fisica;12;46000;gimnasio plaza feliz_camiseta fisica_12;32000;37000;41000;41000;46000;51000;57000;63000
+gimnasio plaza feliz;camiseta fisica;14;49000;gimnasio plaza feliz_camiseta fisica_14;35000;39000;43000;43000;49000;54000;60000;66000
+gimnasio plaza feliz;camiseta fisica;16;49000;gimnasio plaza feliz_camiseta fisica_16;35000;39000;43000;43000;49000;54000;60000;66000
+gimnasio plaza feliz;camiseta fisica;S;53000;gimnasio plaza feliz_camiseta fisica_S;37000;42000;47000;47000;53000;59000;65000;72000
+gimnasio plaza feliz;camiseta fisica;M;53000;gimnasio plaza feliz_camiseta fisica_M;37000;42000;47000;47000;53000;59000;65000;72000
+gimnasio plaza feliz;camiseta fisica;L;56000;gimnasio plaza feliz_camiseta fisica_L;39000;45000;50000;50000;56000;62000;69000;76000
+gimnasio plaza feliz;camiseta fisica;XL;56000;gimnasio plaza feliz_camiseta fisica_XL;39000;45000;;50000;56000;62000;69000;76000
+gimnasio plaza feliz;bombacho;2;48000;gimnasio plaza feliz_bombacho_2;32000;38000;42000;42000;48000;53000;59000;65000
+gimnasio plaza feliz;bombacho;4;48000;gimnasio plaza feliz_bombacho_4;32000;38000;42000;42000;48000;53000;59000;65000
+gimnasio plaza feliz;bombacho;6;50000;gimnasio plaza feliz_bombacho_6;35000;40000;34000;44000;50000;55000;61000;68000
+gimnasio plaza feliz;bombacho;8;50000;gimnasio plaza feliz_bombacho_8;35000;40000;44000;44000;50000;55000;61000;68000
+gimnasio plaza feliz;bombacho;10;53000;gimnasio plaza feliz_bombacho_10;37000;42000;47000;47000;53000;59000;65000;72000
+gimnasio plaza feliz;bombacho;12;53000;gimnasio plaza feliz_bombacho_12;37000;42000;47000;47000;53000;59000;65000;72000
+gimnasio plaza feliz;bombacho;14;56000;gimnasio plaza feliz_bombacho_14;39000;45000;50000;50000;56000;62000;69000;76000
+gimnasio plaza feliz;bombacho;16;56000;gimnasio plaza feliz_bombacho_16;39000;45000;40000;50000;56000;62000;69000;76000
+gimnasio plaza feliz;bombacho;S;59000;gimnasio plaza feliz_bombacho_S;42000;47000;52000;52000;59000;65000;72000;80000
+gimnasio plaza feliz;bombacho;M;59000;gimnasio plaza feliz_bombacho_M;42000;47000;52000;52000;59000;65000;72000;80000
+gimnasio plaza feliz;bombacho;L;63000;gimnasio plaza feliz_bombacho_L;44000;50000;56000;56000;63000;70000;77000;85000
+gimnasio plaza feliz;bombacho;XL;63000;gimnasio plaza feliz_bombacho_XL;44000;50000;56000;56000;63000;70000;77000;85000
+gimnasio vallegrande;blusa;2;41000;gimnasio vallegrande_blusa_2;;;;36000;41000;46000;51000;57000
+gimnasio vallegrande;blusa;4;41000;gimnasio vallegrande_blusa_4;;;35000;36000;41000;46000;51000;57000
+gimnasio vallegrande;blusa;6;41000;gimnasio vallegrande_blusa_6;;32000;35000;36000;41000;46000;51000;57000
+gimnasio vallegrande;blusa;8;41000;gimnasio vallegrande_blusa_8;28000;32000;35000;36000;41000;46000;51000;57000
+gimnasio vallegrande;blusa;10;44000;gimnasio vallegrande_blusa_10;29000;33000;36000;39000;44000;49000;54000;60000
+gimnasio vallegrande;blusa;12;44000;gimnasio vallegrande_blusa_12;29000;33000;36000;39000;44000;49000;54000;60000
+gimnasio vallegrande;blusa;14;46000;gimnasio vallegrande_blusa_14;31000;36000;40000;41000;46000;51000;57000;63000
+gimnasio vallegrande;blusa;16;46000;gimnasio vallegrande_blusa_16;31000;36000;40000;41000;46000;51000;57000;63000
+gimnasio vallegrande;blusa;S;49000;gimnasio vallegrande_blusa_S;32000;37000;41000;43000;49000;54000;60000;66000
+gimnasio vallegrande;blusa;M;49000;gimnasio vallegrande_blusa_M;32000;37000;37000;43000;49000;54000;60000;66000
+gimnasio vallegrande;blusa;L;53000;gimnasio vallegrande_blusa_L;;39000;43000;47000;53000;59000;65000;72000
+gimnasio vallegrande;blusa;XL;53000;gimnasio vallegrande_blusa_XL;;;;47000;53000;59000;65000;72000
+gimnasio vallegrande;camiseta de diario;2;46000;gimnasio vallegrande_camiseta de diario_2;;;41000;41000;46000;51000;57000;63000
+gimnasio vallegrande;camiseta de diario;4;46000;gimnasio vallegrande_camiseta de diario_4;32000;37000;41000;41000;46000;51000;57000;63000
+gimnasio vallegrande;camiseta de diario;6;46000;gimnasio vallegrande_camiseta de diario_6;32000;37000;41000;41000;46000;51000;57000;63000
+gimnasio vallegrande;camiseta de diario;8;46000;gimnasio vallegrande_camiseta de diario_8;32000;37000;41000;41000;46000;51000;57000;63000
+gimnasio vallegrande;camiseta de diario;10;49000;gimnasio vallegrande_camiseta de diario_10;35000;39000;39000;43000;49000;54000;60000;66000
+gimnasio vallegrande;camiseta de diario;12;49000;gimnasio vallegrande_camiseta de diario_12;35000;39000;43000;43000;49000;54000;60000;66000
+gimnasio vallegrande;camiseta de diario;14;53000;gimnasio vallegrande_camiseta de diario_14;37000;42000;42000;47000;53000;59000;65000;72000
+gimnasio vallegrande;camiseta de diario;16;53000;gimnasio vallegrande_camiseta de diario_16;37000;42000;42000;47000;53000;59000;65000;72000
+gimnasio vallegrande;camiseta de diario;S;59000;gimnasio vallegrande_camiseta de diario_S;42000;47000;52000;52000;59000;65000;72000;80000
+gimnasio vallegrande;camiseta de diario;M;59000;gimnasio vallegrande_camiseta de diario_M;42000;47000;42000;52000;59000;65000;72000;80000
+gimnasio vallegrande;camiseta de diario;L;63000;gimnasio vallegrande_camiseta de diario_L;44000;50000;56000;56000;63000;70000;77000;85000
+gimnasio vallegrande;camiseta de diario;XL;63000;gimnasio vallegrande_camiseta de diario_XL;44000;50000;48000;56000;63000;70000;77000;85000
+gimnasio vallegrande;camiseta de fisica interna;2;41000;gimnasio vallegrande_camiseta de fisica interna_2;;;;36000;41000;46000;51000;57000
+gimnasio vallegrande;camiseta de fisica interna;4;41000;gimnasio vallegrande_camiseta de fisica interna_4;29000;33000;;36000;41000;46000;51000;57000
+gimnasio vallegrande;camiseta de fisica interna;6;45000;gimnasio vallegrande_camiseta de fisica interna_6;31000;36000;40000;40000;45000;50000;55000;61000
+gimnasio vallegrande;camiseta de fisica interna;8;45000;gimnasio vallegrande_camiseta de fisica interna_8;31000;36000;40000;40000;45000;50000;55000;61000
+gimnasio vallegrande;camiseta de fisica interna;10;48000;gimnasio vallegrande_camiseta de fisica interna_10;34000;38000;42000;42000;48000;53000;59000;65000
+gimnasio vallegrande;camiseta de fisica interna;12;48000;gimnasio vallegrande_camiseta de fisica interna_12;34000;38000;42000;42000;48000;53000;59000;65000
+gimnasio vallegrande;camiseta de fisica interna;14;51000;gimnasio vallegrande_camiseta de fisica interna_14;36000;41000;45000;45000;51000;57000;63000;70000
+gimnasio vallegrande;camiseta de fisica interna;16;51000;gimnasio vallegrande_camiseta de fisica interna_16;36000;41000;41000;45000;51000;57000;63000;70000
+gimnasio vallegrande;camiseta de fisica interna;S;53000;gimnasio vallegrande_camiseta de fisica interna_S;37000;42000;42000;47000;53000;59000;65000;72000
+gimnasio vallegrande;camiseta de fisica interna;M;53000;gimnasio vallegrande_camiseta de fisica interna_M;37000;42000;47000;47000;53000;59000;65000;72000
+gimnasio vallegrande;camiseta de fisica interna;L;54000;gimnasio vallegrande_camiseta de fisica interna_L;38000;43000;48000;48000;54000;60000;66000;73000
+gimnasio vallegrande;camiseta de fisica interna;XL;54000;gimnasio vallegrande_camiseta de fisica interna_XL;;;48000;48000;54000;60000;66000;73000
+gimnasio vallegrande;camiseta de fisica externa;2;41000;gimnasio vallegrande_camiseta de fisica externa_2;;;;36000;41000;46000;51000;57000
+gimnasio vallegrande;camiseta de fisica externa;4;41000;gimnasio vallegrande_camiseta de fisica externa_4;29000;33000;36000;36000;41000;46000;51000;57000
+gimnasio vallegrande;camiseta de fisica externa;6;45000;gimnasio vallegrande_camiseta de fisica externa_6;31000;36000;40000;40000;45000;50000;55000;61000
+gimnasio vallegrande;camiseta de fisica externa;8;45000;gimnasio vallegrande_camiseta de fisica externa_8;31000;36000;40000;40000;45000;50000;55000;61000
+gimnasio vallegrande;camiseta de fisica externa;10;48000;gimnasio vallegrande_camiseta de fisica externa_10;34000;38000;38000;42000;48000;53000;59000;65000
+gimnasio vallegrande;camiseta de fisica externa;12;48000;gimnasio vallegrande_camiseta de fisica externa_12;34000;38000;42000;42000;48000;53000;59000;65000
+gimnasio vallegrande;camiseta de fisica externa;14;51000;gimnasio vallegrande_camiseta de fisica externa_14;36000;41000;45000;45000;51000;57000;63000;70000
+gimnasio vallegrande;camiseta de fisica externa;16;51000;gimnasio vallegrande_camiseta de fisica externa_16;36000;41000;41000;45000;51000;57000;63000;70000
+gimnasio vallegrande;camiseta de fisica externa;S;53000;gimnasio vallegrande_camiseta de fisica externa_S;37000;42000;42000;47000;53000;59000;65000;72000
+gimnasio vallegrande;camiseta de fisica externa;M;53000;gimnasio vallegrande_camiseta de fisica externa_M;37000;42000;42000;47000;53000;59000;65000;72000
+gimnasio vallegrande;camiseta de fisica externa;L;54000;gimnasio vallegrande_camiseta de fisica externa_L;38000;43000;48000;48000;54000;60000;66000;73000
+gimnasio vallegrande;camiseta de fisica externa;XL;54000;gimnasio vallegrande_camiseta de fisica externa_XL;38000;;48000;48000;54000;60000;66000;73000
+gimnasio vallegrande;bombacho dama;2;50000;gimnasio vallegrande_bombacho dama_2;;;;44000;50000;55000;61000;68000
+gimnasio vallegrande;bombacho dama;4;50000;gimnasio vallegrande_bombacho dama_4;;40000;44000;44000;50000;55000;61000;68000
+gimnasio vallegrande;bombacho dama;6;50000;gimnasio vallegrande_bombacho dama_6;32000;40000;44000;44000;50000;55000;61000;68000
+gimnasio vallegrande;bombacho dama;8;50000;gimnasio vallegrande_bombacho dama_8;32000;40000;44000;44000;50000;55000;61000;68000
+gimnasio vallegrande;bombacho dama;10;53000;gimnasio vallegrande_bombacho dama_10;35000;42000;47000;47000;53000;59000;65000;72000
+gimnasio vallegrande;bombacho dama;12;53000;gimnasio vallegrande_bombacho dama_12;35000;42000;47000;47000;53000;59000;65000;72000
+gimnasio vallegrande;bombacho dama;14;56000;gimnasio vallegrande_bombacho dama_14;37000;45000;50000;50000;56000;62000;69000;76000
+gimnasio vallegrande;bombacho dama;16;56000;gimnasio vallegrande_bombacho dama_16;37000;45000;50000;50000;56000;62000;69000;76000
+gimnasio vallegrande;bombacho dama;S;63000;gimnasio vallegrande_bombacho dama_S;39000;50000;56000;56000;63000;70000;77000;85000
+gimnasio vallegrande;bombacho dama;M;63000;gimnasio vallegrande_bombacho dama_M;39000;50000;50000;56000;63000;70000;77000;85000
+gimnasio vallegrande;bombacho dama;L;69000;gimnasio vallegrande_bombacho dama_L;44000;55000;55000;61000;69000;76000;84000;93000
+gimnasio vallegrande;bombacho dama;XL;69000;gimnasio vallegrande_bombacho dama_XL;;55000;;61000;69000;76000;84000;93000
+gimnasio vallegrande;bombacho hombre;2;50000;gimnasio vallegrande_bombacho hombre_2;;;44000;44000;50000;55000;61000;68000
+gimnasio vallegrande;bombacho hombre;4;50000;gimnasio vallegrande_bombacho hombre_4;32000;40000;44000;44000;50000;55000;61000;68000
+gimnasio vallegrande;bombacho hombre;6;50000;gimnasio vallegrande_bombacho hombre_6;32000;;44000;44000;50000;55000;61000;68000
+gimnasio vallegrande;bombacho hombre;8;50000;gimnasio vallegrande_bombacho hombre_8;32000;40000;44000;44000;50000;55000;61000;68000
+gimnasio vallegrande;bombacho hombre;10;53000;gimnasio vallegrande_bombacho hombre_10;35000;42000;42000;47000;53000;59000;65000;72000
+gimnasio vallegrande;bombacho hombre;12;53000;gimnasio vallegrande_bombacho hombre_12;34000;42000;47000;47000;53000;59000;65000;72000
+gimnasio vallegrande;bombacho hombre;14;56000;gimnasio vallegrande_bombacho hombre_14;37000;45000;50000;50000;56000;62000;69000;76000
+gimnasio vallegrande;bombacho hombre;16;56000;gimnasio vallegrande_bombacho hombre_16;37000;45000;45000;50000;56000;62000;69000;76000
+gimnasio vallegrande;bombacho hombre;S;63000;gimnasio vallegrande_bombacho hombre_S;39000;50000;50000;56000;63000;70000;77000;85000
+gimnasio vallegrande;bombacho hombre;M;63000;gimnasio vallegrande_bombacho hombre_M;39000;50000;56000;56000;63000;70000;77000;85000
+gimnasio vallegrande;bombacho hombre;L;69000;gimnasio vallegrande_bombacho hombre_L;42000;55000;61000;61000;69000;76000;84000;93000
+gimnasio vallegrande;bombacho hombre;XL;69000;gimnasio vallegrande_bombacho hombre_XL;42000;55000;61000;61000;69000;76000;84000;93000
+gimnasio vallegrande;camiseta dama externa;2;41000;gimnasio vallegrande_camiseta dama externa_2;;;;36000;41000;46000;51000;57000
+gimnasio vallegrande;camiseta dama externa;4;41000;gimnasio vallegrande_camiseta dama externa_4;;33000;36000;36000;41000;46000;51000;57000
+gimnasio vallegrande;camiseta dama externa;6;45000;gimnasio vallegrande_camiseta dama externa_6;31000;36000;40000;40000;45000;50000;55000;61000
+gimnasio vallegrande;camiseta dama externa;8;45000;gimnasio vallegrande_camiseta dama externa_8;31000;36000;40000;40000;45000;50000;55000;61000
+gimnasio vallegrande;camiseta dama externa;10;48000;gimnasio vallegrande_camiseta dama externa_10;34000;38000;42000;42000;48000;53000;59000;65000
+gimnasio vallegrande;camiseta dama externa;12;48000;gimnasio vallegrande_camiseta dama externa_12;34000;38000;42000;42000;48000;53000;59000;65000
+gimnasio vallegrande;camiseta dama externa;14;51000;gimnasio vallegrande_camiseta dama externa_14;36000;41000;45000;45000;51000;57000;63000;70000
+gimnasio vallegrande;camiseta dama externa;16;51000;gimnasio vallegrande_camiseta dama externa_16;36000;41000;45000;45000;51000;57000;63000;70000
+gimnasio vallegrande;camiseta dama externa;S;53000;gimnasio vallegrande_camiseta dama externa_S;37000;42000;47000;47000;53000;59000;65000;72000
+gimnasio vallegrande;camiseta dama externa;M;53000;gimnasio vallegrande_camiseta dama externa_M;37000;42000;42000;47000;53000;59000;65000;72000
+gimnasio vallegrande;camiseta dama externa;L;54000;gimnasio vallegrande_camiseta dama externa_L;;43000;48000;48000;54000;60000;66000;73000
+gimnasio vallegrande;camiseta dama externa;XL;54000;gimnasio vallegrande_camiseta dama externa_XL;;;;48000;54000;60000;66000;73000
+gimnasio vallegrande;falda;2;101000;gimnasio vallegrande_falda_2;;;;90000;101000;112000;124000;137000
+gimnasio vallegrande;falda;4;101000;gimnasio vallegrande_falda_4;;;;90000;101000;112000;124000;137000
+gimnasio vallegrande;falda;6;101000;gimnasio vallegrande_falda_6;;;;90000;101000;112000;124000;137000
+gimnasio vallegrande;falda;8;101000;gimnasio vallegrande_falda_8;;;;90000;101000;112000;124000;137000
+gimnasio vallegrande;falda;10;107000;gimnasio vallegrande_falda_10;;;;95000;107000;118000;130000;143000
+gimnasio vallegrande;falda;12;107000;gimnasio vallegrande_falda_12;;;;95000;107000;118000;130000;143000
+gimnasio vallegrande;falda;14;112000;gimnasio vallegrande_falda_14;;;;100000;112000;124000;137000;151000
+gimnasio vallegrande;falda;16;112000;gimnasio vallegrande_falda_16;;;;100000;112000;124000;137000;151000
+gimnasio vallegrande;falda;S;118000;gimnasio vallegrande_falda_S;;;;105000;118000;130000;143000;158000
+gimnasio vallegrande;falda;M;118000;gimnasio vallegrande_falda_M;;;;105000;118000;130000;143000;158000
+gimnasio vallegrande;falda;L;125000;gimnasio vallegrande_falda_L;;;;105000;125000;138000;152000;168000
+gimnasio vallegrande;falda;XL;130000;gimnasio vallegrande_falda_XL;;;;110000;130000;143000;158000;174000
+gimnasio vallegrande;pantaloneta;2;41000;gimnasio vallegrande_pantaloneta_2;;;;36000;41000;46000;51000;57000
+gimnasio vallegrande;pantaloneta;4;41000;gimnasio vallegrande_pantaloneta_4;;33000;36000;36000;41000;46000;51000;57000
+gimnasio vallegrande;pantaloneta;6;41000;gimnasio vallegrande_pantaloneta_6;29000;33000;36000;36000;41000;46000;51000;57000
+gimnasio vallegrande;pantaloneta;8;41000;gimnasio vallegrande_pantaloneta_8;29000;33000;36000;36000;41000;46000;51000;57000
+gimnasio vallegrande;pantaloneta;10;41000;gimnasio vallegrande_pantaloneta_10;29000;33000;33000;36000;41000;46000;51000;57000
+gimnasio vallegrande;pantaloneta;12;41000;gimnasio vallegrande_pantaloneta_12;29000;33000;36000;36000;41000;46000;51000;57000
+gimnasio vallegrande;pantaloneta;14;41000;gimnasio vallegrande_pantaloneta_14;29000;33000;36000;36000;41000;46000;51000;57000
+gimnasio vallegrande;pantaloneta;16;41000;gimnasio vallegrande_pantaloneta_16;29000;33000;33000;36000;41000;46000;51000;57000
+gimnasio vallegrande;pantaloneta;S;44000;gimnasio vallegrande_pantaloneta_S;29000;35000;35000;39000;44000;49000;54000;60000
+gimnasio vallegrande;pantaloneta;M;44000;gimnasio vallegrande_pantaloneta_M;30000;35000;39000;39000;44000;49000;54000;60000
+gimnasio vallegrande;pantaloneta;L;44000;gimnasio vallegrande_pantaloneta_L;30000;35000;39000;39000;44000;49000;54000;60000
+gimnasio vallegrande;pantaloneta;XL;44000;gimnasio vallegrande_pantaloneta_XL;30000;;39000;39000;44000;49000;54000;60000
+gimnasio vallegrande;notriza;NA;4000;gimnasio vallegrande_notriza_NA;;;;3000;4000;5000;6000;7000
+colsafa;blusa;2;37000;colsafa_blusa_2;27000;;33000;33000;37000;41000;46000;51000
+colsafa;blusa;4;37000;colsafa_blusa_4;27000;30000;33000;33000;37000;41000;46000;51000
+colsafa;blusa;6;37000;colsafa_blusa_6;27000;30000;33000;33000;37000;41000;46000;51000
+colsafa;blusa;8;37000;colsafa_blusa_8;27000;30000;33000;33000;37000;41000;46000;51000
+colsafa;blusa;10;40000;colsafa_blusa_10;28000;32000;35000;35000;40000;44000;49000;54000
+colsafa;blusa;12;42000;colsafa_blusa_12;28000;32000;35000;37000;42000;47000;52000;58000
+colsafa;blusa;14;42000;colsafa_blusa_14;29000;33000;36000;37000;42000;47000;52000;58000
+colsafa;blusa;16;42000;colsafa_blusa_16;29000;33000;36000;37000;42000;47000;52000;58000
+colsafa;blusa;S;45000;colsafa_blusa_S;31000;36000;40000;40000;45000;50000;55000;61000
+colsafa;blusa;M;45000;colsafa_blusa_M;31000;36000;40000;40000;45000;50000;55000;61000
+colsafa;blusa;L;48000;colsafa_blusa_L;32000;37000;41000;42000;48000;53000;59000;65000
+colsafa;blusa;XL;48000;colsafa_blusa_XL;;;41000;42000;48000;53000;59000;65000
+colsafa;falda;2;98000;colsafa_falda_2;67000;78000;77000;87000;98000;108000;119000;131000
+colsafa;falda;4;98000;colsafa_falda_4;67000;78000;87000;87000;98000;108000;119000;131000
+colsafa;falda;6;106000;colsafa_falda_6;73000;84000;94000;94000;106000;117000;129000;142000
+colsafa;falda;8;106000;colsafa_falda_8;73000;84000;94000;94000;106000;117000;129000;142000
+colsafa;falda;10;112000;colsafa_falda_10;79000;90000;100000;100000;112000;124000;137000;151000
+colsafa;falda;12;112000;colsafa_falda_12;79000;90000;100000;100000;112000;124000;137000;151000
+colsafa;falda;14;119000;colsafa_falda_14;85000;95000;106000;106000;119000;131000;145000;160000
+colsafa;falda;16;119000;colsafa_falda_16;85000;95000;106000;106000;119000;131000;145000;160000
+colsafa;falda;S;126000;colsafa_falda_S;92000;100000;106000;112000;126000;139000;153000;169000
+colsafa;falda;M;126000;colsafa_falda_M;92000;100000;112000;112000;126000;139000;153000;169000
+colsafa;falda;L;138000;colsafa_falda_L;103000;110000;;123000;138000;152000;168000;185000
+colsafa;falda;XL;138000;colsafa_falda_XL;;;;123000;138000;152000;168000;185000
+colsafa;guayabera;2;49000;colsafa_guayabera_2;35000;;;43000;49000;54000;60000;66000
+colsafa;guayabera;4;49000;colsafa_guayabera_4;35000;39000;43000;43000;49000;54000;60000;66000
+colsafa;guayabera;6;49000;colsafa_guayabera_6;35000;39000;43000;43000;49000;54000;60000;66000
+colsafa;guayabera;8;49000;colsafa_guayabera_8;35000;39000;43680;43000;49000;54000;60000;66000
+colsafa;guayabera;10;53000;colsafa_guayabera_10;37000;42000;42000;47000;53000;59000;65000;72000
+colsafa;guayabera;12;53000;colsafa_guayabera_12;37000;42000;47000;47000;53000;59000;65000;72000
+colsafa;guayabera;14;56000;colsafa_guayabera_14;39000;45000;50000;50000;56000;62000;69000;76000
+colsafa;guayabera;16;56000;colsafa_guayabera_16;39000;45000;50000;50000;56000;62000;69000;76000
+colsafa;guayabera;S;59000;colsafa_guayabera_S;42000;47000;52000;52000;59000;65000;72000;80000
+colsafa;guayabera;M;59000;colsafa_guayabera_M;42000;47000;52000;52000;59000;65000;72000;80000
+colsafa;guayabera;L;63000;colsafa_guayabera_L;44000;50000;56000;56000;63000;70000;77000;85000
+colsafa;guayabera;XL;63000;colsafa_guayabera_XL;44000;50000;56000;56000;63000;70000;77000;85000
+colsafa;bombacho;2;90000;colsafa_bombacho_2;;;;80000;90000;99000;109000;120000
+colsafa;bombacho;4;90000;colsafa_bombacho_4;33000;;;80000;90000;99000;109000;120000
+colsafa;bombacho;6;90000;colsafa_bombacho_6;33000;36000;;80000;90000;99000;109000;120000
+colsafa;bombacho;8;90000;colsafa_bombacho_8;32000;40000;;80000;90000;99000;109000;120000
+colsafa;bombacho;10;90000;colsafa_bombacho_10;33000;;42000;80000;90000;99000;109000;120000
+colsafa;bombacho;12;101000;colsafa_bombacho_12;37000;36000;;90000;101000;112000;124000;137000
+colsafa;bombacho;14;101000;colsafa_bombacho_14;35000;45000;;90000;101000;112000;124000;137000
+colsafa;bombacho;16;101000;colsafa_bombacho_16;35000;38000;;90000;101000;112000;124000;137000
+colsafa;bombacho;S;107000;colsafa_bombacho_S;38000;47000;;95000;107000;118000;130000;143000
+colsafa;bombacho;M;107000;colsafa_bombacho_M;42000;47000;;95000;107000;118000;130000;143000
+colsafa;bombacho;L;107000;colsafa_bombacho_L;41000;47000;;95000;107000;118000;130000;143000
+colsafa;bombacho;XL;112000;colsafa_bombacho_XL;;;;100000;112000;124000;137000;151000
+colsafa;camiseta fisica;2;56000;colsafa_camiseta fisica_2;;;;50000;56000;62000;69000;76000
+colsafa;camiseta fisica;4;56000;colsafa_camiseta fisica_4;;;;50000;56000;62000;69000;76000
+colsafa;camiseta fisica;6;56000;colsafa_camiseta fisica_6;;;;50000;56000;62000;69000;76000
+colsafa;camiseta fisica;8;56000;colsafa_camiseta fisica_8;;;;50000;56000;62000;69000;76000
+colsafa;camiseta fisica;10;56000;colsafa_camiseta fisica_10;;;;50000;56000;62000;69000;76000
+colsafa;camiseta fisica;12;62000;colsafa_camiseta fisica_12;;;;55000;62000;69000;76000;84000
+colsafa;camiseta fisica;14;62000;colsafa_camiseta fisica_14;;;;55000;62000;69000;76000;84000
+colsafa;camiseta fisica;16;62000;colsafa_camiseta fisica_16;;;;55000;62000;69000;76000;84000
+colsafa;camiseta fisica;S;73000;colsafa_camiseta fisica_S;;;;65000;73000;81000;90000;99000
+colsafa;camiseta fisica;M;73000;colsafa_camiseta fisica_M;;;;65000;73000;81000;90000;99000
+colsafa;camiseta fisica;L;73000;colsafa_camiseta fisica_L;;;;65000;73000;81000;90000;99000
+colsafa;camiseta fisica;XL;73000;colsafa_camiseta fisica_XL;;;;65000;73000;81000;90000;99000
+conalco;blusa;2;41000;conalco_blusa_2;;;;36000;41000;46000;51000;57000
+conalco;blusa;4;41000;conalco_blusa_4;29000;;36000;36000;41000;46000;51000;57000
+conalco;blusa;6;41000;conalco_blusa_6;29000;33000;36000;36000;41000;46000;51000;57000
+conalco;blusa;8;41000;conalco_blusa_8;29000;33000;36000;36000;41000;46000;51000;57000
+conalco;blusa;10;46000;conalco_blusa_10;32000;37000;41000;41000;46000;51000;57000;63000
+conalco;blusa;12;46000;conalco_blusa_12;32000;37000;41000;41000;46000;51000;57000;63000
+conalco;blusa;14;49000;conalco_blusa_14;35000;39000;43000;43000;49000;54000;60000;66000
+conalco;blusa;16;49000;conalco_blusa_16;35000;39000;43000;43000;49000;54000;60000;66000
+conalco;blusa;S;53000;conalco_blusa_S;37000;42000;47000;47000;53000;59000;65000;72000
+conalco;blusa;M;53000;conalco_blusa_M;37000;42000;47000;47000;53000;59000;65000;72000
+conalco;blusa;L;56000;conalco_blusa_L;39000;45000;50000;50000;56000;62000;69000;76000
+conalco;blusa;XL;56000;conalco_blusa_XL;;;;50000;56000;62000;69000;76000
+conalco;falda;2;79000;conalco_falda_2;;;70000;70000;79000;87000;96000;106000
+conalco;falda;4;79000;conalco_falda_4;;50000;60000;70000;79000;87000;96000;106000
+conalco;falda;6;81000;conalco_falda_6;57000;60000;72000;72000;81000;90000;99000;109000
+conalco;falda;8;81000;conalco_falda_8;57000;59000;62000;72000;81000;90000;99000;109000
+conalco;falda;10;86000;conalco_falda_10;60000;68000;76000;76000;86000;95000;105000;116000
+conalco;falda;12;86000;conalco_falda_12;60000;30000;38000;76000;86000;95000;105000;116000
+conalco;falda;14;89000;conalco_falda_14;62000;50000;79000;79000;89000;98000;108000;119000
+conalco;falda;16;89000;conalco_falda_16;62000;71000;79000;79000;89000;98000;108000;119000
+conalco;falda;S;91000;conalco_falda_S;64000;73000;15000;81000;91000;101000;112000;124000
+conalco;falda;M;91000;conalco_falda_M;64000;73000;50000;81000;91000;101000;112000;124000
+conalco;falda;L;96000;conalco_falda_L;67000;53000;75000;85000;96000;106000;117000;129000
+conalco;falda;XL;96000;conalco_falda_XL;67000;;85000;85000;96000;106000;117000;129000
+conalco;guayabera;2;53000;conalco_guayabera_2;;;;47000;53000;59000;65000;72000
+conalco;guayabera;4;53000;conalco_guayabera_4;37000;;47000;47000;53000;59000;65000;72000
+conalco;guayabera;6;53000;conalco_guayabera_6;37000;42000;47000;47000;53000;59000;65000;72000
+conalco;guayabera;8;53000;conalco_guayabera_8;37000;42000;47000;47000;53000;59000;65000;72000
+conalco;guayabera;10;56000;conalco_guayabera_10;39000;45000;50000;50000;56000;62000;69000;76000
+conalco;guayabera;12;56000;conalco_guayabera_12;39000;45000;50000;50000;56000;62000;69000;76000
+conalco;guayabera;14;59000;conalco_guayabera_14;42000;47000;47000;52000;59000;65000;72000;80000
+conalco;guayabera;16;59000;conalco_guayabera_16;42000;47000;40000;52000;59000;65000;72000;80000
+conalco;guayabera;S;63000;conalco_guayabera_S;44000;50000;56000;56000;63000;70000;77000;85000
+conalco;guayabera;M;63000;conalco_guayabera_M;44000;50000;56000;56000;63000;70000;77000;85000
+conalco;guayabera;L;65000;conalco_guayabera_L;46000;52000;48000;58000;65000;72000;80000;88000
+conalco;guayabera;XL;65000;conalco_guayabera_XL;46000;52000;58000;58000;65000;72000;80000;88000
+conalco;pantalon;2;70000;conalco_pantalon_2;;;;62000;70000;77000;85000;94000
+conalco;pantalon;4;70000;conalco_pantalon_4;;48000;;62000;70000;77000;85000;94000
+conalco;pantalon;6;70000;conalco_pantalon_6;47000;56000;54000;62000;70000;77000;85000;94000
+conalco;pantalon;8;70000;conalco_pantalon_8;47000;54000;62000;62000;70000;77000;85000;94000
+conalco;pantalon;10;76000;conalco_pantalon_10;48000;60000;50000;67000;76000;84000;93000;103000
+conalco;pantalon;12;76000;conalco_pantalon_12;48000;60000;67000;67000;76000;84000;93000;103000
+conalco;pantalon;14;78000;conalco_pantalon_14;52000;62000;69000;69000;78000;86000;95000;105000
+conalco;pantalon;16;78000;conalco_pantalon_16;52000;62000;69000;69000;78000;86000;95000;105000
+conalco;pantalon;28;81000;conalco_pantalon_28;56000;65000;72000;72000;81000;90000;99000;109000
+conalco;pantalon;30;81000;conalco_pantalon_30;56000;65000;72000;72000;81000;90000;99000;109000
+conalco;pantalon;32;81000;conalco_pantalon_32;56000;65000;72000;72000;81000;90000;99000;109000
+conalco;pantalon;34;86000;conalco_pantalon_34;59000;68000;66000;76000;86000;95000;105000;116000
+conalco;pantalon;36;86000;conalco_pantalon_36;59000;68000;50000;76000;86000;95000;105000;116000
+conalco;pantalon;38;91000;conalco_pantalon_38;;;;81000;91000;101000;112000;124000
+conalco;camiseta fisica;2;51000;conalco_camiseta fisica_2;36000;;;45000;51000;57000;63000;70000
+conalco;camiseta fisica;4;51000;conalco_camiseta fisica_4;36000;41000;45000;45000;51000;57000;63000;70000
+conalco;camiseta fisica;6;51000;conalco_camiseta fisica_6;36000;41000;45000;45000;51000;57000;63000;70000
+conalco;camiseta fisica;8;51000;conalco_camiseta fisica_8;36000;41000;45000;45000;51000;57000;63000;70000
+conalco;camiseta fisica;10;53000;conalco_camiseta fisica_10;37000;42000;47000;47000;53000;59000;65000;72000
+conalco;camiseta fisica;12;53000;conalco_camiseta fisica_12;37000;42000;47000;47000;53000;59000;65000;72000
+conalco;camiseta fisica;14;54000;conalco_camiseta fisica_14;38000;43000;48000;48000;54000;60000;66000;73000
+conalco;camiseta fisica;16;54000;conalco_camiseta fisica_16;38000;43000;48000;48000;54000;60000;66000;73000
+conalco;camiseta fisica;S;58000;conalco_camiseta fisica_S;40000;46000;51000;51000;58000;64000;71000;79000
+conalco;camiseta fisica;M;58000;conalco_camiseta fisica_M;40000;46000;51000;51000;58000;64000;71000;79000
+conalco;camiseta fisica;L;61000;conalco_camiseta fisica_L;43000;49000;54000;54000;61000;68000;75000;83000
+conalco;camiseta fisica;XL;61000;conalco_camiseta fisica_XL;43000;49000;54000;54000;61000;68000;75000;83000
+conalco;bombacho;2;58000;conalco_bombacho_2;;;;51000;58000;64000;71000;79000
+conalco;bombacho;4;58000;conalco_bombacho_4;40000;42000;45000;51000;58000;64000;71000;79000
+conalco;bombacho;6;58000;conalco_bombacho_6;40000;46000;51000;51000;58000;64000;71000;79000
+conalco;bombacho;8;58000;conalco_bombacho_8;40000;46000;51000;51000;58000;64000;71000;79000
+conalco;bombacho;10;61000;conalco_bombacho_10;43000;49000;54000;54000;61000;68000;75000;83000
+conalco;bombacho;12;61000;conalco_bombacho_12;43000;49000;54000;54000;61000;68000;75000;83000
+conalco;bombacho;14;64000;conalco_bombacho_14;45000;51000;57000;57000;64000;71000;79000;87000
+conalco;bombacho;16;64000;conalco_bombacho_16;45000;51000;47000;57000;64000;71000;79000;87000
+conalco;bombacho;S;68000;conalco_bombacho_S;47000;54000;54000;60000;68000;75000;83000;92000
+conalco;bombacho;M;68000;conalco_bombacho_M;47000;54000;50000;60000;68000;75000;83000;92000
+conalco;bombacho;L;69000;conalco_bombacho_L;48000;55000;51000;61000;69000;76000;84000;93000
+conalco;bombacho;XL;69000;conalco_bombacho_XL;48000;55000;50000;61000;69000;76000;84000;93000
+conalco;medias hombre;2;13000;conalco_medias hombre_2;;;;11000;13000;15000;17000;19000
+conalco;medias hombre;4;13000;conalco_medias hombre_4;;;11000;11000;13000;15000;17000;19000
+conalco;medias hombre;6;13000;conalco_medias hombre_6;;10000;11000;11000;13000;15000;17000;19000
+conalco;medias hombre;8;13000;conalco_medias hombre_8;;10000;11000;11000;13000;15000;17000;19000
+conalco;medias hombre;10;13000;conalco_medias hombre_10;;10000;10000;11000;13000;15000;17000;19000
+conalco;medias mujer;2;13000;conalco_medias mujer_2;;;11000;11000;13000;15000;17000;19000
+conalco;medias mujer;4;13000;conalco_medias mujer_4;;10000;11000;11000;13000;15000;17000;19000
+conalco;medias mujer;6;13000;conalco_medias mujer_6;;10000;11000;11000;13000;15000;17000;19000
+conalco;medias mujer;8;13000;conalco_medias mujer_8;;10000;11000;11000;13000;15000;17000;19000
+conalco;medias mujer;10;13000;conalco_medias mujer_10;;10000;11000;11000;13000;15000;17000;19000
+conalco;bermuda;2;46000;conalco_bermuda_2;;;;41000;46000;51000;57000;63000
+conalco;bermuda;4;46000;conalco_bermuda_4;;;41000;41000;46000;51000;57000;63000
+conalco;bermuda;6;46000;conalco_bermuda_6;;;40000;41000;46000;51000;57000;63000
+conalco;bermuda;8;46000;conalco_bermuda_8;;;41000;41000;46000;51000;57000;63000
+conalco;bermuda;10;46000;conalco_bermuda_10;;;;41000;46000;51000;57000;63000
+conalco;bermuda;12;46000;conalco_bermuda_12;;;;41000;46000;51000;57000;63000
+conalco;cordon;NA;7000;conalco_cordon_NA;;;;6000;7000;8000;9000;10000
+la inmaculada;blusa;2;37000;la inmaculada_blusa_2;;;;33000;37000;41000;46000;51000
+la inmaculada;blusa;4;37000;la inmaculada_blusa_4;27000;30000;33000;33000;37000;41000;46000;51000
+la inmaculada;blusa;6;37000;la inmaculada_blusa_6;27000;30000;33000;33000;37000;41000;46000;51000
+la inmaculada;blusa;8;37000;la inmaculada_blusa_8;27000;30000;33000;33000;37000;41000;46000;51000
+la inmaculada;blusa;10;40000;la inmaculada_blusa_10;28000;32000;35000;35000;40000;44000;49000;54000
+la inmaculada;blusa;12;40000;la inmaculada_blusa_12;28000;32000;35000;35000;40000;44000;49000;54000
+la inmaculada;blusa;14;42000;la inmaculada_blusa_14;29000;33000;36000;37000;42000;47000;52000;58000
+la inmaculada;blusa;16;42000;la inmaculada_blusa_16;29000;33000;36000;37000;42000;47000;52000;58000
+la inmaculada;blusa;S;45000;la inmaculada_blusa_S;31000;36000;40000;40000;45000;50000;55000;61000
+la inmaculada;blusa;M;45000;la inmaculada_blusa_M;31000;36000;40000;40000;45000;50000;55000;61000
+la inmaculada;blusa;L;48000;la inmaculada_blusa_L;32000;37000;41000;42000;48000;53000;59000;65000
+la inmaculada;blusa;XL;48000;la inmaculada_blusa_XL;32000;35000;;42000;48000;53000;59000;65000
+la inmaculada;jumper;2;87000;la inmaculada_jumper_2;;;;77000;87000;96000;106000;117000
+la inmaculada;jumper;4;87000;la inmaculada_jumper_4;;;;77000;87000;96000;106000;117000
+la inmaculada;jumper;6;90000;la inmaculada_jumper_6;63000;72000;50000;80000;90000;99000;109000;120000
+la inmaculada;jumper;8;90000;la inmaculada_jumper_8;63000;62000;80000;80000;90000;99000;109000;120000
+la inmaculada;jumper;10;97000;la inmaculada_jumper_10;68000;77000;30000;86000;97000;107000;118000;130000
+la inmaculada;jumper;12;97000;la inmaculada_jumper_12;68000;77000;90000;86000;97000;107000;118000;130000
+la inmaculada;jumper;14;106000;la inmaculada_jumper_14;73000;50000;50000;94000;106000;117000;129000;142000
+la inmaculada;jumper;16;106000;la inmaculada_jumper_16;73000;63000;60000;94000;106000;117000;129000;142000
+la inmaculada;jumper;S;112000;la inmaculada_jumper_S;79000;50000;100000;100000;112000;124000;137000;151000
+la inmaculada;jumper;M;112000;la inmaculada_jumper_M;79000;90000;85000;100000;112000;124000;137000;151000
+la inmaculada;jumper;L;121000;la inmaculada_jumper_L;85000;;;108000;121000;134000;148000;163000
+la inmaculada;jumper;XL;121000;la inmaculada_jumper_XL;85000;;;108000;121000;134000;148000;163000
+la inmaculada;camiseta fisica;2;41000;la inmaculada_camiseta fisica_2;;;;36000;41000;46000;51000;57000
+la inmaculada;camiseta fisica;4;41000;la inmaculada_camiseta fisica_4;28000;32000;;36000;41000;46000;51000;57000
+la inmaculada;camiseta fisica;6;41000;la inmaculada_camiseta fisica_6;29000;33000;35000;36000;41000;46000;51000;57000
+la inmaculada;camiseta fisica;8;41000;la inmaculada_camiseta fisica_8;29000;33000;35000;36000;41000;46000;51000;57000
+la inmaculada;camiseta fisica;10;41000;la inmaculada_camiseta fisica_10;31000;36000;35000;36000;41000;46000;51000;57000
+la inmaculada;camiseta fisica;12;41000;la inmaculada_camiseta fisica_12;31000;36000;35000;36000;41000;46000;51000;57000
+la inmaculada;camiseta fisica;14;45000;la inmaculada_camiseta fisica_14;32000;36000;40000;40000;45000;50000;55000;61000
+la inmaculada;camiseta fisica;16;45000;la inmaculada_camiseta fisica_16;32000;37000;40000;40000;45000;50000;55000;61000
+la inmaculada;camiseta fisica;S;45000;la inmaculada_camiseta fisica_S;35000;35000;40000;40000;45000;50000;55000;61000
+la inmaculada;camiseta fisica;M;45000;la inmaculada_camiseta fisica_M;35000;39000;36000;40000;45000;50000;55000;61000
+la inmaculada;camiseta fisica;L;53000;la inmaculada_camiseta fisica_L;37000;42000;47000;47000;53000;59000;65000;72000
+la inmaculada;camiseta fisica;XL;53000;la inmaculada_camiseta fisica_XL;37000;42000;;47000;53000;59000;65000;72000
+la inmaculada;bombacho;2;55000;la inmaculada_bombacho_2;;35000;;50000;55000;61000;68000;75000
+la inmaculada;bombacho;4;55000;la inmaculada_bombacho_4;28000;37000;39000;50000;55000;61000;68000;75000
+la inmaculada;bombacho;6;55000;la inmaculada_bombacho_6;29000;37000;39000;50000;55000;61000;68000;75000
+la inmaculada;bombacho;8;55000;la inmaculada_bombacho_8;29000;37000;29000;50000;55000;61000;68000;75000
+la inmaculada;bombacho;10;58000;la inmaculada_bombacho_10;31000;40000;39000;50000;58000;64000;71000;79000
+la inmaculada;bombacho;12;58000;la inmaculada_bombacho_12;31000;40000;39000;50000;58000;64000;71000;79000
+la inmaculada;bombacho;14;58000;la inmaculada_bombacho_14;32000;40000;42000;50000;58000;64000;71000;79000
+la inmaculada;bombacho;16;58000;la inmaculada_bombacho_16;32000;40000;40000;50000;58000;64000;71000;79000
+la inmaculada;bombacho;S;60000;la inmaculada_bombacho_S;35000;38000;43000;50000;60000;66000;73000;81000
+la inmaculada;bombacho;M;60000;la inmaculada_bombacho_M;35000;42000;39000;50000;60000;66000;73000;81000
+la inmaculada;bombacho;L;60000;la inmaculada_bombacho_L;37000;45000;40000;50000;60000;66000;73000;81000
+la inmaculada;bombacho;XL;65000;la inmaculada_bombacho_XL;37000;45000;50000;50000;65000;72000;80000;88000
+hogar;camiseta fisica;2;41000;hogar_camiseta fisica_2;23000;30000;38000;36000;41000;46000;51000;57000
+hogar;camiseta fisica;4;41000;hogar_camiseta fisica_4;23000;30000;32000;36000;41000;46000;51000;57000
+hogar;camiseta fisica;6;41000;hogar_camiseta fisica_6;23000;30000;38000;36000;41000;46000;51000;57000
+hogar;bombacho fisica;2;43000;hogar_bombacho fisica_2;23000;35000;39000;38000;43000;48000;53000;59000
+hogar;bombacho fisica;4;43000;hogar_bombacho fisica_4;23000;35000;35000;38000;43000;48000;53000;59000
+hogar;bombacho fisica;6;43000;hogar_bombacho fisica_6;23000;35000;39000;38000;43000;48000;53000;59000
+Bordados;pequeño;NA;5000;Bordados_pequeño_NA;;;;4000;5000;6000;7000;8000
+Bordados;mediano;NA;6000;Bordados_mediano_NA;;;;5000;6000;7000;8000;9000
+Bordados;grande;NA;9000;Bordados_grande_NA;;;;8000;9000;10000;11000;13000
+Bordados;extra grande;NA;16000;Bordados_extra grande_NA;;;;14000;16000;18000;20000;22000
+Unicor;kids;6;62000;Unicor_kids_6;;55000;;55000;62000;69000;76000;84000
+Unicor;kids;8;62000;Unicor_kids_8;;55000;55000;55000;62000;69000;76000;84000
+Unicor;kids;10;62000;Unicor_kids_10;;55000;52000;55000;62000;69000;76000;84000
+Unicor;kids;12;62000;Unicor_kids_12;;55000;56000;55000;62000;69000;76000;84000
+Unicor;kids;14;62000;Unicor_kids_14;;55000;56000;55000;62000;69000;76000;84000
+Unicor;kids;16;62000;Unicor_kids_16;;;55000;55000;62000;69000;76000;84000
+Unicor;kids;S;64000;Unicor_kids_S;;60000;61000;57000;64000;71000;79000;87000
+Unicor;kids;M;64000;Unicor_kids_M;;;57000;57000;64000;71000;79000;87000
+Unicor;kids;L;64000;Unicor_kids_L;;;;57000;64000;71000;79000;87000
+Unicor;kids;XL;68000;Unicor_kids_XL;;;;60000;68000;75000;83000;92000
+Unicor;Teens;6;62000;Unicor_Teens_6;;;;55000;62000;69000;76000;84000
+Unicor;Teens;8;62000;Unicor_Teens_8;;;;55000;62000;69000;76000;84000
+Unicor;Teens;10;62000;Unicor_Teens_10;;;;55000;62000;69000;76000;84000
+Unicor;Teens;12;62000;Unicor_Teens_12;;55000;52000;55000;62000;69000;76000;84000
+Unicor;Teens;14;62000;Unicor_Teens_14;;55000;55000;55000;62000;69000;76000;84000
+Unicor;Teens;16;62000;Unicor_Teens_16;;60000;55000;55000;62000;69000;76000;84000
+Unicor;Teens;S;64000;Unicor_Teens_S;;60000;61000;57000;64000;71000;79000;87000
+Unicor;Teens;M;64000;Unicor_Teens_M;;55000;55000;57000;64000;71000;79000;87000
+Unicor;Teens;L;64000;Unicor_Teens_L;;65000;;57000;64000;71000;79000;87000
+Unicor;Teens;XL;68000;Unicor_Teens_XL;;;60000;60000;68000;75000;83000;92000
+Unicor;Grown;6;62000;Unicor_Grown_6;;;;55000;62000;69000;76000;84000
+Unicor;Grown;8;62000;Unicor_Grown_8;;;;55000;62000;69000;76000;84000
+Unicor;Grown;10;62000;Unicor_Grown_10;;;;55000;62000;69000;76000;84000
+Unicor;Grown;12;62000;Unicor_Grown_12;;;;55000;62000;69000;76000;84000
+Unicor;Grown;14;62000;Unicor_Grown_14;;55000;55000;55000;62000;69000;76000;84000
+Unicor;Grown;16;62000;Unicor_Grown_16;;60000;55000;55000;62000;69000;76000;84000
+Unicor;Grown;S;64000;Unicor_Grown_S;;60000;55000;57000;64000;71000;79000;87000
+Unicor;Grown;M;64000;Unicor_Grown_M;;60000;50000;57000;64000;71000;79000;87000
+Unicor;Grown;L;64000;Unicor_Grown_L;;65000;55000;57000;64000;71000;79000;87000
+Unicor;Grown;XL;68000;Unicor_Grown_XL;;;;60000;68000;75000;83000;92000
+Antonio Narino;Camiseta diario/fisica;2;45000;Antonio Narino_Camiseta diario/fisica_2;;;;40000;45000;50000;55000;61000
+Antonio Narino;Camiseta diario/fisica;4;45000;Antonio Narino_Camiseta diario/fisica_4;;;;40000;45000;50000;55000;61000
+Antonio Narino;Camiseta diario/fisica;6;45000;Antonio Narino_Camiseta diario/fisica_6;;;37000;40000;45000;50000;55000;61000
+Antonio Narino;Camiseta diario/fisica;8;45000;Antonio Narino_Camiseta diario/fisica_8;;37000;37000;40000;45000;50000;55000;61000
+Antonio Narino;Camiseta diario/fisica;10;45000;Antonio Narino_Camiseta diario/fisica_10;;37000;37000;40000;45000;50000;55000;61000
+Antonio Narino;Camiseta diario/fisica;12;45000;Antonio Narino_Camiseta diario/fisica_12;;37000;37000;40000;45000;50000;55000;61000
+Antonio Narino;Camiseta diario/fisica;14;45000;Antonio Narino_Camiseta diario/fisica_14;;38000;38000;40000;45000;50000;55000;61000
+Antonio Narino;Camiseta diario/fisica;16;45000;Antonio Narino_Camiseta diario/fisica_16;;38000;38000;40000;45000;50000;55000;61000
+Antonio Narino;Camiseta diario/fisica;S;45000;Antonio Narino_Camiseta diario/fisica_S;;38000;38000;40000;45000;50000;55000;61000
+Antonio Narino;Camiseta diario/fisica;M;45000;Antonio Narino_Camiseta diario/fisica_M;;39000;39000;40000;45000;50000;55000;61000
+Antonio Narino;Camiseta diario/fisica;L;45000;Antonio Narino_Camiseta diario/fisica_L;;;39000;40000;45000;50000;55000;61000
+Antonio Narino;Camiseta diario/fisica;XL;45000;Antonio Narino_Camiseta diario/fisica_XL;;;;40000;45000;50000;55000;61000
+Antonio Narino;bombacho;4;50000;Antonio Narino_bombacho_4;;;;50000;50000;55000;61000;68000
+Antonio Narino;bombacho;6;50000;Antonio Narino_bombacho_6;;36000;36000;50000;50000;55000;61000;68000
+Antonio Narino;bombacho;8;50000;Antonio Narino_bombacho_8;;36000;36000;50000;50000;55000;61000;68000
+Antonio Narino;bombacho;10;50000;Antonio Narino_bombacho_10;;37000;37000;50000;50000;55000;61000;68000
+Antonio Narino;bombacho;12;50000;Antonio Narino_bombacho_12;;37000;37000;50000;50000;55000;61000;68000
+Antonio Narino;bombacho;14;50000;Antonio Narino_bombacho_14;;37000;37000;50000;50000;55000;61000;68000
+Antonio Narino;bombacho;16;50000;Antonio Narino_bombacho_16;;37000;37000;50000;50000;55000;61000;68000
+Antonio Narino;bombacho;S;50000;Antonio Narino_bombacho_S;;37000;37000;50000;50000;55000;61000;68000
+Antonio Narino;bombacho;M;50000;Antonio Narino_bombacho_M;;38000;38000;50000;50000;55000;61000;68000
+Antonio Narino;bombacho;L;50000;Antonio Narino_bombacho_L;;38000;38000;50000;50000;55000;61000;68000
+Antonio Narino;bombacho;XL;50000;Antonio Narino_bombacho_XL;;;;50000;50000;55000;61000;68000
+Pantalones Azules;eko;6;44000;Pantalones Azules_eko_6;;;;39000;44000;49000;54000;60000
+Pantalones Azules;eko;8;44000;Pantalones Azules_eko_8;;;;39000;44000;49000;54000;60000
+Pantalones Azules;eko;10;48000;Pantalones Azules_eko_10;;;42000;42000;48000;53000;59000;65000
+Pantalones Azules;eko;12;48000;Pantalones Azules_eko_12;;;32000;42000;48000;53000;59000;65000
+Pantalones Azules;eko;14;51000;Pantalones Azules_eko_14;;;45000;45000;51000;57000;63000;70000
+Pantalones Azules;eko;16;51000;Pantalones Azules_eko_16;;;;45000;51000;57000;63000;70000
+Pantalones Azules;eko;28;56000;Pantalones Azules_eko_28;;;50000;50000;56000;62000;69000;76000
+Pantalones Azules;eko;30;56000;Pantalones Azules_eko_30;;;;50000;56000;62000;69000;76000
+Pantalones Azules;eko;32;58000;Pantalones Azules_eko_32;;;;51000;58000;64000;71000;79000
+Pantalones Azules;eko;34;60000;Pantalones Azules_eko_34;;;;53000;60000;66000;73000;81000
+Pantalones Azules;eko;36;61000;Pantalones Azules_eko_36;;;;54000;61000;68000;75000;83000
+Pantalones Azules;eko;38;67000;Pantalones Azules_eko_38;;;;59000;67000;74000;82000;91000
+Pantalones Azules;intermedio;6;56000;Pantalones Azules_intermedio_6;;;50000;50000;56000;62000;69000;76000
+Pantalones Azules;intermedio;8;56000;Pantalones Azules_intermedio_8;;;50000;50000;56000;62000;69000;76000
+Pantalones Azules;intermedio;10;62000;Pantalones Azules_intermedio_10;;;55000;55000;62000;69000;76000;84000
+Pantalones Azules;intermedio;12;62000;Pantalones Azules_intermedio_12;;;55000;55000;62000;69000;76000;84000
+Pantalones Azules;intermedio;14;68000;Pantalones Azules_intermedio_14;;;60000;60000;68000;75000;83000;92000
+Pantalones Azules;intermedio;16;68000;Pantalones Azules_intermedio_16;;;60000;60000;68000;75000;83000;92000
+Pantalones Azules;intermedio;28;73000;Pantalones Azules_intermedio_28;;;65000;65000;73000;81000;90000;99000
+Pantalones Azules;intermedio;30;73000;Pantalones Azules_intermedio_30;;;65000;65000;73000;81000;90000;99000
+Pantalones Azules;intermedio;32;73000;Pantalones Azules_intermedio_32;;;65000;65000;73000;81000;90000;99000
+Pantalones Azules;intermedio;34;73000;Pantalones Azules_intermedio_34;;;65000;65000;73000;81000;90000;99000
+Pantalones Azules;intermedio;36;76000;Pantalones Azules_intermedio_36;;;67000;67000;76000;84000;93000;103000
+Pantalones Azules;intermedio;38;81000;Pantalones Azules_intermedio_38;;;;72000;81000;90000;99000;109000
+Pantalones Azules;lino fino;6;76000;Pantalones Azules_lino fino_6;;;;67000;76000;84000;93000;103000
+Pantalones Azules;lino fino;8;76000;Pantalones Azules_lino fino_8;;;67000;67000;76000;84000;93000;103000
+Pantalones Azules;lino fino;10;81000;Pantalones Azules_lino fino_10;;;72000;72000;81000;90000;99000;109000
+Pantalones Azules;lino fino;12;81000;Pantalones Azules_lino fino_12;;;42000;72000;81000;90000;99000;109000
+Pantalones Azules;lino fino;14;89000;Pantalones Azules_lino fino_14;;;79000;79000;89000;98000;108000;119000
+Pantalones Azules;lino fino;16;89000;Pantalones Azules_lino fino_16;;;69000;79000;89000;98000;108000;119000
+Pantalones Azules;lino fino;28;97000;Pantalones Azules_lino fino_28;;;86000;86000;97000;107000;118000;130000
+Pantalones Azules;lino fino;30;97000;Pantalones Azules_lino fino_30;;;56000;86000;97000;107000;118000;130000
+Pantalones Azules;lino fino;32;97000;Pantalones Azules_lino fino_32;;;86000;86000;97000;107000;118000;130000
+Pantalones Azules;lino fino;34;106000;Pantalones Azules_lino fino_34;;;94000;94000;106000;117000;129000;142000
+Pantalones Azules;lino fino;36;106000;Pantalones Azules_lino fino_36;;;94000;94000;106000;117000;129000;142000
+Pantalones Azules;lino fino;38;111000;Pantalones Azules_lino fino_38;;;;99000;111000;123000;136000;150000
+Bermudas Azules;lino fino;2;49000;Bermudas Azules_lino fino_2;;;;43000;49000;54000;60000;66000
+Bermudas Azules;lino fino;4;49000;Bermudas Azules_lino fino_4;;;;43000;49000;54000;60000;66000
+Bermudas Azules;lino fino;6;53000;Bermudas Azules_lino fino_6;;;;47000;53000;59000;65000;72000
+Bermudas Azules;lino fino;8;53000;Bermudas Azules_lino fino_8;;;;47000;53000;59000;65000;72000
+Bermudas Azules;lino fino;10;56000;Bermudas Azules_lino fino_10;;;;50000;56000;62000;69000;76000
+Bermudas Azules;lino fino;12;56000;Bermudas Azules_lino fino_12;;;;50000;56000;62000;69000;76000
+Bermudas Azules;eko;2;41000;Bermudas Azules_eko_2;;;;36000;41000;46000;51000;57000
+Bermudas Azules;eko;4;41000;Bermudas Azules_eko_4;;;;36000;41000;46000;51000;57000
+Bermudas Azules;eko;6;41000;Bermudas Azules_eko_6;;;;36000;41000;46000;51000;57000
+Bermudas Azules;eko;8;41000;Bermudas Azules_eko_8;;;;36000;41000;46000;51000;57000
+Bermudas Azules;eko;10;42000;Bermudas Azules_eko_10;;;;37000;42000;47000;52000;58000
+otros;Conjunto Antifluido Plus;NA;152000;otros_Conjunto Antifluido Plus_NA;;;;135000;152000;168000;185000;204000
+otros;Tapa Bocas;NA;6000;otros_Tapa Bocas_NA;;;;5000;6000;7000;8000;9000
+otros;Gorro;NA;23000;otros_Gorro_NA;;;;20000;23000;26000;29000;32000
+otros;Delantal;NA;40000;otros_Delantal_NA;;;;35000;40000;44000;49000;54000
+otros;Conjunto Antifluido Eko;NA;118000;otros_Conjunto Antifluido Eko_NA;;;;105000;118000;130000;143000;158000
+liceo pupo jimenez;Medias;12;16000;liceo pupo jimenez_Medias_12;12000;12000;10000;14000;16000;18000;20000;22000
+liceo universitario;medias;12;16000;liceo universitario_medias_12;10000;14000;10000;14000;16000;18000;20000;22000
+Domicilios;A;NA;6000;Domicilios_A_NA;;;;6000;6000;7000;8000;9000
+Domicilios;B;NA;8000;Domicilios_B_NA;;;;8000;8000;9000;10000;11000
+Domicilios;C;NA;10000;Domicilios_C_NA;;;;10000;10000;11000;13000;15000
+Policia;blusa;2;34000;Policia_blusa_2;;;;;34000;38000;42000;47000
+Policia;blusa;4;34000;Policia_blusa_4;;;;;34000;38000;42000;47000
+Policia;blusa;6;34000;Policia_blusa_6;;;;;34000;38000;42000;47000
+Policia;blusa;8;34000;Policia_blusa_8;;;;;34000;38000;42000;47000
+Policia;blusa;10;37000;Policia_blusa_10;;;;;37000;41000;46000;51000
+Policia;blusa;12;37000;Policia_blusa_12;;;;;37000;41000;46000;51000
+Policia;blusa;14;39000;Policia_blusa_14;;;;;39000;43000;48000;53000
+Policia;blusa;16;39000;Policia_blusa_16;;;;;39000;43000;48000;53000
+Policia;blusa;S;42000;Policia_blusa_S;;;;;42000;47000;52000;58000
+Policia;blusa;M;42000;Policia_blusa_M;;;;;42000;47000;52000;58000
+Policia;blusa;L;45000;Policia_blusa_L;;;;;45000;50000;55000;61000
+Policia;blusa;XL;45000;Policia_blusa_XL;;;;;45000;50000;55000;61000
+Policia;camiseta fisica;4;41000;Policia_camiseta fisica_4;;;;;41000;46000;51000;57000
+Policia;camiseta fisica;6;45000;Policia_camiseta fisica_6;;;;;45000;50000;55000;61000
+Policia;camiseta fisica;8;45000;Policia_camiseta fisica_8;;;;;45000;50000;55000;61000
+Policia;camiseta fisica;10;48000;Policia_camiseta fisica_10;;;;;48000;53000;59000;65000
+Policia;camiseta fisica;12;48000;Policia_camiseta fisica_12;;;;;48000;53000;59000;65000
+Policia;camiseta fisica;14;51000;Policia_camiseta fisica_14;;;;;51000;57000;63000;70000
+Policia;camiseta fisica;16;51000;Policia_camiseta fisica_16;;;;;51000;57000;63000;70000
+Policia;camiseta fisica;S;53000;Policia_camiseta fisica_S;;;;;53000;59000;65000;72000
+Policia;camiseta fisica;M;53000;Policia_camiseta fisica_M;;;;;53000;59000;65000;72000
+Policia;camiseta fisica;L;54000;Policia_camiseta fisica_L;;;;;54000;60000;66000;73000
+Policia;camiseta fisica;XL;54000;Policia_camiseta fisica_XL;;;;;54000;60000;66000;73000
+Policia;bombacho;2;50000;Policia_bombacho_2;;;;;50000;55000;61000;68000
+Policia;bombacho;4;50000;Policia_bombacho_4;;;;;50000;55000;61000;68000
+Policia;bombacho;6;50000;Policia_bombacho_6;;;;;50000;55000;61000;68000
+Policia;bombacho;8;50000;Policia_bombacho_8;;;;;50000;55000;61000;68000
+Policia;bombacho;10;55000;Policia_bombacho_10;;;;;55000;61000;68000;75000
+Policia;bombacho;12;55000;Policia_bombacho_12;;;;;55000;61000;68000;75000
+Policia;bombacho;14;60000;Policia_bombacho_14;;;;;60000;66000;73000;81000
+Policia;bombacho;16;60000;Policia_bombacho_16;;;;;60000;66000;73000;81000
+Policia;bombacho;S;70000;Policia_bombacho_S;;;;;70000;77000;85000;94000
+Policia;bombacho;M;70000;Policia_bombacho_M;;;;;70000;77000;85000;94000
+Policia;bombacho;L;70000;Policia_bombacho_L;;;;;70000;77000;85000;94000
+Policia;bombacho;XL;70000;Policia_bombacho_XL;;;;;70000;77000;85000;94000
+Antonio Narino;blusa;2;37000;Antonio Narino_blusa_2;;;;;37000;41000;46000;51000
+Antonio Narino;blusa;4;37000;Antonio Narino_blusa_4;;;;;37000;41000;46000;51000
+Antonio Narino;blusa;6;37000;Antonio Narino_blusa_6;;;;;37000;41000;46000;51000
+Antonio Narino;blusa;8;37000;Antonio Narino_blusa_8;;;;;37000;41000;46000;51000
+Antonio Narino;blusa;10;40000;Antonio Narino_blusa_10;;;;;40000;44000;49000;54000
+Antonio Narino;blusa;12;40000;Antonio Narino_blusa_12;;;;;40000;44000;49000;54000
+Antonio Narino;blusa;14;42000;Antonio Narino_blusa_14;;;;;42000;47000;52000;58000
+Antonio Narino;blusa;16;42000;Antonio Narino_blusa_16;;;;;42000;47000;52000;58000
+Antonio Narino;blusa;S;45000;Antonio Narino_blusa_S;;;;;45000;50000;55000;61000
+Antonio Narino;blusa;M;45000;Antonio Narino_blusa_M;;;;;45000;50000;55000;61000
+Antonio Narino;blusa;L;48000;Antonio Narino_blusa_L;;;;;48000;53000;59000;65000
+Antonio Narino;blusa;XL;48000;Antonio Narino_blusa_XL;;;;;48000;53000;59000;65000
+Antonio Narino;jumper;2;85000;Antonio Narino_jumper_2;;;;;85000;94000;104000;115000
+Antonio Narino;jumper;4;85000;Antonio Narino_jumper_4;;;;;85000;94000;104000;115000
+Antonio Narino;jumper;6;85000;Antonio Narino_jumper_6;;;;;85000;94000;104000;115000
+Antonio Narino;jumper;8;85000;Antonio Narino_jumper_8;;;;;85000;94000;104000;115000
+Antonio Narino;jumper;10;88000;Antonio Narino_jumper_10;;;;;88000;97000;107000;118000
+Antonio Narino;jumper;12;88000;Antonio Narino_jumper_12;;;;;88000;97000;107000;118000
+Antonio Narino;jumper;14;92000;Antonio Narino_jumper_14;;;;;92000;102000;113000;125000
+Antonio Narino;jumper;16;92000;Antonio Narino_jumper_16;;;;;92000;102000;113000;125000
+Antonio Narino;jumper;S;95000;Antonio Narino_jumper_S;;;;;95000;105000;116000;128000
+Antonio Narino;jumper;M;95000;Antonio Narino_jumper_M;;;;;95000;105000;116000;128000
+Antonio Narino;jumper;L;100000;Antonio Narino_jumper_L;;;;;100000;110000;121000;134000
+Antonio Narino;jumper;XL;100000;Antonio Narino_jumper_XL;;;;;100000;110000;121000;134000
+Policia;camisa;2;34000;Policia_camisa_2;;;;;34000;38000;42000;47000
+Policia;camisa;4;34000;Policia_camisa_4;;;;;34000;38000;42000;47000
+Policia;camisa;6;34000;Policia_camisa_6;;;;;34000;38000;42000;47000
+Policia;camisa;8;34000;Policia_camisa_8;;;;;34000;38000;42000;47000
+Policia;camisa;10;37000;Policia_camisa_10;;;;;37000;41000;46000;51000
+Policia;camisa;12;37000;Policia_camisa_12;;;;;37000;41000;46000;51000
+Policia;camisa;14;39000;Policia_camisa_14;;;;;39000;43000;48000;53000
+Policia;camisa;16;39000;Policia_camisa_16;;;;;39000;43000;48000;53000
+Policia;camisa;S;42000;Policia_camisa_S;;;;;42000;47000;52000;58000
+Policia;camisa;M;42000;Policia_camisa_M;;;;;42000;47000;52000;58000
+Policia;camisa;L;45000;Policia_camisa_L;;;;;45000;50000;55000;61000
+Policia;camisa;XL;45000;Policia_camisa_XL;;;;;45000;50000;55000;61000
+Policia;jumper;2;79000;Policia_jumper_2;;;;70000;79000;87000;96000;106000
+Policia;jumper;4;79000;Policia_jumper_4;;;;70000;79000;87000;96000;106000
+Policia;jumper;6;84000;Policia_jumper_6;;;;75000;84000;93000;103000;114000
+Policia;jumper;8;84000;Policia_jumper_8;;;;75000;84000;93000;103000;114000
+Policia;jumper;10;90000;Policia_jumper_10;;;;80000;90000;99000;109000;120000
+Policia;jumper;12;90000;Policia_jumper_12;;;;80000;90000;99000;109000;120000
+Policia;jumper;14;96000;Policia_jumper_14;;;;85000;96000;106000;117000;129000
+Policia;jumper;16;96000;Policia_jumper_16;;;;85000;96000;106000;117000;129000
+Policia;jumper;S;100000;Policia_jumper_S;;;;89000;100000;110000;121000;134000
+Policia;jumper;M;100000;Policia_jumper_M;;;;89000;100000;110000;121000;134000
+Policia;jumper;L;106000;Policia_jumper_L;;;;94000;106000;117000;129000;142000
+Policia;jumper;XL;106000;Policia_jumper_XL;;;;94000;106000;117000;129000;142000
+antifluido;La Fayette;S;125000;antifluido_La Fayette_S;;;;;125000;138000;152000;168000
+antifluido;La Fayette;M;130000;antifluido_La Fayette_M;;;;;130000;143000;158000;174000
+antifluido;La Fayette;L;135000;antifluido_La Fayette_L;;;;;135000;149000;164000;181000
+antifluido;La Fayette;XL;140000;antifluido_La Fayette_XL;;;;;140000;154000;170000;187000
+antifluido;La Fayette;XXL;150000;antifluido_La Fayette_XL;;;;;150000;165000;182000;201000
+dotacion;camisa oxford unisex;S;42000;dotacion_camisa oxford unisex_S;;;;;40000;44000;49000;54000
+dotacion;camisa oxford unisex;M;42000;dotacion_camisa oxford unisex_M;;;;;40000;44000;49000;54000
+dotacion;camisa oxford unisex;L;42000;dotacion_camisa oxford unisex_L;;;;;40000;44000;49000;54000
+dotacion;camisa oxford unisex;XL;42000;dotacion_camisa oxford unisex_XL;;;;;40000;44000;49000;54000
+dotacion;jeans hombre strech;28;36000;dotacion_jeans hombre strech_28;;;;;36000;40000;44000;49000
+dotacion;jeans hombre strech;30;36000;dotacion_jeans hombre strech_30;;;;;36000;40000;44000;49000
+dotacion;jeans hombre strech;32;36000;dotacion_jeans hombre strech_32;;;;;36000;40000;44000;49000
+dotacion;jeans hombre strech;34;36000;dotacion_jeans hombre strech_34;;;;;36000;40000;44000;49000
+dotacion;jeans hombre strech;36;36000;dotacion_jeans hombre strech_36;;;;;36000;40000;44000;49000
+dotacion;jeans hombre strech;38;36000;dotacion_jeans hombre strech_38;;;;;36000;40000;44000;49000
+dotacion;jeans hombre strech;40;36000;dotacion_jeans hombre strech_40;;;;;36000;40000;44000;49000
+dotacion;jeans dama strech;6;42000;dotacion_jeans dama strech_6;;;;;42000;47000;52000;58000
+dotacion;jeans dama strech;8;42000;dotacion_jeans dama strech_8;;;;;42000;47000;52000;58000
+dotacion;jeans dama strech;10;42000;dotacion_jeans dama strech_10;;;;;42000;47000;52000;58000
+dotacion;jeans dama strech;12;42000;dotacion_jeans dama strech_12;;;;;42000;47000;52000;58000
+dotacion;jeans dama strech;14;42000;dotacion_jeans dama strech_14;;;;;42000;47000;52000;58000
+dotacion;jeans dama strech;16;42000;dotacion_jeans dama strech_16;;;;;42000;47000;52000;58000
+dotacion;jeans dama strech;18;42000;dotacion_jeans dama strech_18;;;;;42000;47000;52000;58000
+dotacion;jeans dama strech;20;42000;dotacion_jeans dama strech_20;;;;;42000;47000;52000;58000
+dotacion;jeans dama strech;22;42000;dotacion_jeans dama strech_22;;;;;42000;47000;52000;58000
+dotacion;jeans dama strech;24;42000;dotacion_jeans dama strech_24;;;;;42000;47000;52000;58000
+Diac;Blusa manga larga;NA;;Diac_Blusa manga larga_NA;;;;;;;;
+Diac;Blusa manga corta;NA;;Diac_Blusa manga corta_NA;;;;;;;;
+Diac;Camisa manga larga;NA;;Diac_Camisa manga larga_NA;;;;;;;;
+Diac;Camisa manga corta;NA;;Diac_Camisa manga corta_NA;;;;;;;;
+Diac;Camiseta ;NA;;Diac_Camiseta _NA;;;;;;;;
+Diac;Blusa anti fluido / cierre;NA;;Diac_Blusa anti fluido / cierre_NA;;;;;;;;
+Diac;Blusa anti fluido / bies / cierre;NA;;Diac_Blusa anti fluido / bies / cierre_NA;;;;;;;;
+Diac;Camisa anti fluido hombre / cierre;NA;;Diac_Camisa anti fluido hombre / cierre_NA;;;;;;;;
+Diac;Camisa cuello V anti fluido dama;NA;;Diac_Camisa cuello V anti fluido dama_NA;;;;;;;;
+Diac;Chaqueta dama azul;NA;;Diac_Chaqueta dama azul_NA;;;;;;;;
+Diac;Bolso transparente;NA;;Diac_Bolso transparente_NA;;;;;;;;
+Diac;Pantalon Dama;NA;;Diac_Pantalon Dama_NA;;;;;;;;
+Diac;Pantalon maternal;NA;;Diac_Pantalon maternal_NA;;;;;;;;
+Diac;Bombacho antifluido;NA;;Diac_Bombacho antifluido_NA;;;;;;;;
+Diac;Bata sencilla;NA;;Diac_Bata sencilla_NA;;;;;;;;
+Diac;Bata hospitalaria;NA;;Diac_Bata hospitalaria_NA;;;;;;;;
+Diac;Bata con corte;NA;;Diac_Bata con corte_NA;;;;;;;;
+Diac;Paquete quirurgico;NA;;Diac_Paquete quirurgico_NA;;;;;;;;
+Diac;Funda de mayo;NA;;Diac_Funda de mayo_NA;;;;;;;;
+Diac;Funda;NA;;Diac_Funda_NA;;;;;;;;
+Diac;Sabana fenestrada;NA;;Diac_Sabana fenestrada_NA;;;;;;;;
+Diac;Bata;NA;;Diac_Bata_NA;;;;;;;;
+Diac;Campito;NA;;Diac_Campito_NA;;;;;;;;
+Diac;Embolvedora;NA;;Diac_Embolvedora_NA;;;;;;;;
+Casa del niño;Batas lactancia;NA;;Casa del niño_Batas lactancia_NA;;;;;;;;
+Diac;Chaqueta tecnico hombre;NA;;Diac_Chaqueta tecnico hombre_NA;;;;;;;;
+Diac;Chaqueta tecnico mujer;NA;;Diac_Chaqueta tecnico mujer_NA;;;;;;;;
+Diac;Chaqueta enfermeria hombre;NA;;Diac_Chaqueta enfermeria hombre_NA;;;;;;;;
+Diac;Chaqueta servico general;NA;;Diac_Chaqueta servico general_NA;;;;;;;;
+Inversiones OM;Camiseta;NA;;Inversiones OM_Camiseta_NA;;;;;;;;
+Policia;polo;NA;;Policia_polo_S;;;;;;;;
+Policia;polo;NA;;Policia_polo_M;;;;;;;;
+Policia;polo;NA;;Policia_polo_L;;;;;;;;
+Policia;polo;NA;;Policia_polo_XL;;;;;;;;
+otros;Camiseta monja con base de cuello;NA;;otros_Camiseta monja con base de cuello_NA;;;;;;;;
+Diac;Pantalon hombre;NA;;Diac_Pantalon hombre_NA;;;;;;;;
+antonia santos;blusa;2;9999999;antonia santos_blusa_2;;;;;;;;
+antonia santos;blusa;4;9999999;antonia santos_blusa_4;;;;;;;;
+antonia santos;blusa;6;9999999;antonia santos_blusa_6;;;;;;;;
+antonia santos;blusa;8;9999999;antonia santos_blusa_8;;;;;;;;
+antonia santos;blusa;10;9999999;antonia santos_blusa_10;;;;;;;;
+antonia santos;blusa;12;9999999;antonia santos_blusa_12;;;;;;;;
+antonia santos;blusa;14;9999999;antonia santos_blusa_14;;;;;;;;
+antonia santos;blusa;16;9999999;antonia santos_blusa_16;;;;;;;;
+antonia santos;blusa;S;9999999;antonia santos_blusa_S;;;;;;;;
+antonia santos;blusa;M;9999999;antonia santos_blusa_M;;;;;;;;
+antonia santos;blusa;L;9999999;antonia santos_blusa_L;;;;;;;;
+antonia santos;blusa;XL;9999999;antonia santos_blusa_XL;;;;;;;;
+antonia santos;jumper;2;9999999;antonia santos_jumper_2;;;;;;;;
+antonia santos;jumper;4;9999999;antonia santos_jumper_4;;;;;;;;
+antonia santos;jumper;6;9999999;antonia santos_jumper_6;;;;;;;;
+antonia santos;jumper;8;9999999;antonia santos_jumper_8;;;;;;;;
+antonia santos;jumper;10;9999999;antonia santos_jumper_10;;;;;;;;
+antonia santos;jumper;12;9999999;antonia santos_jumper_12;;;;;;;;
+antonia santos;jumper;14;9999999;antonia santos_jumper_14;;;;;;;;
+antonia santos;jumper;16;9999999;antonia santos_jumper_16;;;;;;;;
+antonia santos;jumper;S;9999999;antonia santos_jumper_S;;;;;;;;
+antonia santos;jumper;M;9999999;antonia santos_jumper_M;;;;;;;;
+antonia santos;jumper;L;9999999;antonia santos_jumper_L;;;;;;;;
+antonia santos;jumper;XL;9999999;antonia santos_jumper_XL;;;;;;;;
+antonia santos;camiseta de diario;2;9999999;antonia santos_camiseta de diario_2;;;;;;;;
+antonia santos;camiseta de diario;4;9999999;antonia santos_camiseta de diario_4;;;;;;;;
+antonia santos;camiseta de diario;6;9999999;antonia santos_camiseta de diario_6;;;;;;;;
+antonia santos;camiseta de diario;8;9999999;antonia santos_camiseta de diario_8;;;;;;;;
+antonia santos;camiseta de diario;10;9999999;antonia santos_camiseta de diario_10;;;;;;;;
+antonia santos;camiseta de diario;12;9999999;antonia santos_camiseta de diario_12;;;;;;;;
+antonia santos;camiseta de diario;14;9999999;antonia santos_camiseta de diario_14;;;;;;;;
+antonia santos;camiseta de diario;16;9999999;antonia santos_camiseta de diario_16;;;;;;;;
+antonia santos;camiseta de diario;S;9999999;antonia santos_camiseta de diario_S;;;;;;;;
+antonia santos;camiseta de diario;M;9999999;antonia santos_camiseta de diario_M;;;;;;;;
+antonia santos;camiseta de diario;L;9999999;antonia santos_camiseta de diario_L;;;;;;;;
+antonia santos;camiseta de diario;XL;9999999;antonia santos_camiseta de diario_XL;;;;;;;;
+antonia santos;camiseta fisica;4;9999999;antonia santos_camiseta fisica_4;;;;;;;;
+antonia santos;camiseta fisica;6;9999999;antonia santos_camiseta fisica_6;;;;;;;;
+antonia santos;camiseta fisica;8;9999999;antonia santos_camiseta fisica_8;;;;;;;;
+antonia santos;camiseta fisica;10;9999999;antonia santos_camiseta fisica_10;;;;;;;;
+antonia santos;camiseta fisica;12;9999999;antonia santos_camiseta fisica_12;;;;;;;;
+antonia santos;camiseta fisica;14;9999999;antonia santos_camiseta fisica_14;;;;;;;;
+antonia santos;camiseta fisica;16;9999999;antonia santos_camiseta fisica_16;;;;;;;;
+antonia santos;camiseta fisica;S;9999999;antonia santos_camiseta fisica_S;;;;;;;;
+antonia santos;camiseta fisica;M;9999999;antonia santos_camiseta fisica_M;;;;;;;;
+antonia santos;camiseta fisica;L;9999999;antonia santos_camiseta fisica_L;;;;;;;;
+antonia santos;camiseta fisica;XL;9999999;antonia santos_camiseta fisica_XL;;;;;;;;
+antonia santos;bombacho;2;9999999;antonia santos_bombacho_2;;;;;;;;
+antonia santos;bombacho;4;9999999;antonia santos_bombacho_4;;;;;;;;
+antonia santos;bombacho;6;9999999;antonia santos_bombacho_6;;;;;;;;
+antonia santos;bombacho;8;9999999;antonia santos_bombacho_8;;;;;;;;
+antonia santos;bombacho;10;9999999;antonia santos_bombacho_10;;;;;;;;
+antonia santos;bombacho;12;9999999;antonia santos_bombacho_12;;;;;;;;
+antonia santos;bombacho;14;9999999;antonia santos_bombacho_14;;;;;;;;
+antonia santos;bombacho;16;9999999;antonia santos_bombacho_16;;;;;;;;
+antonia santos;bombacho;S;9999999;antonia santos_bombacho_S;;;;;;;;
+antonia santos;bombacho;M;9999999;antonia santos_bombacho_M;;;;;;;;
+antonia santos;bombacho;L;9999999;antonia santos_bombacho_L;;;;;;;;
+antonia santos;bombacho;XL;9999999;antonia santos_bombacho_XL;;;;;;;;
+san jose;blusa;2;9999999;san jose_blusa_2;;;;;;;;
+san jose;blusa;4;9999999;san jose_blusa_4;;;;;;;;
+san jose;blusa;6;9999999;san jose_blusa_6;;;;;;;;
+san jose;blusa;8;9999999;san jose_blusa_8;;;;;;;;
+san jose;blusa;10;9999999;san jose_blusa_10;;;;;;;;
+san jose;blusa;12;9999999;san jose_blusa_12;;;;;;;;
+san jose;blusa;14;9999999;san jose_blusa_14;;;;;;;;
+san jose;blusa;16;9999999;san jose_blusa_16;;;;;;;;
+san jose;blusa;S;9999999;san jose_blusa_S;;;;;;;;
+san jose;blusa;M;9999999;san jose_blusa_M;;;;;;;;
+san jose;blusa;L;9999999;san jose_blusa_L;;;;;;;;
+san jose;blusa;XL;9999999;san jose_blusa_XL;;;;;;;;
+san jose;falda;2;9999999;san jose_falda_2;;;;;;;;
+san jose;falda;4;9999999;san jose_falda_4;;;;;;;;
+san jose;falda;6;9999999;san jose_falda_6;;;;;;;;
+san jose;falda;8;9999999;san jose_falda_8;;;;;;;;
+san jose;falda;10;9999999;san jose_falda_10;;;;;;;;
+san jose;falda;12;9999999;san jose_falda_12;;;;;;;;
+san jose;falda;14;9999999;san jose_falda_14;;;;;;;;
+san jose;falda;16;9999999;san jose_falda_16;;;;;;;;
+san jose;falda;S;9999999;san jose_falda_S;;;;;;;;
+san jose;falda;M;9999999;san jose_falda_M;;;;;;;;
+san jose;falda;L;9999999;san jose_falda_L;;;;;;;;
+san jose;falda;XL;9999999;san jose_falda_XL;;;;;;;;
+san jose;guayabera;2;9999999;san jose_guayabera_2;;;;;;;;
+san jose;guayabera;4;9999999;san jose_guayabera_4;;;;;;;;
+san jose;guayabera;6;9999999;san jose_guayabera_6;;;;;;;;
+san jose;guayabera;8;9999999;san jose_guayabera_8;;;;;;;;
+san jose;guayabera;10;9999999;san jose_guayabera_10;;;;;;;;
+san jose;guayabera;12;9999999;san jose_guayabera_12;;;;;;;;
+san jose;guayabera;14;9999999;san jose_guayabera_14;;;;;;;;
+san jose;guayabera;16;9999999;san jose_guayabera_16;;;;;;;;
+san jose;guayabera;S;9999999;san jose_guayabera_S;;;;;;;;
+san jose;guayabera;M;9999999;san jose_guayabera_M;;;;;;;;
+san jose;guayabera;L;9999999;san jose_guayabera_L;;;;;;;;
+san jose;guayabera;XL;9999999;san jose_guayabera_XL;;;;;;;;
+san jose;pantalon;2;9999999;san jose_pantalon_2;;;;;;;;
+san jose;pantalon;4;9999999;san jose_pantalon_4;;;;;;;;
+san jose;pantalon;6;9999999;san jose_pantalon_6;;;;;;;;
+san jose;pantalon;8;9999999;san jose_pantalon_8;;;;;;;;
+san jose;pantalon;10;9999999;san jose_pantalon_10;;;;;;;;
+san jose;pantalon;12;9999999;san jose_pantalon_12;;;;;;;;
+san jose;pantalon;14;9999999;san jose_pantalon_14;;;;;;;;
+san jose;pantalon;16;9999999;san jose_pantalon_16;;;;;;;;
+san jose;pantalon;28;9999999;san jose_pantalon_28;;;;;;;;
+san jose;pantalon;30;9999999;san jose_pantalon_30;;;;;;;;
+san jose;pantalon;32;9999999;san jose_pantalon_32;;;;;;;;
+san jose;pantalon;34;9999999;san jose_pantalon_34;;;;;;;;
+san jose;pantalon;36;9999999;san jose_pantalon_36;;;;;;;;
+san jose;pantalon;38;9999999;san jose_pantalon_38;;;;;;;;
+san jose;camiseta fisica;2;9999999;san jose_camiseta fisica_2;;;;;;;;
+san jose;camiseta fisica;4;9999999;san jose_camiseta fisica_4;;;;;;;;
+san jose;camiseta fisica;6;9999999;san jose_camiseta fisica_6;;;;;;;;
+san jose;camiseta fisica;8;9999999;san jose_camiseta fisica_8;;;;;;;;
+san jose;camiseta fisica;10;9999999;san jose_camiseta fisica_10;;;;;;;;
+san jose;camiseta fisica;12;9999999;san jose_camiseta fisica_12;;;;;;;;
+san jose;camiseta fisica;14;9999999;san jose_camiseta fisica_14;;;;;;;;
+san jose;camiseta fisica;16;9999999;san jose_camiseta fisica_16;;;;;;;;
+san jose;camiseta fisica;S;9999999;san jose_camiseta fisica_S;;;;;;;;
+san jose;camiseta fisica;M;9999999;san jose_camiseta fisica_M;;;;;;;;
+san jose;camiseta fisica;L;9999999;san jose_camiseta fisica_L;;;;;;;;
+san jose;camiseta fisica;XL;9999999;san jose_camiseta fisica_XL;;;;;;;;
+san jose;bombacho;2;9999999;san jose_bombacho_2;;;;;;;;
+san jose;bombacho;4;9999999;san jose_bombacho_4;;;;;;;;
+san jose;bombacho;6;9999999;san jose_bombacho_6;;;;;;;;
+san jose;bombacho;8;9999999;san jose_bombacho_8;;;;;;;;
+san jose;bombacho;10;9999999;san jose_bombacho_10;;;;;;;;
+san jose;bombacho;12;9999999;san jose_bombacho_12;;;;;;;;
+san jose;bombacho;14;9999999;san jose_bombacho_14;;;;;;;;
+san jose;bombacho;16;9999999;san jose_bombacho_16;;;;;;;;
+san jose;bombacho;S;9999999;san jose_bombacho_S;;;;;;;;
+san jose;bombacho;M;9999999;san jose_bombacho_M;;;;;;;;
+san jose;bombacho;L;9999999;san jose_bombacho_L;;;;;;;;
+san jose;bombacho;XL;9999999;san jose_bombacho_XL;;;;;;;;

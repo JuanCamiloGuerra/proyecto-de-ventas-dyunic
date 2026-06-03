@@ -7,17 +7,15 @@ import pandas as pd
 import streamlit as st
 
 # Show app title and description.
-st.set_page_config(page_title="Support tickets", page_icon="🎫")
-st.title("🎫 Support tickets")
+st.set_page_config(page_title="VENTAS DYUNIC", page_icon="🎫")
+st.title("VENTAS DYUNIC")
 st.write(
     """
-    This app shows how you can build an internal tool in Streamlit. Here, we are 
-    implementing a support ticket workflow. The user can create a ticket, edit 
-    existing tickets, and view some statistics.
+    Primera prueba StreamLite app web pagina de ventas DYUNIC
     """
 )
 
-# Create a random Pandas dataframe with existing tickets.
+# Create a Pandas dataframe with existing tickets.
 if "df" not in st.session_state:
 
     # Set seed for reproducibility.

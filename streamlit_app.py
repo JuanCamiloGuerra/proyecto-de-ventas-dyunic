@@ -1,170 +1,305 @@
-import datetime
-import random
-
-import altair as alt
-import numpy as np
-import pandas as pd
+# Paquetes para usar tablas y listas
 import streamlit as st
+import pandas as pd
+from datetime import datetime
 
-# Show app title and description.
-st.set_page_config(page_title="VENTAS DYUNIC", page_icon="🎫")
-st.title("VENTAS DYUNIC")
-st.write(
-    """
-    Primera prueba StreamLite app web pagina de ventas DYUNIC
-    """
+# --------------------------------------------------
+# CONFIGURACIÓN
+# --------------------------------------------------
+
+st.set_page_config(
+    page_title="VENTAS DYUNIC-PRUEBA TABLAS + LISTAS",
+    page_icon="🛒",
+    layout="wide"
 )
 
-# Create a Pandas dataframe with existing tickets.
-if "df" not in st.session_state:
+st.title("VENTAS DYUNIC")
 
-    # Set seed for reproducibility.
-    np.random.seed(42)
+# --------------------------------------------------
+# CARGAR TABLAS AUXILIARES
+# --------------------------------------------------
 
-    # Make up some fake issue descriptions.
-    issue_descriptions = [
-        "Network connectivity issues in the office",
-        "Software application crashing on startup",
-        "Printer not responding to print commands",
-        "Email server downtime",
-        "Data backup failure",
-        "Login authentication problems",
-        "Website performance degradation",
-        "Security vulnerability identified",
-        "Hardware malfunction in the server room",
-        "Employee unable to access shared files",
-        "Database connection failure",
-        "Mobile application not syncing data",
-        "VoIP phone system issues",
-        "VPN connection problems for remote employees",
-        "System updates causing compatibility issues",
-        "File server running out of storage space",
-        "Intrusion detection system alerts",
-        "Inventory management system errors",
-        "Customer data not loading in CRM",
-        "Collaboration tool not sending notifications",
-    ]
+df_colegios = pd.read_csv(
+    "tablas/colegios.csv",
+    sep=";",
+    header=None,
+    keep_default_na=False
+)
 
-    # Generate the dataframe with 100 rows/tickets.
-    data = {
-        "ID": [f"TICKET-{i}" for i in range(1100, 1000, -1)],
-        "Issue": np.random.choice(issue_descriptions, size=100),
-        "Status": np.random.choice(["Open", "In Progress", "Closed"], size=100),
-        "Priority": np.random.choice(["High", "Medium", "Low"], size=100),
-        "Date Submitted": [
-            datetime.date(2023, 6, 1) + datetime.timedelta(days=random.randint(0, 182))
-            for _ in range(100)
-        ],
-    }
-    df = pd.DataFrame(data)
+df_tallas = pd.read_csv(
+    "tablas/tallas.csv",
+    sep=";",
+    header=None,
+    keep_default_na=False
+)
 
-    # Save the dataframe in session state (a dictionary-like object that persists across
-    # page runs). This ensures our data is persisted when the app updates.
-    st.session_state.df = df
+df_precios = pd.read_csv(
+    "tablas/precios.csv",
+    sep=";"
+)
 
+df_inventario = pd.read_csv(
+    "tablas/inventario.csv",
+    sep=";"
+)
+# --------------------------------------------------
+# CREAR CARRITO
+# --------------------------------------------------
 
-# Show a section to add a new ticket.
-st.header("Add a ticket")
+if "carrito" not in st.session_state:
 
-# We're adding tickets via an `st.form` and some input widgets. If widgets are used
-# in a form, the app will only rerun once the submit button is pressed.
-with st.form("add_ticket_form"):
-    issue = st.text_area("Describe the issue")
-    priority = st.selectbox("Priority", ["High", "Medium", "Low"])
-    submitted = st.form_submit_button("Submit")
-
-if submitted:
-    # Make a dataframe for the new ticket and append it to the dataframe in session
-    # state.
-    recent_ticket_number = int(max(st.session_state.df.ID).split("-")[1])
-    today = datetime.datetime.now().strftime("%m-%d-%Y")
-    df_new = pd.DataFrame(
-        [
-            {
-                "ID": f"TICKET-{recent_ticket_number+1}",
-                "Issue": issue,
-                "Status": "Open",
-                "Priority": priority,
-                "Date Submitted": today,
-            }
+    st.session_state.carrito = pd.DataFrame(
+        columns=[
+            "Eliminar",
+            "Colegio",
+            "Articulo",
+            "Talla",
+            "Cantidad",
+            "Valor Unitario",
+            "Subtotal"
         ]
     )
 
-    # Show a little success message.
-    st.write("Ticket submitted! Here are the ticket details:")
-    st.dataframe(df_new, use_container_width=True, hide_index=True)
-    st.session_state.df = pd.concat([df_new, st.session_state.df], axis=0)
+# --------------------------------------------------
+# FORMULARIO DE PRODUCTO
+# --------------------------------------------------
 
-# Show section to view and edit existing tickets in a table.
-st.header("Existing tickets")
-st.write(f"Number of tickets: `{len(st.session_state.df)}`")
+st.header("Selección de producto")
 
-st.info(
-    "You can edit the tickets by double clicking on a cell. Note how the plots below "
-    "update automatically! You can also sort the table by clicking on the column headers.",
-    icon="✍️",
-)
+col1, col2, col3, col4 = st.columns(4)
 
-# Show the tickets dataframe with `st.data_editor`. This lets the user edit the table
-# cells. The edited data is returned as a new dataframe.
-edited_df = st.data_editor(
-    st.session_state.df,
+with col1:
+
+    colegio = st.selectbox(
+        "Colegio",
+        df_colegios.iloc[:, 0].dropna().tolist()
+    )
+
+with col2:
+
+    archivo_colegio = f"tablas/{colegio}.csv"
+
+    df_articulos = pd.read_csv(
+        archivo_colegio,
+        sep=";",
+        header=None,
+        keep_default_na=False
+    )
+
+    articulo = st.selectbox(
+        "Artículo",
+        df_articulos.iloc[:, 0].tolist()
+    )
+
+with col3:
+
+    talla = st.selectbox(
+        "Talla",
+        df_tallas.iloc[:, 0].dropna().tolist()
+    )
+
+with col4:
+
+    cantidad = st.number_input(
+        "Cantidad",
+        min_value=1,
+        value=1,
+        step=1
+    )
+
+# --------------------------------------------------
+# CREAR ID DE BÚSQUEDA
+# --------------------------------------------------
+
+id_busqueda = f"{colegio}_{articulo}_{talla}"
+
+# --------------------------------------------------
+# BUSCAR PRECIO
+# --------------------------------------------------
+
+precio_df = df_precios[
+    df_precios["ID_BUSQUEDA"] == id_busqueda
+]
+
+if len(precio_df) > 0:
+
+    precio = precio_df.iloc[0]["VALOR AÑO PRESENTE"]
+
+else:
+
+    precio = 0
+
+# --------------------------------------------------
+# BUSCAR INVENTARIO
+# --------------------------------------------------
+
+inventario_df = df_inventario[
+    df_inventario["ID_BUSQUEDA"] == id_busqueda
+]
+
+if len(inventario_df) > 0:
+
+    inventario = inventario_df.iloc[0]["INVENTARIO"]
+
+else:
+
+    inventario = 0
+
+# --------------------------------------------------
+# CALCULAR SUBTOTAL
+# --------------------------------------------------
+
+subtotal = precio * cantidad
+
+st.divider()
+
+# --------------------------------------------------
+# INFORMACIÓN ENCONTRADA
+# --------------------------------------------------
+
+st.subheader("Información encontrada")
+
+col1, col2, col3, col4 = st.columns(4)
+
+#with col1:
+
+#    st.text_input(
+#        "ID BUSQUEDA",
+#        value=id_busqueda,
+#        disabled=True
+#    )
+with col1:
+
+    st.text_input(
+        "ID BUSQUEDA",
+        value=id_busqueda,
+        disabled=True
+    )
+
+
+with col2:
+
+    st.metric(
+        "Precio",
+        f"${precio:,.0f}"
+    )
+
+with col3:
+
+    st.metric(
+        "Inventario",
+        inventario
+    )
+
+with col4:
+
+    st.metric(
+        "Subtotal",
+        f"${subtotal:,.0f}"
+    )
+
+# --------------------------------------------------
+# BOTÓN AÑADIR AL CARRITO
+# --------------------------------------------------
+
+col1, col2, col3 = st.columns([1, 2, 1])
+
+with col2:
+
+    añadir = st.button(
+        "➕ Añadir al carrito",
+        use_container_width=True
+    )
+
+if añadir:
+
+    nueva_fila = pd.DataFrame(
+        [{
+            "Eliminar": False,
+            "Colegio": colegio,
+            "Articulo": articulo,
+            "Talla": talla,
+            "Cantidad": cantidad,
+            "Valor Unitario": precio,
+            "Subtotal": subtotal
+        }]
+    )
+
+    st.session_state.carrito = pd.concat(
+        [st.session_state.carrito, nueva_fila],
+        ignore_index=True
+    )
+
+    st.success("Producto añadido al carrito")
+
+st.divider()
+
+# --------------------------------------------------
+# MOSTRAR CARRITO
+# --------------------------------------------------
+
+st.header("Carrito")
+
+st.session_state.carrito = st.data_editor(
+    st.session_state.carrito,
     use_container_width=True,
     hide_index=True,
+
+    disabled=[
+        "Colegio",
+        "Articulo",
+        "Talla",
+        "Cantidad",
+        "Valor Unitario",
+        "Subtotal"
+    ],
+
     column_config={
-        "Status": st.column_config.SelectboxColumn(
-            "Status",
-            help="Ticket status",
-            options=["Open", "In Progress", "Closed"],
-            required=True,
-        ),
-        "Priority": st.column_config.SelectboxColumn(
-            "Priority",
-            help="Priority",
-            options=["High", "Medium", "Low"],
-            required=True,
-        ),
-    },
-    # Disable editing the ID and Date Submitted columns.
-    disabled=["ID", "Date Submitted"],
+        "Eliminar": st.column_config.CheckboxColumn(
+            "Eliminar"
+        )
+    }
 )
 
-# Show some metrics and charts about the ticket.
-st.header("Statistics")
+# --------------------------------------------------
+# ELIMINAR PRODUCTOS SELECCIONADOS
+# --------------------------------------------------
 
-# Show metrics side by side using `st.columns` and `st.metric`.
-col1, col2, col3 = st.columns(3)
-num_open_tickets = len(st.session_state.df[st.session_state.df.Status == "Open"])
-col1.metric(label="Number of open tickets", value=num_open_tickets, delta=10)
-col2.metric(label="First response time (hours)", value=5.2, delta=-1.5)
-col3.metric(label="Average resolution time (hours)", value=16, delta=2)
+col1, col2, col3 = st.columns([1, 2, 1])
 
-# Show two Altair charts using `st.altair_chart`.
-st.write("")
-st.write("##### Ticket status per month")
-status_plot = (
-    alt.Chart(edited_df)
-    .mark_bar()
-    .encode(
-        x="month(Date Submitted):O",
-        y="count():Q",
-        xOffset="Status:N",
-        color="Status:N",
+with col2:
+
+    eliminar = st.button(
+        "🗑️ Eliminar seleccionados",
+        use_container_width=True
     )
-    .configure_legend(
-        orient="bottom", titleFontSize=14, labelFontSize=14, titlePadding=5
+
+if eliminar:
+
+    st.session_state.carrito = (
+        st.session_state.carrito[
+            st.session_state.carrito["Eliminar"] == False
+        ]
+        .reset_index(drop=True)
     )
+
+    st.rerun()
+
+# --------------------------------------------------
+# TOTAL DEL CARRITO
+# --------------------------------------------------
+
+total_carrito = (
+    st.session_state.carrito["Subtotal"]
+    .sum()
 )
-st.altair_chart(status_plot, use_container_width=True, theme="streamlit")
 
-st.write("##### Current ticket priorities")
-priority_plot = (
-    alt.Chart(edited_df)
-    .mark_arc()
-    .encode(theta="count():Q", color="Priority:N")
-    .properties(height=300)
-    .configure_legend(
-        orient="bottom", titleFontSize=14, labelFontSize=14, titlePadding=5
-    )
+st.divider()
+
+st.subheader("💰 TOTAL CARRITO")
+
+st.markdown(
+    f"# ${total_carrito:,.0f}"
 )
-st.altair_chart(priority_plot, use_container_width=True, theme="streamlit")
+
+

@@ -341,5 +341,3 @@ st.subheader("💰 TOTAL CARRITO")
 st.markdown(
     f"# ${total_carrito:,.0f}"
 )
-
-

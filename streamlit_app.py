@@ -191,7 +191,7 @@ else:
 
 subtotal = precio * cantidad
 
-st.divider()
+
 
 # --------------------------------------------------
 # INFORMACIÓN ENCONTRADA
@@ -334,12 +334,119 @@ total_carrito = (
     .sum()
 )
 
+col1, col2 = st.columns([2, 1])
+
+with col1:
+
+    st.subheader("💰 TOTAL CARRITO")
+
+with col2:
+
+    st.markdown(
+        f"<h2 style='text-align:right;'>${total_carrito:,.0f}</h2>",
+        unsafe_allow_html=True
+    )
+
+# --------------------------------------------------
+# MEDIOS DE PAGO
+# --------------------------------------------------
+
 st.divider()
 
-st.subheader("💰 TOTAL CARRITO")
+st.subheader("💳 Medios de pago")
 
-st.markdown(
-    f"# ${total_carrito:,.0f}"
+col1, col2, col3 = st.columns(3)
+
+with col1:
+
+    efectivo = st.number_input(
+        "Efectivo",
+        min_value=0,
+        value=0,
+        step=1000
+    )
+
+with col2:
+
+    tarjeta = st.number_input(
+        "Tarjeta",
+        min_value=0,
+        value=0,
+        step=1000
+    )
+
+with col3:
+
+    transferencia = st.number_input(
+        "Transferencia",
+        min_value=0,
+        value=0,
+        step=1000
+    )
+
+# --------------------------------------------------
+# TOTAL REGISTRADO
+# --------------------------------------------------
+
+total_registrado = (
+    efectivo
+    + tarjeta
+    + transferencia
 )
 
+# --------------------------------------------------
+# VALOR PENDIENTE
+# --------------------------------------------------
 
+valor_pendiente = (
+    total_carrito
+    - total_registrado
+)
+
+st.divider()
+
+# TOTAL REGISTRADO
+
+col1, col2 = st.columns([2, 1])
+
+with col1:
+
+    st.subheader("💵 TOTAL REGISTRADO")
+
+with col2:
+
+    st.markdown(
+        f"<h2 style='text-align:right;'>${total_registrado:,.0f}</h2>",
+        unsafe_allow_html=True
+    )
+
+# VALOR PENDIENTE
+
+col1, col2 = st.columns([2, 1])
+
+with col1:
+
+    st.subheader("⚠️ VALOR PENDIENTE")
+
+with col2:
+
+    st.markdown(
+        f"<h2 style='text-align:right;'>${valor_pendiente:,.0f}</h2>",
+        unsafe_allow_html=True
+    )
+
+if valor_pendiente == 0:
+
+    st.success("Venta completamente pagada")
+
+elif valor_pendiente > 0:
+
+    st.warning(
+        f"Cliente pendiente por pagar ${valor_pendiente:,.0f}"
+    )
+
+else:
+
+    st.error(
+        f"Se registraron ${abs(valor_pendiente):,.0f} de más"
+    )

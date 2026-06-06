@@ -29,13 +29,23 @@ df_ventas = pd.read_csv(
 df_ventas.columns = df_ventas.columns.str.strip()
 
 # --------------------------------------------------
-# CONVERTIR COLUMNAS NUMÉRICAS
+# LIMPIAR VALORES NUMÉRICOS
 # --------------------------------------------------
+
+df_ventas["subtotal"] = (
+    df_ventas["subtotal"]
+    .astype(str)
+    .str.replace(".", "", regex=False)
+)
 
 df_ventas["subtotal"] = pd.to_numeric(
     df_ventas["subtotal"],
     errors="coerce"
 )
+
+# --------------------------------------------------
+# ASEGURAR TIPOS NUMÉRICOS
+# --------------------------------------------------
 
 df_ventas["año"] = pd.to_numeric(
     df_ventas["año"],
@@ -60,11 +70,16 @@ st.header("Filtros")
 
 col1, col2, col3 = st.columns(3)
 
+# ----------------------
+# AÑO
+# ----------------------
+
 with col1:
 
-    lista_años = sorted(
+    lista_años = ["Todos"] + sorted(
         df_ventas["año"]
         .dropna()
+        .astype(int)
         .unique()
         .tolist()
     )
@@ -74,13 +89,26 @@ with col1:
         lista_años
     )
 
+# ----------------------
+# MES
+# ----------------------
+
 with col2:
 
-    lista_meses = sorted(
-        df_ventas[
+    if año == "Todos":
+
+        df_aux = df_ventas.copy()
+
+    else:
+
+        df_aux = df_ventas[
             df_ventas["año"] == año
-        ]["mes"]
+        ]
+
+    lista_meses = ["Todos"] + sorted(
+        df_aux["mes"]
         .dropna()
+        .astype(int)
         .unique()
         .tolist()
     )
@@ -90,15 +118,24 @@ with col2:
         lista_meses
     )
 
+# ----------------------
+# DÍA
+# ----------------------
+
 with col3:
 
-    lista_dias = sorted(
-        df_ventas[
-            (df_ventas["año"] == año)
-            &
-            (df_ventas["mes"] == mes)
-        ]["dia"]
+    df_aux2 = df_aux.copy()
+
+    if mes != "Todos":
+
+        df_aux2 = df_aux2[
+            df_aux2["mes"] == mes
+        ]
+
+    lista_dias = ["Todos"] + sorted(
+        df_aux2["dia"]
         .dropna()
+        .astype(int)
         .unique()
         .tolist()
     )
@@ -112,13 +149,25 @@ with col3:
 # FILTRAR DATAFRAME
 # --------------------------------------------------
 
-df_filtrado = df_ventas[
-    (df_ventas["año"] == año)
-    &
-    (df_ventas["mes"] == mes)
-    &
-    (df_ventas["dia"] == dia)
-]
+df_filtrado = df_ventas.copy()
+
+if año != "Todos":
+
+    df_filtrado = df_filtrado[
+        df_filtrado["año"] == año
+    ]
+
+if mes != "Todos":
+
+    df_filtrado = df_filtrado[
+        df_filtrado["mes"] == mes
+    ]
+
+if dia != "Todos":
+
+    df_filtrado = df_filtrado[
+        df_filtrado["dia"] == dia
+    ]
 
 # --------------------------------------------------
 # MÉTRICAS
@@ -143,6 +192,30 @@ with col2:
     )
 
 # --------------------------------------------------
+# COLUMNAS A OCULTAR
+# --------------------------------------------------
+
+columnas_ocultar = [
+    "dia",
+    "mes",
+    "año",
+    "colegio",
+    "articulo",
+    "talla",
+    "hombro",
+    "talle",
+    "cintura",
+    "largo",
+    "Clasificación_antiguo",
+    "Método de pago_antiguo"
+]
+
+df_mostrar = df_filtrado.drop(
+    columns=columnas_ocultar,
+    errors="ignore"
+)
+
+# --------------------------------------------------
 # TABLA
 # --------------------------------------------------
 
@@ -151,7 +224,7 @@ st.divider()
 st.header("Ventas encontradas")
 
 st.dataframe(
-    df_filtrado,
+    df_mostrar,
     use_container_width=True,
     hide_index=True
 )

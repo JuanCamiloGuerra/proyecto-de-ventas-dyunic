@@ -13,7 +13,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("VENTAS DYUNIC")
+st.title("VENTAS DYUNIC 1")
 
 # --------------------------------------------------
 # CARGAR TABLAS AUXILIARES
@@ -47,9 +47,9 @@ df_inventario = pd.read_csv(
 # CREAR CARRITO
 # --------------------------------------------------
 
-if "carrito" not in st.session_state:
+if "carrito_1" not in st.session_state:
 
-    st.session_state.carrito = pd.DataFrame(
+    st.session_state.carrito_1 = pd.DataFrame(
         columns=[
             "Eliminar",
             "Colegio",
@@ -68,19 +68,49 @@ if "carrito" not in st.session_state:
 
 st.header("Datos del cliente")
 
-col1, col2, col3, col4 = st.columns(4)
+col1, col2, col3, col4, col5 = st.columns(5)
 
 with col1:
-    nombre_cliente = st.text_input("Nombre")
+
+    nombre_cliente = st.text_input(
+        "Nombre"
+    )
 
 with col2:
-    telefono_cliente = st.text_input("Teléfono")
+
+    telefono_cliente = st.text_input(
+        "Teléfono"
+    )
 
 with col3:
-    documento_cliente = st.text_input("Documento")
+
+    documento_cliente = st.text_input(
+        "Documento"
+    )
 
 with col4:
-    id_membrete = st.text_input("ID Membrete")
+
+    id_membrete = st.text_input(
+        "ID Membrete"
+    )
+
+with col5:
+
+    sede = st.selectbox(
+        "Sede",
+        [
+            "C-BGT",
+            "C-BCL",
+            "C-BBV",
+            "J-BCL",
+            "J-BBV",
+            "K-BCL"
+        ]
+    )
+
+# --------------------------------------------------
+# ID FACTURA AUTOMÁTICO
+# --------------------------------------------------
 
 fecha_factura = datetime.now().strftime("%Y%m%d")
 
@@ -88,7 +118,8 @@ id_factura = (
     f"{fecha_factura}-"
     f"{documento_cliente}-"
     f"{telefono_cliente}-"
-    f"{id_membrete}"
+    f"{id_membrete}-"
+    f"{sede}"
 )
 
 st.text_input(
@@ -98,7 +129,6 @@ st.text_input(
 )
 
 st.divider()
-
 
 # --------------------------------------------------
 # FORMULARIO DE PRODUCTO
@@ -265,8 +295,8 @@ if añadir:
         }]
     )
 
-    st.session_state.carrito = pd.concat(
-        [st.session_state.carrito, nueva_fila],
+    st.session_state.carrito_1 = pd.concat(
+        [st.session_state.carrito_1, nueva_fila],
         ignore_index=True
     )
 
@@ -280,8 +310,8 @@ st.divider()
 
 st.header("Carrito")
 
-st.session_state.carrito = st.data_editor(
-    st.session_state.carrito,
+st.session_state.carrito_1 = st.data_editor(
+    st.session_state.carrito_1,
     use_container_width=True,
     hide_index=True,
 
@@ -316,9 +346,9 @@ with col2:
 
 if eliminar:
 
-    st.session_state.carrito = (
-        st.session_state.carrito[
-            st.session_state.carrito["Eliminar"] == False
+    st.session_state.carrito_1 = (
+        st.session_state.carrito_1[
+            st.session_state.carrito_1["Eliminar"] == False
         ]
         .reset_index(drop=True)
     )
@@ -329,8 +359,8 @@ if eliminar:
 # TOTAL DEL CARRITO
 # --------------------------------------------------
 
-total_carrito = (
-    st.session_state.carrito["Subtotal"]
+total_carrito_1 = (
+    st.session_state.carrito_1["Subtotal"]
     .sum()
 )
 
@@ -343,7 +373,7 @@ with col1:
 with col2:
 
     st.markdown(
-        f"<h2 style='text-align:right;'>${total_carrito:,.0f}</h2>",
+        f"<h2 style='text-align:right;'>${total_carrito_1:,.0f}</h2>",
         unsafe_allow_html=True
     )
 
@@ -399,7 +429,7 @@ total_registrado = (
 # --------------------------------------------------
 
 valor_pendiente = (
-    total_carrito
+    total_carrito_1
     - total_registrado
 )
 

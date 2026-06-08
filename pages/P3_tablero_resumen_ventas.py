@@ -9,7 +9,25 @@ df_facturacion = pd.read_csv(
     "tablas/facturacion_ventas.csv",
     sep=";"
 )
+# --------------------------------------------------
+# ELIMINAR FILAS VACÍAS
+# --------------------------------------------------
 
+df_facturacion = df_facturacion[
+    df_facturacion["ID unico de factura"]
+    .notna()
+]
+
+df_facturacion = df_facturacion[
+    df_facturacion["ID unico de factura"]
+    .astype(str)
+    .str.strip()
+    != ""
+]
+
+df_facturacion = df_facturacion.reset_index(
+    drop=True
+)
 # --------------------------------------------------
 # LIMPIAR COLUMNAS
 # --------------------------------------------------
@@ -23,22 +41,58 @@ df_facturacion.columns = (
 # CONVERTIR COLUMNAS NUMÉRICAS
 # --------------------------------------------------
 
-columnas_numericas = [
-    "Año",
-    "Mes",
-    "Día",
+columnas_monetarias = [
     "total efectivo",
     "total tarjeta",
     "total transfencia",
     "total pendiente"
 ]
 
-for col in columnas_numericas:
+for col in columnas_monetarias:
+
+    df_facturacion[col] = (
+        df_facturacion[col]
+        .astype(str)
+        .str.replace(".", "", regex=False)
+        .str.replace(",", "", regex=False)
+        .str.strip()
+    )
 
     df_facturacion[col] = pd.to_numeric(
         df_facturacion[col],
         errors="coerce"
     )
+
+for col in ["Año", "Mes", "Día"]:
+
+    df_facturacion[col] = pd.to_numeric(
+        df_facturacion[col],
+        errors="coerce"
+    )
+
+# --------------------------------------------------
+# CONVERTIR A ENTEROS
+# --------------------------------------------------
+
+df_facturacion["Año"] = (
+    df_facturacion["Año"]
+    .fillna(0)
+    .astype(int)
+)
+
+df_facturacion["Mes"] = (
+    df_facturacion["Mes"]
+    .fillna(0)
+    .astype(int)
+)
+
+df_facturacion["Día"] = (
+    df_facturacion["Día"]
+    .fillna(0)
+    .astype(int)
+)
+    
+    
 
 # --------------------------------------------------
 # FILTROS
@@ -69,13 +123,14 @@ with col1:
 with col2:
 
     lista_meses = sorted(
-        df_facturacion[
-            df_facturacion["Año"] == año
-        ]["Mes"]
-        .dropna()
-        .unique()
-        .tolist()
-    )
+    df_facturacion[
+        df_facturacion["Año"] == año
+    ]["Mes"]
+    .dropna()
+    .astype(int)
+    .unique()
+    .tolist()
+)
 
     meses = st.multiselect(
         "Mes",
@@ -88,15 +143,16 @@ with col2:
 with col3:
 
     lista_dias = sorted(
-        df_facturacion[
-            (df_facturacion["Año"] == año)
-            &
-            (df_facturacion["Mes"].isin(meses))
-        ]["Día"]
-        .dropna()
-        .unique()
-        .tolist()
-    )
+    df_facturacion[
+        (df_facturacion["Año"] == año)
+        &
+        (df_facturacion["Mes"].isin(meses))
+    ]["Día"]
+    .dropna()
+    .astype(int)
+    .unique()
+    .tolist()
+)
 
     dias = st.multiselect(
         "Día",
@@ -114,33 +170,28 @@ df_filtrado = df_facturacion[
     (df_facturacion["Mes"].isin(meses))
     &
     (df_facturacion["Día"].isin(dias))
-]
+].copy()
 
 # --------------------------------------------------
 # TOTAL VENDIDO
 # --------------------------------------------------
 
-df_filtrado["Total Ventas"] = (
-    df_filtrado["total efectivo"]
-    +
-    df_filtrado["total tarjeta"]
-    +
-    df_filtrado["total transfencia"]
-)
-
-# --------------------------------------------------
-# MÉTRICAS
-# --------------------------------------------------
-
 total_vendido = (
-    df_filtrado["Total Ventas"]
-    .sum()
+    df_filtrado["total efectivo"].sum()
+    +
+    df_filtrado["total tarjeta"].sum()
+    +
+    df_filtrado["total transfencia"].sum()
 )
 
 total_pendiente = (
     df_filtrado["total pendiente"]
     .sum()
 )
+
+# --------------------------------------------------
+# MÉTRICAS
+# --------------------------------------------------
 
 col1, col2 = st.columns(2)
 
@@ -157,7 +208,6 @@ with col2:
         "⚠️ TOTAL PENDIENTE",
         f"${total_pendiente:,.0f}"
     )
-
 # --------------------------------------------------
 # TABLA RESUMEN
 # --------------------------------------------------
@@ -183,7 +233,6 @@ df_resumen["Total Ventas"] = (
     +
     df_resumen["total transfencia"]
 )
-
 # --------------------------------------------------
 # ORDENAR
 # --------------------------------------------------

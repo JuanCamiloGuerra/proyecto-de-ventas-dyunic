@@ -114,9 +114,10 @@ with col1:
     )
 
     año = st.selectbox(
-        "Año",
-        lista_años
-    )
+    "Año",
+    [None] + lista_años,
+    format_func=lambda x: "Seleccione un año..." if x is None else str(x)
+)
 
 # MESES
 
@@ -135,7 +136,7 @@ with col2:
     meses = st.multiselect(
         "Mes",
         lista_meses,
-        default=lista_meses
+        default=[]
     )
 
 # DÍAS
@@ -157,7 +158,7 @@ with col3:
     dias = st.multiselect(
         "Día",
         lista_dias,
-        default=lista_dias
+        default=[]
     )
 
 # --------------------------------------------------

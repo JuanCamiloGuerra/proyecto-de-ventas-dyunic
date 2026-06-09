@@ -47,7 +47,7 @@ df_inventario = pd.read_csv(
 # CREAR CARRITO
 # --------------------------------------------------
 
-if "carrito" not in st.session_state:
+if "carrito_2" not in st.session_state:
 
     st.session_state.carrito_2 = pd.DataFrame(
         columns=[

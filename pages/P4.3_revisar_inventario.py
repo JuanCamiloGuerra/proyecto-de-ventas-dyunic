@@ -62,7 +62,7 @@ with col1:
     colegios = st.multiselect(
         "Colegio",
         lista_colegios,
-        default=lista_colegios
+        default=[]
     )
 
 # ARTÍCULO
@@ -87,7 +87,7 @@ with col2:
     articulos = st.multiselect(
         "Artículo",
         lista_articulos,
-        default=lista_articulos
+        default=[]
     )
 
 # TALLA
@@ -112,7 +112,7 @@ with col3:
     tallas = st.multiselect(
         "Talla",
         lista_tallas,
-        default=lista_tallas
+        default=[]
     )
 
 # --------------------------------------------------

@@ -648,11 +648,13 @@ if cerrar_venta:
         id_factura
     )
 
+    ventas_nuevas["Nombre"] = nombre_cliente.strip()
+
     ventas_nuevas["fecha"] = (
         fecha_larga
     )
 
-    ventas_nuevas["día"] = (
+    ventas_nuevas["dia"] = (
         ahora.day
     )
 
@@ -742,3 +744,20 @@ if cerrar_venta:
     )
 
     st.rerun()
+
+
+
+   # prueba -------------------------------
+st.divider()
+
+st.subheader("📋 Últimos registros en ventas_df")
+
+df_ventas_tmp = pd.read_csv(
+    "tablas/ventas_df.csv",
+    sep=";"
+)
+
+st.dataframe(
+    df_ventas_tmp.tail(5),
+    use_container_width=True
+)

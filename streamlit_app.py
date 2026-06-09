@@ -57,7 +57,8 @@ if "carrito_1" not in st.session_state:
             "Talla",
             "Cantidad",
             "Valor Unitario",
-            "Subtotal"
+            "Subtotal",
+            "ID_BUSQUEDA"
         ]
     )
 
@@ -291,7 +292,8 @@ if añadir:
             "Talla": talla,
             "Cantidad": cantidad,
             "Valor Unitario": precio,
-            "Subtotal": subtotal
+            "Subtotal": subtotal,
+            "ID_BUSQUEDA": id_busqueda
         }]
     )
 
@@ -321,7 +323,8 @@ st.session_state.carrito_1 = st.data_editor(
         "Talla",
         "Cantidad",
         "Valor Unitario",
-        "Subtotal"
+        "Subtotal",
+        "ID_BUSQUEDA"
     ],
 
     column_config={
@@ -480,3 +483,248 @@ else:
     st.error(
         f"Se registraron ${abs(valor_pendiente):,.0f} de más"
     )
+
+
+
+
+# --------------------------------------------------
+# BOTÓN CERRAR VENTA
+# --------------------------------------------------
+
+st.divider()
+
+cerrar_venta = st.button(
+    "✅ Cerrar venta",
+    use_container_width=True
+)
+
+# --------------------------------------------------
+# CERRAR VENTA
+# --------------------------------------------------
+
+if cerrar_venta:
+
+    # ------------------------------------------
+    # VALIDACIONES
+    # ------------------------------------------
+
+    if len(st.session_state.carrito_1) == 0:
+
+        st.error(
+            "El carrito está vacío."
+        )
+        st.stop()
+
+    if nombre_cliente.strip() == "":
+
+        st.error(
+            "Debe ingresar el nombre del cliente."
+        )
+        st.stop()
+
+    if telefono_cliente.strip() == "":
+
+        st.error(
+            "Debe ingresar el teléfono."
+        )
+        st.stop()
+
+    if documento_cliente.strip() == "":
+
+        st.error(
+            "Debe ingresar el documento."
+        )
+        st.stop()
+
+    # ------------------------------------------
+    # ESTADO FACTURA
+    # ------------------------------------------
+
+    if valor_pendiente == 0:
+
+        estado_factura = "PAGADA"
+
+    else:
+
+        estado_factura = "PENDIENTE"
+
+    # ------------------------------------------
+    # FECHA BONITA
+    # ------------------------------------------
+
+    dias_semana = [
+        "lunes",
+        "martes",
+        "miércoles",
+        "jueves",
+        "viernes",
+        "sábado",
+        "domingo"
+    ]
+
+    meses_texto = [
+        "",
+        "enero",
+        "febrero",
+        "marzo",
+        "abril",
+        "mayo",
+        "junio",
+        "julio",
+        "agosto",
+        "septiembre",
+        "octubre",
+        "noviembre",
+        "diciembre"
+    ]
+
+    ahora = datetime.now()
+
+    fecha_larga = (
+        f"{dias_semana[ahora.weekday()]}, "
+        f"{ahora.day} de "
+        f"{meses_texto[ahora.month]} de "
+        f"{ahora.year}"
+    )
+
+    # ------------------------------------------
+    # CREAR REGISTROS PARA ventas_df
+    # ------------------------------------------
+    
+
+    if st.session_state.carrito_1.empty:
+
+     st.error(
+        "No existen productos para registrar."
+    )
+
+    st.stop()
+
+    ventas_nuevas = pd.DataFrame()
+
+    ventas_nuevas["colegio"] = (
+        st.session_state.carrito_1["Colegio"]
+    )
+
+    ventas_nuevas["articulo"] = (
+        st.session_state.carrito_1["Articulo"]
+    )
+
+    ventas_nuevas["talla"] = (
+        st.session_state.carrito_1["Talla"]
+    )
+
+    ventas_nuevas["cantidad"] = (
+        st.session_state.carrito_1["Cantidad"]
+    )
+
+    ventas_nuevas["precio individual"] = (
+        st.session_state.carrito_1["Valor Unitario"]
+    )
+
+    ventas_nuevas["subtotal"] = (
+        st.session_state.carrito_1["Subtotal"]
+    )
+
+    ventas_nuevas["Estado Factura"] = (
+        estado_factura
+    )
+
+    ventas_nuevas["ID unico de factura"] = (
+        id_factura
+    )
+
+    ventas_nuevas["fecha"] = (
+        fecha_larga
+    )
+
+    ventas_nuevas["día"] = (
+        ahora.day
+    )
+
+    ventas_nuevas["mes"] = (
+        ahora.month
+    )
+
+    ventas_nuevas["año"] = (
+        ahora.year
+    )
+
+    ventas_nuevas["ID unico de artículo"] = (
+        st.session_state.carrito_1["ID_BUSQUEDA"]
+    )
+
+    # ------------------------------------------
+    # CARGAR ventas_df
+    # ------------------------------------------
+
+    df_ventas = pd.read_csv(
+        "tablas/ventas_df.csv",
+        sep=";"
+    )
+
+    # ------------------------------------------
+    # EVITAR FACTURAS DUPLICADAS
+    # ------------------------------------------
+
+    if (
+        df_ventas["ID unico de factura"]
+        .astype(str)
+        .eq(id_factura)
+        .any()
+    ):
+
+        st.error(
+            "Esta factura ya fue registrada."
+        )
+
+        st.stop()
+
+    # ------------------------------------------
+    # AGREGAR REGISTROS
+    # ------------------------------------------
+
+    df_ventas = pd.concat(
+        [
+            df_ventas,
+            ventas_nuevas
+        ],
+        ignore_index=True
+    )
+
+    # ------------------------------------------
+    # GUARDAR CSV
+    # ------------------------------------------
+
+    df_ventas.to_csv(
+        "tablas/ventas_df.csv",
+        sep=";",
+        index=False
+    )
+
+    # ------------------------------------------
+    # LIMPIAR CARRITO
+    # ------------------------------------------
+
+    st.session_state.carrito_1 = pd.DataFrame(
+        columns=[
+            "Eliminar",
+            "Colegio",
+            "Articulo",
+            "Talla",
+            "Cantidad",
+            "Valor Unitario",
+            "Subtotal",
+            "ID_BUSQUEDA"
+        ]
+    )
+
+    # ------------------------------------------
+    # MENSAJE FINAL
+    # ------------------------------------------
+
+    st.success(
+        "Venta registrada correctamente."
+    )
+
+    st.rerun()

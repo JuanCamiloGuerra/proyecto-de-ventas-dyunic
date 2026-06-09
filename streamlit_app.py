@@ -113,13 +113,33 @@ with col5:
 # ID FACTURA AUTOMÁTICO
 # --------------------------------------------------
 
-fecha_factura = datetime.now().strftime("%Y%m%d")
+fecha_factura = datetime.now().strftime(
+    "%Y%m%d-%H%M%S"
+)
+
+documento_tmp = (
+    documento_cliente.strip()
+    if documento_cliente.strip()
+    else "SIN_DOC"
+)
+
+telefono_tmp = (
+    telefono_cliente.strip()
+    if telefono_cliente.strip()
+    else "SIN_TEL"
+)
+
+membrete_tmp = (
+    id_membrete.strip()
+    if id_membrete.strip()
+    else "SIN_MEMBRETE"
+)
 
 id_factura = (
     f"{fecha_factura}-"
-    f"{documento_cliente}-"
-    f"{telefono_cliente}-"
-    f"{id_membrete}-"
+    f"{documento_tmp}-"
+    f"{telefono_tmp}-"
+    f"{membrete_tmp}-"
     f"{sede}"
 )
 
@@ -592,13 +612,7 @@ if cerrar_venta:
     # ------------------------------------------
     
 
-    if st.session_state.carrito_1.empty:
-
-     st.error(
-        "No existen productos para registrar."
-    )
-
-    st.stop()
+    
 
     ventas_nuevas = pd.DataFrame()
 

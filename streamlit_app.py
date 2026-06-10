@@ -15,6 +15,37 @@ st.set_page_config(
 
 st.title("VENTAS DYUNIC 1")
 
+
+# --------------------------------------------------
+# SESSION STATE
+# --------------------------------------------------
+
+if "nombre_cliente" not in st.session_state:
+    st.session_state.nombre_cliente = ""
+
+if "telefono_cliente" not in st.session_state:
+    st.session_state.telefono_cliente = ""
+
+if "documento_cliente" not in st.session_state:
+    st.session_state.documento_cliente = ""
+
+if "id_membrete" not in st.session_state:
+    st.session_state.id_membrete = ""
+
+
+if "efectivo" not in st.session_state:
+    st.session_state.efectivo = 0
+
+if "tarjeta" not in st.session_state:
+    st.session_state.tarjeta = 0
+
+if "transferencia" not in st.session_state:
+    st.session_state.transferencia = 0
+
+if "limpiar_formulario" not in st.session_state:
+    st.session_state.limpiar_formulario = False
+
+
 # --------------------------------------------------
 # CARGAR TABLAS AUXILIARES
 # --------------------------------------------------
@@ -67,6 +98,20 @@ if "carrito_1" not in st.session_state:
 # DATOS DEL CLIENTE
 # --------------------------------------------------
 
+if st.session_state.limpiar_formulario:
+
+    st.session_state.nombre_cliente = ""
+    st.session_state.telefono_cliente = ""
+    st.session_state.documento_cliente = ""
+    st.session_state.id_membrete = ""
+
+    st.session_state.efectivo = 0
+    st.session_state.tarjeta = 0
+    st.session_state.transferencia = 0
+
+    st.session_state.limpiar_formulario = False
+
+
 st.header("Datos del cliente")
 
 col1, col2, col3, col4, col5 = st.columns(5)
@@ -74,25 +119,29 @@ col1, col2, col3, col4, col5 = st.columns(5)
 with col1:
 
     nombre_cliente = st.text_input(
-        "Nombre"
+        "Nombre",
+        key="nombre_cliente"
     )
 
 with col2:
 
     telefono_cliente = st.text_input(
-        "Teléfono"
+        "Teléfono",
+        key="telefono_cliente"
     )
 
 with col3:
 
     documento_cliente = st.text_input(
-        "Documento"
+        "Documento",
+        key="documento_cliente"
     )
 
 with col4:
 
     id_membrete = st.text_input(
-        "ID Membrete"
+        "ID Membrete",
+        key="id_membrete"
     )
 
 with col5:
@@ -416,7 +465,8 @@ with col1:
         "Efectivo",
         min_value=0,
         value=0,
-        step=1000
+        step=1000,
+        key="efectivo"
     )
 
 with col2:
@@ -425,7 +475,8 @@ with col2:
         "Tarjeta",
         min_value=0,
         value=0,
-        step=1000
+        step=1000,
+        key="tarjeta"
     )
 
 with col3:
@@ -434,7 +485,8 @@ with col3:
         "Transferencia",
         min_value=0,
         value=0,
-        step=1000
+        step=1000,
+        key="transferencia"
     )
 
 # --------------------------------------------------
@@ -678,6 +730,10 @@ if cerrar_venta:
         "tablas/ventas_df.csv",
         sep=";"
     )
+    
+    if "día" in df_ventas.columns:
+      df_ventas.drop(columns=["día"], inplace=True)
+
 
     # ------------------------------------------
     # EVITAR FACTURAS DUPLICADAS
@@ -736,6 +792,12 @@ if cerrar_venta:
     )
 
     # ------------------------------------------
+    # Actualizar inputs
+    # ------------------------------------------
+    
+    st.session_state.limpiar_formulario = True
+
+  # ------------------------------------------
     # MENSAJE FINAL
     # ------------------------------------------
 

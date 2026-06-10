@@ -83,6 +83,7 @@ if "carrito_1" not in st.session_state:
     st.session_state.carrito_1 = pd.DataFrame(
         columns=[
             "Eliminar",
+            "Se debe?",
             "Colegio",
             "Articulo",
             "Talla",
@@ -357,6 +358,7 @@ if añadir:
         [{
             "Eliminar": False,
             "Colegio": colegio,
+            "Se debe?": False,
             "Articulo": articulo,
             "Talla": talla,
             "Cantidad": cantidad,
@@ -397,9 +399,12 @@ st.session_state.carrito_1 = st.data_editor(
     ],
 
     column_config={
-        "Eliminar": st.column_config.CheckboxColumn(
-            "Eliminar"
-        )
+    "Eliminar": st.column_config.CheckboxColumn(
+        "Eliminar"
+    ),
+    "Se debe?": st.column_config.CheckboxColumn(
+        "Se debe?"
+    )
     }
 )
 
@@ -721,6 +726,15 @@ if cerrar_venta:
     ventas_nuevas["ID unico de artículo"] = (
         st.session_state.carrito_1["ID_BUSQUEDA"]
     )
+    
+    ventas_nuevas["Producto pendiente por entregar"] = (
+    st.session_state.carrito_1["Se debe?"]
+    .map({
+        True: "SI",
+        False: "NO"
+    })
+    )
+
 
     # ------------------------------------------
     # CARGAR ventas_df

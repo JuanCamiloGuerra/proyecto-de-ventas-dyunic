@@ -691,10 +691,12 @@ if cerrar_venta:
 
     ventas_nuevas["precio individual"] = (
         st.session_state.carrito_1["Valor Unitario"]
+        .astype(int)
     )
 
     ventas_nuevas["subtotal"] = (
         st.session_state.carrito_1["Subtotal"]
+        .astype(int)
     )
 
     ventas_nuevas["Estado Factura"] = (
@@ -834,6 +836,14 @@ df_ventas_tmp = pd.read_csv(
 )
 
 st.dataframe(
-    df_ventas_tmp.tail(5),
+    df_ventas_tmp.tail(20),
     use_container_width=True
 )
+
+#####----------------------------------------
+#  Registrar datos en facturacion
+#####-----------------------------------------
+
+#####----------------------------------------
+#  ajustar inventario
+#####-----------------------------------------

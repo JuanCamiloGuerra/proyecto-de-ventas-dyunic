@@ -22,6 +22,18 @@ st.title("VENTAS DYUNIC 1")
 # SESSION STATE
 # --------------------------------------------------
 
+if "colegio" not in st.session_state:
+    st.session_state.colegio = "Seleccione..."
+
+if "articulo" not in st.session_state:
+    st.session_state.articulo = "Seleccione..."
+
+if "talla" not in st.session_state:
+    st.session_state.talla = "Seleccione..."
+
+
+
+
 if "nombre_cliente" not in st.session_state:
     st.session_state.nombre_cliente = ""
 
@@ -107,6 +119,13 @@ if st.session_state.limpiar_formulario:
     st.session_state.telefono_cliente = ""
     st.session_state.documento_cliente = ""
     st.session_state.id_membrete = ""
+
+    st.session_state.colegio = "Seleccione..."
+    st.session_state.articulo = "Seleccione..."
+    st.session_state.talla = "Seleccione..."
+
+
+
 
     st.session_state.efectivo = 0
     st.session_state.tarjeta = 0
@@ -213,33 +232,80 @@ col1, col2, col3, col4 = st.columns(4)
 
 with col1:
 
+   # colegio = st.selectbox(
+   #     "Colegio",
+   #     df_colegios.iloc[:, 0].dropna().tolist()
+   # )
+
     colegio = st.selectbox(
-        "Colegio",
-        df_colegios.iloc[:, 0].dropna().tolist()
+    "Colegio",
+    ["Seleccione..."] +
+    df_colegios.iloc[:, 0].dropna().tolist(),
+    key="colegio"
     )
+
 
 with col2:
 
-    archivo_colegio = f"tablas/{colegio}.csv"
+#    archivo_colegio = f"tablas/{colegio}.csv"
+#
+#    df_articulos = pd.read_csv(
+#        archivo_colegio,
+#        sep=";",
+#        header=None,
+#        keep_default_na=False
+#    )
+#
+#    articulo = st.selectbox(
+#        "Artículo",
+#        df_articulos.iloc[:, 0].tolist()
+#    )
+    
+#---------------------
+    if colegio != "Seleccione...":
 
-    df_articulos = pd.read_csv(
-        archivo_colegio,
-        sep=";",
-        header=None,
-        keep_default_na=False
-    )
+        archivo_colegio = f"tablas/{colegio}.csv"
+
+        df_articulos = pd.read_csv(
+            archivo_colegio,
+            sep=";",
+            header=None,
+            keep_default_na=False
+        )
+
+        lista_articulos = (
+            ["Seleccione..."]
+            + df_articulos.iloc[:, 0].tolist()
+        )
+
+    else:
+
+        lista_articulos = ["Seleccione..."]
 
     articulo = st.selectbox(
         "Artículo",
-        df_articulos.iloc[:, 0].tolist()
+        lista_articulos,
+        key="articulo"
     )
+
+
+
+
+#---------------------
 
 with col3:
 
+#    talla = st.selectbox(
+#        "Talla",
+#        df_tallas.iloc[:, 0].dropna().tolist()
+#    )     
     talla = st.selectbox(
         "Talla",
-        df_tallas.iloc[:, 0].dropna().tolist()
+        ["Seleccione..."] +
+        df_tallas.iloc[:, 0].dropna().tolist(),
+        key="talla"
     )
+
 
 with col4:
 
@@ -253,48 +319,43 @@ with col4:
 # --------------------------------------------------
 # CREAR ID DE BÚSQUEDA
 # --------------------------------------------------
+if (
+    colegio == "Seleccione..."
+    or articulo == "Seleccione..."
+    or talla == "Seleccione..."
+):
 
-id_busqueda = f"{colegio}_{articulo}_{talla}"
-
-# --------------------------------------------------
-# BUSCAR PRECIO
-# --------------------------------------------------
-
-precio_df = df_precios[
-    df_precios["ID_BUSQUEDA"] == id_busqueda
-]
-
-if len(precio_df) > 0:
-
-    precio = precio_df.iloc[0]["VALOR AÑO PRESENTE"]
-
-else:
+    id_busqueda = ""
 
     precio = 0
-
-# --------------------------------------------------
-# BUSCAR INVENTARIO
-# --------------------------------------------------
-
-inventario_df = df_inventario[
-    df_inventario["ID_BUSQUEDA"] == id_busqueda
-]
-
-if len(inventario_df) > 0:
-
-    inventario = inventario_df.iloc[0]["INVENTARIO"]
+    inventario = 0
+    subtotal = 0
 
 else:
 
-    inventario = 0
+    id_busqueda = f"{colegio}_{articulo}_{talla}"
 
-# --------------------------------------------------
-# CALCULAR SUBTOTAL
-# --------------------------------------------------
+    # BUSCAR PRECIO
+    precio_df = df_precios[
+        df_precios["ID_BUSQUEDA"] == id_busqueda
+    ]
 
-subtotal = precio * cantidad
+    if len(precio_df) > 0:
+        precio = precio_df.iloc[0]["VALOR AÑO PRESENTE"]
+    else:
+        precio = 0
 
+    # BUSCAR INVENTARIO
+    inventario_df = df_inventario[
+        df_inventario["ID_BUSQUEDA"] == id_busqueda
+    ]
 
+    if len(inventario_df) > 0:
+        inventario = inventario_df.iloc[0]["INVENTARIO"]
+    else:
+        inventario = 0
+
+    subtotal = precio * cantidad
 
 # --------------------------------------------------
 # INFORMACIÓN ENCONTRADA
@@ -353,6 +414,23 @@ with col2:
         "➕ Añadir al carrito",
         use_container_width=True
     )
+#----------------------------------------- seccion de limpiado de menu desplegable
+if añadir:
+
+    if (
+        colegio == "Seleccione..."
+        or articulo == "Seleccione..."
+        or talla == "Seleccione..."
+    ):
+
+        st.error(
+            "Debe seleccionar colegio, artículo y talla."
+        )
+
+        st.stop()
+
+#---------------------------------------------------
+
 
 if añadir:
 
@@ -376,6 +454,9 @@ if añadir:
     )
 
     st.success("Producto añadido al carrito")
+
+
+
 
 st.divider()
 

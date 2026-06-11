@@ -663,13 +663,37 @@ if cerrar_venta:
         f"{meses_texto[ahora.month]} de "
         f"{ahora.year}"
     )
+    
+
+
+    # ------------------------------------------
+    # ¿HAY PRODUCTOS PENDIENTES?
+    # ------------------------------------------
+
+    if (
+        st.session_state.carrito_1["Se debe?"]
+        .astype(bool)
+        .any()
+    ):
+
+        producto_pendiente = "SI"
+
+    else:
+
+        producto_pendiente = "NO"
+
+
+
+
+
 
     # ------------------------------------------
     # CREAR REGISTROS PARA ventas_df
     # ------------------------------------------
     
-
     
+
+     
 
     ventas_nuevas = pd.DataFrame()
 
@@ -790,6 +814,117 @@ if cerrar_venta:
         index=False
     )
 
+    ######----------inicio
+
+        # ------------------------------------------
+    # CARGAR FACTURACIÓN
+    # ------------------------------------------
+
+    df_facturacion = pd.read_csv(
+        "tablas/facturacion_ventas.csv",
+        sep=";"
+    )
+
+    # ------------------------------------------
+    # EVITAR FACTURAS DUPLICADAS
+    # ------------------------------------------
+
+    if (
+        df_facturacion["ID unico de factura"]
+        .astype(str)
+        .eq(id_factura)
+        .any()
+    ):
+
+        st.error(
+            "La factura ya existe en facturación."
+        )
+
+        st.stop()
+
+
+
+    # ------------------------------------------
+    # CREAR REGISTRO DE FACTURACIÓN
+    # ------------------------------------------
+
+    factura_nueva = pd.DataFrame(
+        [{
+            "ID unico de factura": id_factura,
+
+            "fecha de venta": fecha_larga,
+
+            "Día": ahora.day,
+            "Mes": ahora.month,
+            "Año": ahora.year,
+
+            "Nombre cliente": nombre_cliente.strip(),
+
+            "Numero de contacto": telefono_cliente.strip(),
+
+            "ID cliente": documento_cliente.strip(),
+
+            "pago efectivo": efectivo,
+            "pago tarjeta": tarjeta,
+            "pago transferencia": transferencia,
+
+            "total pagado 1": total_registrado,
+
+            "valor factura": total_carrito_1,
+
+            "pendiente": valor_pendiente,
+
+            "fecha de pago 2": "",
+
+            "pago efectivo 2": "",
+            "pago tarjeta 2": "",
+            "pago transferencia 2": "",
+
+            "Estado de factura": estado_factura,
+
+            "total efectivo": "",
+            "total tarjeta": "",
+            " total transfencia ": "",
+            "total pendiente": "",
+
+            " Producto pendiente por entregar ": producto_pendiente,
+
+            "Lista rapida": sede
+        }]
+    )
+
+    # ------------------------------------------
+    # AGREGAR FACTURA
+    # ------------------------------------------
+
+    df_facturacion = pd.concat(
+        [
+            df_facturacion,
+            factura_nueva
+        ],
+        ignore_index=True
+    )
+
+    # ------------------------------------------
+    # GUARDAR FACTURACIÓN
+    # ------------------------------------------
+
+    df_facturacion.to_csv(
+        "tablas/facturacion_ventas.csv",
+        sep=";",
+        index=False
+    )
+
+
+    ######----------fin
+
+
+
+
+
+
+    
+
     # ------------------------------------------
     # LIMPIAR CARRITO
     # ------------------------------------------
@@ -797,6 +932,7 @@ if cerrar_venta:
     st.session_state.carrito_1 = pd.DataFrame(
         columns=[
             "Eliminar",
+            "Se debe?",
             "Colegio",
             "Articulo",
             "Talla",
@@ -825,10 +961,23 @@ if cerrar_venta:
 
 
 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+# Esto siempre debe ser lo ultimo 
    # prueba -------------------------------
 st.divider()
 
-st.subheader("📋 Últimos registros en ventas_df")
+st.subheader("📋 Últimos registros en ventas")
 
 df_ventas_tmp = pd.read_csv(
     "tablas/ventas_df.csv",
@@ -840,10 +989,20 @@ st.dataframe(
     use_container_width=True
 )
 
-#####----------------------------------------
-#  Registrar datos en facturacion
-#####-----------------------------------------
+# ---------------------------------------
+# PRUEBA FACTURACIÓN
+# ---------------------------------------
 
-#####----------------------------------------
-#  ajustar inventario
-#####-----------------------------------------
+st.divider()
+
+st.subheader("🧾 Últimos registros en facturación")
+
+df_facturacion_tmp = pd.read_csv(
+    "tablas/facturacion_ventas.csv",
+    sep=";"
+)
+
+st.dataframe(
+    df_facturacion_tmp.tail(20),
+    use_container_width=True
+)

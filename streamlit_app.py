@@ -768,6 +768,124 @@ if cerrar_venta:
         producto_pendiente = "NO"
 
 
+    # ------------------------------------------
+    # AJUSTE DE INVENTARIO
+    # ------------------------------------------
+
+    df_inventario = pd.read_csv(
+        "tablas/inventario.csv",
+        sep=";"
+    )
+
+    # ------------------------------------------
+    # VALIDAR IDs DUPLICADOS
+    # ------------------------------------------
+
+    ids_duplicados = df_inventario[
+        df_inventario["ID_BUSQUEDA"]
+        .astype(str)
+        .duplicated(keep=False)
+    ]
+
+    if len(ids_duplicados) > 0:
+
+        st.error(
+            "Existen ID_BUSQUEDA duplicados en inventario.csv. "
+            "Corrija el inventario antes de registrar ventas."
+        )
+
+        st.dataframe(
+            ids_duplicados[
+                [
+                    "colegio",
+                    "PRODUCTO",
+                    "TALLA",
+                    "ID_BUSQUEDA"
+                ]
+            ]
+        )
+
+        st.stop()
+
+
+    # ------------------------------------------
+    # FASE 1 - VALIDAR
+    # ------------------------------------------
+
+    for _, fila in st.session_state.carrito_1.iterrows():
+
+        id_producto = str(
+            fila["ID_BUSQUEDA"]
+        )
+
+        existe = (
+            df_inventario["ID_BUSQUEDA"]
+            .astype(str)
+            .eq(id_producto)
+            .any()
+        )
+
+        if not existe:
+            
+            st.error(
+            f"""
+            Producto no encontrado en inventario.
+
+            ID: {id_producto}
+
+            La venta fue cancelada para evitar
+            inconsistencias en los datos.
+            """
+            )
+
+            st.stop()
+
+    # ------------------------------------------
+    # FASE 2 - DESCONTAR
+    # ------------------------------------------
+
+    for _, fila in st.session_state.carrito_1.iterrows():
+
+        id_producto = str(
+            fila["ID_BUSQUEDA"]
+        )
+
+        cantidad_vendida = int(
+            fila["Cantidad"]
+        )
+
+        indice = df_inventario[
+            df_inventario["ID_BUSQUEDA"]
+            .astype(str)
+            .eq(id_producto)
+        ].index[0]
+
+        df_inventario.loc[
+            indice,
+            "INVENTARIO"
+        ] = (
+            int(
+                df_inventario.loc[
+                    indice,
+                    "INVENTARIO"
+                ]
+            )
+            - cantidad_vendida
+        )
+
+    # ------------------------------------------
+    # GUARDAR INVENTARIO
+    # ------------------------------------------
+
+    df_inventario.to_csv(
+        "tablas/inventario.csv",
+        sep=";",
+        index=False
+    )
+
+
+
+
 
 
 
@@ -1004,14 +1122,7 @@ if cerrar_venta:
     )
 
 
-    ######----------fin
-
-
-
-
-
-
-    
+    ######----------fin    
 
     # ------------------------------------------
     # LIMPIAR CARRITO
@@ -1045,20 +1156,7 @@ if cerrar_venta:
         "Venta registrada correctamente."
     )
 
-    st.rerun()
-
-
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+    st.rerun()   
   
   
 # Esto siempre debe ser lo ultimo 

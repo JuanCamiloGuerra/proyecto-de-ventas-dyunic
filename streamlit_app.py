@@ -2,6 +2,8 @@
 import streamlit as st
 import pandas as pd
 from datetime import datetime
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 # --------------------------------------------------
 # CONFIGURACIÓN
@@ -655,8 +657,10 @@ if cerrar_venta:
         "diciembre"
     ]
 
-    ahora = datetime.now()
-
+    ahora = datetime.now(
+    ZoneInfo("America/Bogota")
+    )
+    hora = ahora.strftime("%H:%M:%S")
     fecha_larga = (
         f"{dias_semana[ahora.weekday()]}, "
         f"{ahora.day} de "
@@ -748,6 +752,8 @@ if cerrar_venta:
     ventas_nuevas["año"] = (
         ahora.year
     )
+    
+    ventas_nuevas["hora"] = hora
 
     ventas_nuevas["ID unico de artículo"] = (
         st.session_state.carrito_1["ID_BUSQUEDA"]
@@ -857,6 +863,7 @@ if cerrar_venta:
             "Día": ahora.day,
             "Mes": ahora.month,
             "Año": ahora.year,
+            "Hora": hora,
 
             "Nombre cliente": nombre_cliente.strip(),
 

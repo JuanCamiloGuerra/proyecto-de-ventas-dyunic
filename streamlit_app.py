@@ -696,17 +696,48 @@ if cerrar_venta:
         )
         st.stop()
 
+    
+
     # ------------------------------------------
     # ESTADO FACTURA
     # ------------------------------------------
 
-    if valor_pendiente == 0:
+    # ¿Todos los productos fueron entregados?
+    todos_entregados = not (
+        st.session_state.carrito_1["Se debe?"]
+        .astype(bool)
+        .any()
+    )
 
-        estado_factura = "PAGADA"
+    # 1. SIN INICIAR / SEPARADO
+    if (
+        total_registrado == 0
+        and len(st.session_state.carrito_1) > 0
+    ):
 
+        estado_factura = "SIN INICIAR / SEPARADO"
+
+    # 2. PAGADA / CERRADA
+    elif (
+        valor_pendiente == 0
+        and todos_entregados
+    ):
+
+        estado_factura = "PAGADA / CERRADA"
+
+    # 3. ABONADA / PENDIENTE
+    elif (
+        total_registrado > 0
+        and valor_pendiente > 0
+    ):
+
+        estado_factura = "ABONADA / PENDIENTE"
+
+    # 4. REVISAR
     else:
 
-        estado_factura = "PENDIENTE"
+        estado_factura = "REVISAR"
+
 
     # ------------------------------------------
     # FECHA BONITA

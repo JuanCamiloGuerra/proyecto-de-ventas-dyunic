@@ -800,10 +800,20 @@ antifluido;La Fayette;M;130000;antifluido_La Fayette_M;;;;;130000;143000;158000;
 antifluido;La Fayette;L;135000;antifluido_La Fayette_L;;;;;135000;149000;164000;181000
 antifluido;La Fayette;XL;140000;antifluido_La Fayette_XL;;;;;140000;154000;170000;187000
 antifluido;La Fayette;XXL;150000;antifluido_La Fayette_XL;;;;;150000;165000;182000;201000
-dotacion;camisa oxford unisex;S;42000;dotacion_camisa oxford unisex_S;;;;;40000;44000;49000;54000
-dotacion;camisa oxford unisex;M;42000;dotacion_camisa oxford unisex_M;;;;;40000;44000;49000;54000
-dotacion;camisa oxford unisex;L;42000;dotacion_camisa oxford unisex_L;;;;;40000;44000;49000;54000
-dotacion;camisa oxford unisex;XL;42000;dotacion_camisa oxford unisex_XL;;;;;40000;44000;49000;54000
+antifluido;Nacional;S;100000;antifluido_Nacional_S;;;;;;;;
+antifluido;Nacional;M;105000;antifluido_Nacional_M;;;;;;;;
+antifluido;Nacional;L;110000;antifluido_Nacional_L;;;;;;;;
+antifluido;Nacional;XL;115000;antifluido_Nacional_XL;;;;;;;;
+antifluido;Nacional;XXL;120000;antifluido_Nacional_XXL;;;;;;;;
+dotacion;camisa oxford mujer azul;16;42000;dotacion_camisa oxford mujer azul_16;;;;;42000;47000;52000;58000
+dotacion;camisa oxford mujer azul;S;42000;dotacion_camisa oxford mujer azul_S;;;;;42000;47000;52000;58000
+dotacion;camisa oxford mujer azul;M;42000;dotacion_camisa oxford mujer azul_M;;;;;42000;47000;52000;58000
+dotacion;camisa oxford mujer azul;L;42000;dotacion_camisa oxford mujer azul_L;;;;;42000;47000;52000;58000
+dotacion;camisa oxford mujer azul;XL;42000;dotacion_camisa oxford mujer azul_XL;;;;;42000;47000;52000;58000
+dotacion;camisa oxford hombre azul;S;42000;dotacion_camisa oxford hombre azul_S;;;;;42000;47000;52000;58000
+dotacion;camisa oxford hombre azul;M;42000;dotacion_camisa oxford hombre azul_M;;;;;42000;47000;52000;58000
+dotacion;camisa oxford hombre azul;L;42000;dotacion_camisa oxford hombre azul_L;;;;;42000;47000;52000;58000
+dotacion;camisa oxford hombre azul;XL;42000;dotacion_camisa oxford hombre azul_XL;;;;;42000;47000;52000;58000
 dotacion;jeans hombre strech;28;36000;dotacion_jeans hombre strech_28;;;;;36000;40000;44000;49000
 dotacion;jeans hombre strech;30;36000;dotacion_jeans hombre strech_30;;;;;36000;40000;44000;49000
 dotacion;jeans hombre strech;32;36000;dotacion_jeans hombre strech_32;;;;;36000;40000;44000;49000

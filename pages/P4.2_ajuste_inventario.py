@@ -288,7 +288,8 @@ st.session_state.carrito_ajustes = st.data_editor(
         "Talla",
         "Cantidad",
         "Costo Unitario",
-        "Subtotal"
+        "Subtotal",
+        "ID_BUSQUEDA"
     ],
 
     column_config={
@@ -551,7 +552,8 @@ if registrar:
     # ------------------------------------------
 
     df_registro = pd.read_csv(
-        "tablas/ajustes_inventario_registro.csv"
+        "tablas/ajustes_inventario_registro.csv",
+        sep=";"
         
     )
 
@@ -559,56 +561,52 @@ if registrar:
     # CREAR REGISTROS
     # ------------------------------------------
 
-    registros_nuevos = pd.DataFrame()
+    
 
-    registros_nuevos["Fecha"] = fecha
+    # ------------------------------------------
+    # CREAR REGISTROS
+    # ------------------------------------------
 
-    registros_nuevos["Día"] = (
-        ahora.day
+    registros_nuevos = []
+
+    for _, fila in (
+        st.session_state.carrito_ajustes.iterrows()
+    ):
+
+        registros_nuevos.append({
+
+            "Fecha": fecha,
+
+            "Día": ahora.day,
+
+            "Mes": ahora.month,
+
+            "Año": ahora.year,
+
+            "Accion": fila["Movimiento"],
+
+            "Desc.1": fila["Colegio"],
+
+            "Desc.2": fila["Articulo"],
+
+            "Talla": fila["Talla"],
+
+            "cantidad": fila["Cantidad"],
+
+            "Motivo": fila["Motivo"],
+
+            "INVENTARIO": "",
+
+            "Val. Unitario": fila["Costo Unitario"],
+
+            "Subtotal": fila["Subtotal"]
+
+        })
+
+    registros_nuevos = pd.DataFrame(
+        registros_nuevos
     )
-
-    registros_nuevos["Mes"] = (
-        ahora.month
-    )
-
-    registros_nuevos["Año"] = (
-        ahora.year
-    )
-
-    registros_nuevos["Accion"] = (
-        st.session_state.carrito_ajustes["Movimiento"]
-    )
-
-    registros_nuevos["Desc.1"] = (
-        st.session_state.carrito_ajustes["Colegio"]
-    )
-
-    registros_nuevos["Desc.2"] = (
-        st.session_state.carrito_ajustes["Articulo"]
-    )
-
-    registros_nuevos["Talla"] = (
-        st.session_state.carrito_ajustes["Talla"]
-    )
-
-    registros_nuevos["cantidad"] = (
-        st.session_state.carrito_ajustes["Cantidad"]
-    )
-
-    registros_nuevos["Motivo"] = (
-        st.session_state.carrito_ajustes["Motivo"]
-    )
-
-    registros_nuevos["INVENTARIO"] = ""
-
-    registros_nuevos["Val. Unitario"] = (
-        st.session_state.carrito_ajustes["Costo Unitario"]
-    )
-
-    registros_nuevos["Subtotal"] = (
-        st.session_state.carrito_ajustes["Subtotal"]
-    )
-
+    st.write(registros_nuevos)
     # ------------------------------------------
     # AGREGAR REGISTROS
     # ------------------------------------------

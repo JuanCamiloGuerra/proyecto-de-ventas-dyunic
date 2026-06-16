@@ -1,6 +1,6 @@
 colegio;PRODUCTO;TALLA;INVENTARIO;ID_BUSQUEDA
-liceo pupo jimenez;blusa;2;2;liceo pupo jimenez_blusa_2
-liceo pupo jimenez;blusa;4;0;liceo pupo jimenez_blusa_4
+liceo pupo jimenez;blusa;2;4;liceo pupo jimenez_blusa_2
+liceo pupo jimenez;blusa;4;-1;liceo pupo jimenez_blusa_4
 liceo pupo jimenez;blusa;6;8;liceo pupo jimenez_blusa_6
 liceo pupo jimenez;blusa;8;4;liceo pupo jimenez_blusa_8
 liceo pupo jimenez;blusa;10;6;liceo pupo jimenez_blusa_10
@@ -31,7 +31,7 @@ liceo pupo jimenez;camiseta diario;10;5;liceo pupo jimenez_camiseta diario_10
 liceo pupo jimenez;camiseta diario;12;6;liceo pupo jimenez_camiseta diario_12
 liceo pupo jimenez;camiseta diario;14;9;liceo pupo jimenez_camiseta diario_14
 liceo pupo jimenez;camiseta diario;16;4;liceo pupo jimenez_camiseta diario_16
-liceo pupo jimenez;camiseta diario;S;13;liceo pupo jimenez_camiseta diario_S
+liceo pupo jimenez;camiseta diario;S;12;liceo pupo jimenez_camiseta diario_S
 liceo pupo jimenez;camiseta diario;M;6;liceo pupo jimenez_camiseta diario_M
 liceo pupo jimenez;camiseta diario;L;8;liceo pupo jimenez_camiseta diario_L
 liceo pupo jimenez;camiseta diario;XL;3;liceo pupo jimenez_camiseta diario_XL
@@ -43,7 +43,7 @@ liceo pupo jimenez;camiseta fisica;10;11;liceo pupo jimenez_camiseta fisica_10
 liceo pupo jimenez;camiseta fisica;12;4;liceo pupo jimenez_camiseta fisica_12
 liceo pupo jimenez;camiseta fisica;14;8;liceo pupo jimenez_camiseta fisica_14
 liceo pupo jimenez;camiseta fisica;16;7;liceo pupo jimenez_camiseta fisica_16
-liceo pupo jimenez;camiseta fisica;S;7;liceo pupo jimenez_camiseta fisica_S
+liceo pupo jimenez;camiseta fisica;S;6;liceo pupo jimenez_camiseta fisica_S
 liceo pupo jimenez;camiseta fisica;M;8;liceo pupo jimenez_camiseta fisica_M
 liceo pupo jimenez;camiseta fisica;L;4;liceo pupo jimenez_camiseta fisica_L
 liceo pupo jimenez;camiseta fisica;XL;1;liceo pupo jimenez_camiseta fisica_XL
@@ -55,7 +55,7 @@ liceo pupo jimenez;bombacho;10;18;liceo pupo jimenez_bombacho_10
 liceo pupo jimenez;bombacho;12;3;liceo pupo jimenez_bombacho_12
 liceo pupo jimenez;bombacho;14;3;liceo pupo jimenez_bombacho_14
 liceo pupo jimenez;bombacho;16;19;liceo pupo jimenez_bombacho_16
-liceo pupo jimenez;bombacho;S;6;liceo pupo jimenez_bombacho_S
+liceo pupo jimenez;bombacho;S;5;liceo pupo jimenez_bombacho_S
 liceo pupo jimenez;bombacho;M;6;liceo pupo jimenez_bombacho_M
 liceo pupo jimenez;bombacho;L;14;liceo pupo jimenez_bombacho_L
 liceo pupo jimenez;bombacho;XL;0;liceo pupo jimenez_bombacho_XL
@@ -674,7 +674,7 @@ Pantalones Azules;intermedio;12;3;Pantalones Azules_intermedio_12
 Pantalones Azules;intermedio;14;13;Pantalones Azules_intermedio_14
 Pantalones Azules;intermedio;16;11;Pantalones Azules_intermedio_16
 Pantalones Azules;intermedio;28;16;Pantalones Azules_intermedio_28
-Pantalones Azules;intermedio;30;16;Pantalones Azules_intermedio_30
+Pantalones Azules;intermedio;30;15;Pantalones Azules_intermedio_30
 Pantalones Azules;intermedio;32;0;Pantalones Azules_intermedio_32
 Pantalones Azules;intermedio;34;2;Pantalones Azules_intermedio_34
 Pantalones Azules;intermedio;36;3;Pantalones Azules_intermedio_36

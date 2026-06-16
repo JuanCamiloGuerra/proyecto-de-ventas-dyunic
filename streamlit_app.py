@@ -15,7 +15,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("VENTAS DYUNIC 1")
+st.title("VENTAS DYUNIC 1 (PROTOTIPADO)")
 
 
 # --------------------------------------------------

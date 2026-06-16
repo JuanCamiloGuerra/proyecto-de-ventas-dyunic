@@ -64,7 +64,8 @@ if "carrito_ajustes" not in st.session_state:
             "Talla",
             "Cantidad",
             "Costo Unitario",
-            "Subtotal"
+            "Subtotal",
+            "ID_BUSQUEDA"
         ]
     )
 
@@ -249,7 +250,8 @@ if añadir:
             "Talla": talla,
             "Cantidad": cantidad,
             "Costo Unitario": precio,
-            "Subtotal": subtotal
+            "Subtotal": subtotal,
+            "ID_BUSQUEDA": id_busqueda
         }]
     )
 
@@ -410,6 +412,266 @@ registrar = st.button(
 
 if registrar:
 
-    st.success(
-        "Ajuste listo para registrar en inventario."
+    # ------------------------------------------
+    # VALIDAR CARRITO
+    # ------------------------------------------
+
+    if len(st.session_state.carrito_ajustes) == 0:
+
+        st.error(
+            "No hay movimientos para registrar."
+        )
+
+        st.stop()
+
+    # ------------------------------------------
+    # FECHA Y HORA BOGOTÁ
+    # ------------------------------------------
+
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+
+    ahora = datetime.now(
+        ZoneInfo("America/Bogota")
     )
+
+    fecha = ahora.strftime(
+        "%d/%m/%Y"
+    )
+
+    # ------------------------------------------
+    # CARGAR INVENTARIO
+    # ------------------------------------------
+
+    df_inventario = pd.read_csv(
+        "tablas/inventario.csv",
+        sep=";"
+    )
+
+    # ------------------------------------------
+    # VALIDAR EXISTENCIA
+    # ------------------------------------------
+
+    for _, fila in (
+        st.session_state.carrito_ajustes.iterrows()
+    ):
+
+        id_producto = str(
+            fila["ID_BUSQUEDA"]
+        )
+
+        existe = (
+            df_inventario["ID_BUSQUEDA"]
+            .astype(str)
+            .eq(id_producto)
+            .any()
+        )
+
+        if not existe:
+
+            st.error(
+                f"""
+                Producto no encontrado
+                en inventario:
+
+                {id_producto}
+
+                Elimine el producto
+                del carrito o créelo
+                primero en inventario.
+                """
+            )
+
+            st.stop()
+
+    # ------------------------------------------
+    # AJUSTAR INVENTARIO
+    # ------------------------------------------
+
+    for _, fila in (
+        st.session_state.carrito_ajustes.iterrows()
+    ):
+
+        id_producto = str(
+            fila["ID_BUSQUEDA"]
+        )
+
+        cantidad = int(
+            fila["Cantidad"]
+        )
+
+        movimiento = str(
+            fila["Movimiento"]
+        )
+
+        indice = df_inventario[
+            df_inventario["ID_BUSQUEDA"]
+            .astype(str)
+            .eq(id_producto)
+        ].index[0]
+
+        inventario_actual = int(
+            df_inventario.loc[
+                indice,
+                "INVENTARIO"
+            ]
+        )
+
+        if movimiento == "INGRESA":
+
+            nuevo_inventario = (
+                inventario_actual
+                + cantidad
+            )
+
+        else:
+
+            nuevo_inventario = (
+                inventario_actual
+                - cantidad
+            )
+
+        df_inventario.loc[
+            indice,
+            "INVENTARIO"
+        ] = nuevo_inventario
+
+    # ------------------------------------------
+    # GUARDAR INVENTARIO
+    # ------------------------------------------
+
+    df_inventario.to_csv(
+        "tablas/inventario.csv",
+        sep=";",
+        index=False
+    )
+
+    # ------------------------------------------
+    # CARGAR REGISTRO AJUSTES
+    # ------------------------------------------
+
+    df_registro = pd.read_csv(
+        "tablas/ajustes_inventario_registro.csv"
+        
+    )
+
+    # ------------------------------------------
+    # CREAR REGISTROS
+    # ------------------------------------------
+
+    registros_nuevos = pd.DataFrame()
+
+    registros_nuevos["Fecha"] = fecha
+
+    registros_nuevos["Día"] = (
+        ahora.day
+    )
+
+    registros_nuevos["Mes"] = (
+        ahora.month
+    )
+
+    registros_nuevos["Año"] = (
+        ahora.year
+    )
+
+    registros_nuevos["Accion"] = (
+        st.session_state.carrito_ajustes["Movimiento"]
+    )
+
+    registros_nuevos["Desc.1"] = (
+        st.session_state.carrito_ajustes["Colegio"]
+    )
+
+    registros_nuevos["Desc.2"] = (
+        st.session_state.carrito_ajustes["Articulo"]
+    )
+
+    registros_nuevos["Talla"] = (
+        st.session_state.carrito_ajustes["Talla"]
+    )
+
+    registros_nuevos["cantidad"] = (
+        st.session_state.carrito_ajustes["Cantidad"]
+    )
+
+    registros_nuevos["Motivo"] = (
+        st.session_state.carrito_ajustes["Motivo"]
+    )
+
+    registros_nuevos["INVENTARIO"] = ""
+
+    registros_nuevos["Val. Unitario"] = (
+        st.session_state.carrito_ajustes["Costo Unitario"]
+    )
+
+    registros_nuevos["Subtotal"] = (
+        st.session_state.carrito_ajustes["Subtotal"]
+    )
+
+    # ------------------------------------------
+    # AGREGAR REGISTROS
+    # ------------------------------------------
+
+    df_registro = pd.concat(
+        [
+            df_registro,
+            registros_nuevos
+        ],
+        ignore_index=True
+    )
+
+    # ------------------------------------------
+    # GUARDAR REGISTRO
+    # ------------------------------------------
+
+    df_registro.to_csv(
+        "tablas/ajustes_inventario_registro.csv",
+        sep=";",
+        index=False
+    )
+
+    # ------------------------------------------
+    # LIMPIAR CARRITO
+    # ------------------------------------------
+
+    st.session_state.carrito_ajustes = pd.DataFrame(
+        columns=[
+            "Eliminar",
+            "Movimiento",
+            "Motivo",
+            "Colegio",
+            "Articulo",
+            "Talla",
+            "Cantidad",
+            "Costo Unitario",
+            "Subtotal",
+            "ID_BUSQUEDA"
+        ]
+    )
+
+    st.success(
+        "Ajuste registrado correctamente."
+    )
+
+    st.rerun()
+
+# ---------------------------------------
+# PRUEBA REGISTRO AJUSTES INVENTARIO
+# ---------------------------------------
+
+st.divider()
+
+st.subheader(
+    "🔄 Últimos registros de ajustes de inventario"
+)
+
+df_ajustes_tmp = pd.read_csv(
+    "tablas/ajustes_inventario_registro.csv",
+    sep=";"
+)
+
+st.dataframe(
+    df_ajustes_tmp.tail(5),
+    use_container_width=True
+)

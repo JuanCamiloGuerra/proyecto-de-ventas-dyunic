@@ -42,17 +42,17 @@ CART_COLUMNS = [
 ]
 
 DEFAULT_SESSION_STATE = {
-    "colegio": "Seleccione...",
-    "articulo": "Seleccione...",
-    "talla": "Seleccione...",
-    "nombre_cliente": "",
-    "telefono_cliente": "",
-    "documento_cliente": "",
-    "id_membrete": "",
-    "efectivo": 0,
-    "tarjeta": 0,
-    "transferencia": 0,
-    "limpiar_formulario": False,
+    "p1_colegio": "Seleccione...",
+    "p1_articulo": "Seleccione...",
+    "p1_talla": "Seleccione...",
+    "p1_nombre_cliente": "",
+    "p1_telefono_cliente": "",
+    "p1_documento_cliente": "",
+    "p1_id_membrete": "",
+    "p1_efectivo": 0,
+    "p1_tarjeta": 0,
+    "p1_transferencia": 0,
+    "p1_limpiar_formulario": False,
 }
 
 
@@ -64,12 +64,12 @@ def crear_carrito_vacio():
 # --------------------------------------------------
 
 st.set_page_config(
-    page_title="VENTAS DYUNIC-PRUEBA TABLAS + LISTAS",
+    page_title="VENTAS DYUNIC - Venta 1",
     page_icon="🛒",
     layout="wide"
 )
 
-st.title("VENTAS DYUNIC 1 (PROTOTIPADO)")
+st.title("VENTAS DYUNIC - Venta 1")
 
 
 # --------------------------------------------------
@@ -113,22 +113,22 @@ df_inventario = pd.read_csv(
 # CREAR CARRITO
 # --------------------------------------------------
 
-if "carrito_1" not in st.session_state:
+if "p1_carrito_1" not in st.session_state:
 
-    st.session_state.carrito_1 = crear_carrito_vacio()
+    st.session_state.p1_carrito_1 = crear_carrito_vacio()
 
 
 # --------------------------------------------------
 # DATOS DEL CLIENTE
 # --------------------------------------------------
 
-if st.session_state.limpiar_formulario:
+if st.session_state.p1_limpiar_formulario:
 
     for key, default_value in DEFAULT_SESSION_STATE.items():
-        if key != "limpiar_formulario":
+        if key != "p1_limpiar_formulario":
             st.session_state[key] = default_value
 
-    st.session_state.limpiar_formulario = False
+    st.session_state.p1_limpiar_formulario = False
 
 
 st.header("Datos del cliente")
@@ -139,35 +139,36 @@ with col1:
 
     nombre_cliente = st.text_input(
         "Nombre",
-        key="nombre_cliente"
+        key="p1_nombre_cliente"
     )
 
 with col2:
 
     telefono_cliente = st.text_input(
         "Teléfono",
-        key="telefono_cliente"
+        key="p1_telefono_cliente"
     )
 
 with col3:
 
     documento_cliente = st.text_input(
         "Documento",
-        key="documento_cliente"
+        key="p1_documento_cliente"
     )
 
 with col4:
 
     id_membrete = st.text_input(
         "ID Membrete",
-        key="id_membrete"
+        key="p1_id_membrete"
     )
 
 with col5:
 
     sede = st.selectbox(
         "Sede",
-        SEDES
+        SEDES,
+        key="p1_sede"
     )
 
 # --------------------------------------------------
@@ -231,7 +232,7 @@ with col1:
     "Colegio",
     ["Seleccione..."] +
     df_colegios.iloc[:, 0].dropna().tolist(),
-    key="colegio"
+    key="p1_colegio"
     )
 
 
@@ -275,7 +276,7 @@ with col2:
     articulo = st.selectbox(
         "Artículo",
         lista_articulos,
-        key="articulo"
+        key="p1_articulo"
     )
 
 with col3:
@@ -284,7 +285,7 @@ with col3:
         "Talla",
         ["Seleccione..."] +
         df_tallas.iloc[:, 0].dropna().tolist(),
-        key="talla"
+        key="p1_talla"
     )
 
 
@@ -294,7 +295,8 @@ with col4:
         "Cantidad",
         min_value=1,
         value=1,
-        step=1
+        step=1,
+        key="p1_cantidad"
     )
 
 # --------------------------------------------------
@@ -393,7 +395,8 @@ with col2:
 
     añadir = st.button(
         "➕ Añadir al carrito",
-        use_container_width=True
+        use_container_width=True,
+        key="p1_anadir_carrito"
     )
 #----------------------------------------- seccion de limpiado de menu desplegable
 if añadir:
@@ -429,8 +432,8 @@ if añadir:
         }]
     )
 
-    st.session_state.carrito_1 = pd.concat(
-        [st.session_state.carrito_1, nueva_fila],
+    st.session_state.p1_carrito_1 = pd.concat(
+        [st.session_state.p1_carrito_1, nueva_fila],
         ignore_index=True
     )
 
@@ -447,10 +450,11 @@ st.divider()
 
 st.header("Carrito")
 
-st.session_state.carrito_1 = st.data_editor(
-    st.session_state.carrito_1,
+st.session_state.p1_carrito_1 = st.data_editor(
+    st.session_state.p1_carrito_1,
     use_container_width=True,
     hide_index=True,
+    key="p1_carrito_editor",
 
     disabled=[
         "Colegio",
@@ -482,14 +486,15 @@ with col2:
 
     eliminar = st.button(
         "🗑️ Eliminar seleccionados",
-        use_container_width=True
+        use_container_width=True,
+        key="p1_eliminar_seleccionados"
     )
 
 if eliminar:
 
-    st.session_state.carrito_1 = (
-        st.session_state.carrito_1[
-            st.session_state.carrito_1["Eliminar"] == False
+    st.session_state.p1_carrito_1 = (
+        st.session_state.p1_carrito_1[
+            st.session_state.p1_carrito_1["Eliminar"] == False
         ]
         .reset_index(drop=True)
     )
@@ -501,7 +506,7 @@ if eliminar:
 # --------------------------------------------------
 
 total_carrito_1 = (
-    st.session_state.carrito_1["Subtotal"]
+    st.session_state.p1_carrito_1["Subtotal"]
     .sum()
 )
 
@@ -534,7 +539,7 @@ with col1:
         "Efectivo",
         min_value=0,
         step=1000,
-        key="efectivo"
+        key="p1_efectivo"
     )
 
 with col2:
@@ -543,7 +548,7 @@ with col2:
         "Tarjeta",
         min_value=0,
         step=1000,
-        key="tarjeta"
+        key="p1_tarjeta"
     )
 
 with col3:
@@ -552,7 +557,7 @@ with col3:
         "Transferencia",
         min_value=0,
         step=1000,
-        key="transferencia"
+        key="p1_transferencia"
     )
 
 # --------------------------------------------------
@@ -633,7 +638,8 @@ st.divider()
 
 cerrar_venta = st.button(
     "✅ Cerrar venta",
-    use_container_width=True
+    use_container_width=True,
+    key="p1_cerrar_venta"
 )
 
 # --------------------------------------------------
@@ -646,7 +652,7 @@ if cerrar_venta:
     # VALIDACIONES
     # ------------------------------------------
 
-    if len(st.session_state.carrito_1) == 0:
+    if len(st.session_state.p1_carrito_1) == 0:
 
         st.error(
             "El carrito está vacío."
@@ -682,7 +688,7 @@ if cerrar_venta:
 
     # ¿Todos los productos fueron entregados?
     todos_entregados = not (
-        st.session_state.carrito_1["Se debe?"]
+        st.session_state.p1_carrito_1["Se debe?"]
         .astype(bool)
         .any()
     )
@@ -690,7 +696,7 @@ if cerrar_venta:
     # 1. SIN INICIAR / SEPARADO
     if (
         total_registrado == 0
-        and len(st.session_state.carrito_1) > 0
+        and len(st.session_state.p1_carrito_1) > 0
     ):
 
         estado_factura = "SIN INICIAR / SEPARADO"
@@ -763,7 +769,7 @@ if cerrar_venta:
     # ------------------------------------------
 
     if (
-        st.session_state.carrito_1["Se debe?"]
+        st.session_state.p1_carrito_1["Se debe?"]
         .astype(bool)
         .any()
     ):
@@ -819,7 +825,7 @@ if cerrar_venta:
     # FASE 1 - VALIDAR
     # ------------------------------------------
 
-    for _, fila in st.session_state.carrito_1.iterrows():
+    for _, fila in st.session_state.p1_carrito_1.iterrows():
 
         id_producto = str(
             fila["ID_BUSQUEDA"]
@@ -851,7 +857,7 @@ if cerrar_venta:
     # FASE 2 - DESCONTAR
     # ------------------------------------------
 
-    for _, fila in st.session_state.carrito_1.iterrows():
+    for _, fila in st.session_state.p1_carrito_1.iterrows():
 
         id_producto = str(
             fila["ID_BUSQUEDA"]
@@ -908,28 +914,28 @@ if cerrar_venta:
     ventas_nuevas = pd.DataFrame()
 
     ventas_nuevas["colegio"] = (
-        st.session_state.carrito_1["Colegio"]
+        st.session_state.p1_carrito_1["Colegio"]
     )
 
     ventas_nuevas["articulo"] = (
-        st.session_state.carrito_1["Articulo"]
+        st.session_state.p1_carrito_1["Articulo"]
     )
 
     ventas_nuevas["talla"] = (
-        st.session_state.carrito_1["Talla"]
+        st.session_state.p1_carrito_1["Talla"]
     )
 
     ventas_nuevas["cantidad"] = (
-        st.session_state.carrito_1["Cantidad"]
+        st.session_state.p1_carrito_1["Cantidad"]
     )
 
     ventas_nuevas["precio individual"] = (
-        st.session_state.carrito_1["Valor Unitario"]
+        st.session_state.p1_carrito_1["Valor Unitario"]
         .astype(int)
     )
 
     ventas_nuevas["subtotal"] = (
-        st.session_state.carrito_1["Subtotal"]
+        st.session_state.p1_carrito_1["Subtotal"]
         .astype(int)
     )
 
@@ -962,11 +968,11 @@ if cerrar_venta:
     ventas_nuevas["hora"] = hora
 
     ventas_nuevas["ID unico de artículo"] = (
-        st.session_state.carrito_1["ID_BUSQUEDA"]
+        st.session_state.p1_carrito_1["ID_BUSQUEDA"]
     )
     
     ventas_nuevas["Producto pendiente por entregar"] = (
-    st.session_state.carrito_1["Se debe?"]
+    st.session_state.p1_carrito_1["Se debe?"]
     .map({
         True: "SI",
         False: "NO"
@@ -1135,13 +1141,13 @@ if cerrar_venta:
     # LIMPIAR CARRITO
     # ------------------------------------------
 
-    st.session_state.carrito_1 = crear_carrito_vacio()
+    st.session_state.p1_carrito_1 = crear_carrito_vacio()
 
     # ------------------------------------------
     # Actualizar inputs
     # ------------------------------------------
     
-    st.session_state.limpiar_formulario = True
+    st.session_state.p1_limpiar_formulario = True
 
   # ------------------------------------------
     # MENSAJE FINAL

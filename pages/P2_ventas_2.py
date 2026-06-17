@@ -47,9 +47,9 @@ df_inventario = pd.read_csv(
 # CREAR CARRITO
 # --------------------------------------------------
 
-if "carrito_2" not in st.session_state:
+if "p2_carrito_2" not in st.session_state:
 
-    st.session_state.carrito_2 = pd.DataFrame(
+    st.session_state.p2_carrito_2 = pd.DataFrame(
         columns=[
             "Eliminar",
             "Colegio",
@@ -73,25 +73,29 @@ col1, col2, col3, col4, col5 = st.columns(5)
 with col1:
 
     nombre_cliente = st.text_input(
-        "Nombre"
+        "Nombre",
+        key="p2_nombre_cliente"
     )
 
 with col2:
 
     telefono_cliente = st.text_input(
-        "Teléfono"
+        "Teléfono",
+        key="p2_telefono_cliente"
     )
 
 with col3:
 
     documento_cliente = st.text_input(
-        "Documento"
+        "Documento",
+        key="p2_documento_cliente"
     )
 
 with col4:
 
     id_membrete = st.text_input(
-        "ID Membrete"
+        "ID Membrete",
+        key="p2_id_membrete"
     )
 
 with col5:
@@ -105,7 +109,8 @@ with col5:
             "J-BCL",
             "J-BBV",
             "K-BCL"
-        ]
+        ],
+        key="p2_sede"
     )
 
 # --------------------------------------------------
@@ -125,7 +130,8 @@ id_factura = (
 st.text_input(
     "ID Factura",
     value=id_factura,
-    disabled=True
+    disabled=True,
+    key="p2_id_factura"
 )
 
 st.divider()
@@ -143,7 +149,8 @@ with col1:
 
     colegio = st.selectbox(
         "Colegio",
-        df_colegios.iloc[:, 0].dropna().tolist()
+        df_colegios.iloc[:, 0].dropna().tolist(),
+        key="p2_colegio"
     )
 
 with col2:
@@ -159,14 +166,16 @@ with col2:
 
     articulo = st.selectbox(
         "Artículo",
-        df_articulos.iloc[:, 0].tolist()
+        df_articulos.iloc[:, 0].tolist(),
+        key="p2_articulo"
     )
 
 with col3:
 
     talla = st.selectbox(
         "Talla",
-        df_tallas.iloc[:, 0].dropna().tolist()
+        df_tallas.iloc[:, 0].dropna().tolist(),
+        key="p2_talla"
     )
 
 with col4:
@@ -175,7 +184,8 @@ with col4:
         "Cantidad",
         min_value=1,
         value=1,
-        step=1
+        step=1,
+        key="p2_cantidad"
     )
 
 # --------------------------------------------------
@@ -244,7 +254,8 @@ with col1:
     st.text_input(
         "ID BUSQUEDA",
         value=id_busqueda,
-        disabled=True
+        disabled=True,
+        key="p2_id_busqueda"
     )
 
 
@@ -279,7 +290,8 @@ with col2:
 
     añadir = st.button(
         "➕ Añadir al carrito",
-        use_container_width=True
+        use_container_width=True,
+        key="p2_anadir_carrito"
     )
 
 if añadir:
@@ -296,8 +308,8 @@ if añadir:
         }]
     )
 
-    st.session_state.carrito_2 = pd.concat(
-        [st.session_state.carrito_2, nueva_fila],
+    st.session_state.p2_carrito_2 = pd.concat(
+        [st.session_state.p2_carrito_2, nueva_fila],
         ignore_index=True
     )
 
@@ -311,10 +323,11 @@ st.divider()
 
 st.header("Carrito")
 
-st.session_state.carrito_2 = st.data_editor(
-    st.session_state.carrito_2,
+st.session_state.p2_carrito_2 = st.data_editor(
+    st.session_state.p2_carrito_2,
     use_container_width=True,
     hide_index=True,
+    key="p2_carrito_editor",
 
     disabled=[
         "Colegio",
@@ -342,14 +355,15 @@ with col2:
 
     eliminar = st.button(
         "🗑️ Eliminar seleccionados",
-        use_container_width=True
+        use_container_width=True,
+        key="p2_eliminar_seleccionados"
     )
 
 if eliminar:
 
-    st.session_state.carrito_2 = (
-        st.session_state.carrito_2[
-            st.session_state.carrito_2["Eliminar"] == False
+    st.session_state.p2_carrito_2 = (
+        st.session_state.p2_carrito_2[
+            st.session_state.p2_carrito_2["Eliminar"] == False
         ]
         .reset_index(drop=True)
     )
@@ -361,7 +375,7 @@ if eliminar:
 # --------------------------------------------------
 
 total_carrito_2 = (
-    st.session_state.carrito_2["Subtotal"]
+    st.session_state.p2_carrito_2["Subtotal"]
     .sum()
 )
 
@@ -394,7 +408,8 @@ with col1:
         "Efectivo",
         min_value=0,
         value=0,
-        step=1000
+        step=1000,
+        key="p2_efectivo"
     )
 
 with col2:
@@ -403,7 +418,8 @@ with col2:
         "Tarjeta",
         min_value=0,
         value=0,
-        step=1000
+        step=1000,
+        key="p2_tarjeta"
     )
 
 with col3:
@@ -412,7 +428,8 @@ with col3:
         "Transferencia",
         min_value=0,
         value=0,
-        step=1000
+        step=1000,
+        key="p2_transferencia"
     )
 
 # --------------------------------------------------

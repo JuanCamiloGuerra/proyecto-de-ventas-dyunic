@@ -1,5 +1,7 @@
 import streamlit as st
 import pandas as pd
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 # --------------------------------------------------
 # CONFIGURACIÓN
@@ -40,6 +42,34 @@ df_inventario = pd.read_csv(
     "tablas/inventario.csv",
     sep=";"
 )
+
+REGISTRO_INGRESO_PATH = "tablas/ingreso_mercancia_registro.csv"
+BOGOTA_TZ = ZoneInfo("America/Bogota")
+
+COLUMNAS_REGISTRO_INGRESO = [
+    "fecha",
+    "dia",
+    "mes",
+    "año",
+    "hora",
+    "colegio",
+    "PRODUCTO",
+    "TALLA",
+    "VALOR",
+    "Cantidad",
+    "Subtotal",
+    "ID_BUSQUEDA",
+]
+
+try:
+    df_registro_ingreso = pd.read_csv(
+        REGISTRO_INGRESO_PATH,
+        sep=";"
+    )
+except FileNotFoundError:
+    df_registro_ingreso = pd.DataFrame(
+        columns=COLUMNAS_REGISTRO_INGRESO
+    )
 
 # --------------------------------------------------
 # CREAR CARRITO
@@ -436,6 +466,81 @@ if registrar:
     )
 
     # ------------------------------------------
+    # GUARDAR REGISTRO DE INGRESO
+    # ------------------------------------------
+
+    ahora = datetime.now(BOGOTA_TZ)
+
+    dias_semana = [
+        "lunes",
+        "martes",
+        "miércoles",
+        "jueves",
+        "viernes",
+        "sábado",
+        "domingo"
+    ]
+
+    meses_texto = [
+        "",
+        "enero",
+        "febrero",
+        "marzo",
+        "abril",
+        "mayo",
+        "junio",
+        "julio",
+        "agosto",
+        "septiembre",
+        "octubre",
+        "noviembre",
+        "diciembre"
+    ]
+
+    fecha_larga = (
+        f"{dias_semana[ahora.weekday()]}, "
+        f"{ahora.day} de "
+        f"{meses_texto[ahora.month]} de "
+        f"{ahora.year}"
+    )
+
+    registros_nuevos = pd.DataFrame({
+        "colegio": st.session_state.carrito_ingreso["Colegio"],
+        "PRODUCTO": st.session_state.carrito_ingreso["Articulo"],
+        "TALLA": st.session_state.carrito_ingreso["Talla"],
+        "VALOR": st.session_state.carrito_ingreso["Costo Unitario"],
+        "Cantidad": st.session_state.carrito_ingreso["Cantidad"],
+        "Subtotal": st.session_state.carrito_ingreso["Subtotal"],
+    })
+
+    registros_nuevos["fecha"] = fecha_larga
+    registros_nuevos["dia"] = ahora.day
+    registros_nuevos["mes"] = ahora.month
+    registros_nuevos["año"] = ahora.year
+    registros_nuevos["hora"] = ahora.strftime("%H:%M:%S")
+    registros_nuevos["ID_BUSQUEDA"] = (
+        registros_nuevos["colegio"].astype(str)
+        + "_"
+        + registros_nuevos["PRODUCTO"].astype(str)
+        + "_"
+        + registros_nuevos["TALLA"].astype(str)
+    )
+
+    df_registro_ingreso = pd.concat(
+        [
+            df_registro_ingreso,
+            registros_nuevos[COLUMNAS_REGISTRO_INGRESO]
+        ],
+        ignore_index=True
+    )
+
+    df_registro_ingreso.to_csv(
+        REGISTRO_INGRESO_PATH,
+        sep=";",
+        index=False
+    )
+
+    # ------------------------------------------
     # LIMPIAR CARRITO
     # ------------------------------------------
 
@@ -456,3 +561,28 @@ if registrar:
     )
 
     st.rerun()
+
+# --------------------------------------------------
+# VISTA REGISTRO DE INGRESOS
+# --------------------------------------------------
+
+st.divider()
+
+st.subheader("📋 Últimos registros de ingreso de mercancía")
+
+try:
+    df_registro_ingreso_tmp = pd.read_csv(
+        REGISTRO_INGRESO_PATH,
+        sep=";"
+    )
+
+    st.dataframe(
+        df_registro_ingreso_tmp.tail(10),
+        use_container_width=True
+    )
+
+except FileNotFoundError:
+    st.info(
+        "Aún no existe el archivo de registro de ingreso de mercancía."
+    )
+

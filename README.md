@@ -1,19 +1,24 @@
-# 🎫 Support tickets template
+# Proyecto de ventas DYUNIC
 
-A simple Streamlit app showing an internal tool that lets you create, manage, and visualize support tickets. 
+Aplicacion Streamlit para registrar ventas, gestionar carritos, consultar inventario y revisar resumenes de facturacion de DYUNIC.
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://support-tickets-template.streamlit.app/)
+## Ejecutar en local
 
-### How to run it on your own machine
+1. Instalar dependencias:
 
-1. Install the requirements
+```bash
+pip install -r requirements.txt
+```
 
-   ```
-   $ pip install -r requirements.txt
-   ```
+2. Ejecutar la app:
 
-2. Run the app
+```bash
+streamlit run streamlit_app.py
+```
 
-   ```
-   $ streamlit run streamlit_app.py
-   ```
+## Estructura principal
+
+- `streamlit_app.py`: vista principal de ventas.
+- `pages/`: paginas adicionales de ventas, inventario, tablero y estados financieros.
+- `tablas/`: archivos CSV usados por la app.
+- `scripts de limpieza/`: notebooks y scripts para preparar datos.

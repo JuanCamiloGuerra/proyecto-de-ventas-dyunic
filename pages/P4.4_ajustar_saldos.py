@@ -6,6 +6,7 @@ import streamlit as st
 
 
 FACTURACION_PATH = "tablas/facturacion_ventas.csv"
+VENTAS_PATH = "tablas/ventas_df.csv"
 INFO_FACTURAS_PATH = "tablas/info facturas.csv"
 TODOS = "Todos"
 BOGOTA_TZ = ZoneInfo("America/Bogota")
@@ -87,6 +88,19 @@ def cargar_estados_factura():
         estado for estado in estados.tolist()
         if estado != ""
     ]
+
+
+@st.cache_data
+def cargar_ventas():
+    df = pd.read_csv(
+        VENTAS_PATH,
+        sep=";",
+        dtype=str,
+        keep_default_na=False,
+    )
+
+    df.columns = df.columns.str.strip()
+    return df
 
 
 def limpiar_numero(valor):
@@ -240,6 +254,7 @@ def anio_maximo(df):
 
 
 df_facturacion = cargar_facturacion()
+df_ventas = cargar_ventas()
 estados_factura = cargar_estados_factura()
 
 for columna in COLUMNAS_FILTRO:
@@ -387,6 +402,65 @@ st.caption(
     f"Factura seleccionada: {fila_seleccionada['ID unico de factura']}"
 )
 
+id_factura_seleccionada = str(
+    fila_seleccionada["ID unico de factura"]
+).strip()
+
+st.subheader("Productos de la factura")
+
+df_productos_factura = (
+    df_ventas[
+        df_ventas["ID unico de factura"]
+        .astype(str)
+        .str.strip()
+        .eq(id_factura_seleccionada)
+    ]
+    .reset_index()
+    .rename(columns={"index": "Registro ventas_df"})
+)
+
+columnas_productos = [
+    "Registro ventas_df",
+    "colegio",
+    "articulo",
+    "talla",
+    "cantidad",
+    "Producto pendiente por entregar",
+]
+
+columnas_productos = [
+    columna for columna in columnas_productos
+    if columna in df_productos_factura.columns
+]
+
+if df_productos_factura.empty:
+    st.info("No se encontraron productos relacionados en ventas_df.csv.")
+    productos_editados = pd.DataFrame(columns=columnas_productos)
+else:
+    productos_editados = st.data_editor(
+        df_productos_factura[columnas_productos],
+        use_container_width=True,
+        hide_index=True,
+        disabled=[
+            columna for columna in columnas_productos
+            if columna not in ["Producto pendiente por entregar"]
+        ],
+        column_config={
+            "Registro ventas_df": st.column_config.NumberColumn(
+                "Registro ventas_df",
+                help="Fila interna usada para guardar el cambio en ventas_df.csv.",
+            ),
+            "Producto pendiente por entregar": st.column_config.SelectboxColumn(
+                "Producto pendiente por entregar",
+                options=["SI", "NO"],
+                required=True,
+            ),
+        },
+        key=f"ajuste_saldos_productos_{indice_original}",
+    )
+
+st.divider()
+
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
@@ -511,6 +585,7 @@ guardar = st.button(
 
 if guardar:
     df_actualizado = df_facturacion.copy()
+    df_ventas_actualizado = df_ventas.copy()
 
     df_actualizado.loc[indice_original, "fecha de pago 2"] = fecha_larga_actual()
     df_actualizado.loc[indice_original, "pago efectivo 2"] = (
@@ -536,7 +611,30 @@ if guardar:
         encoding="utf-8",
     )
 
-    cargar_facturacion.clear()
+    if not productos_editados.empty:
+        for _, producto in productos_editados.iterrows():
+            indice_producto = int(producto["Registro ventas_df"])
+            pendiente_entrega = str(
+                producto["Producto pendiente por entregar"]
+            ).strip().upper()
 
-    st.success("Segundo pago registrado correctamente.")
+            if pendiente_entrega not in ["SI", "NO"]:
+                pendiente_entrega = "NO"
+
+            df_ventas_actualizado.loc[
+                indice_producto,
+                "Producto pendiente por entregar"
+            ] = pendiente_entrega
+
+        df_ventas_actualizado.to_csv(
+            VENTAS_PATH,
+            sep=";",
+            index=False,
+            encoding="utf-8",
+        )
+
+    cargar_facturacion.clear()
+    cargar_ventas.clear()
+
+    st.success("Segundo pago y estado de entrega registrados correctamente.")
     st.rerun()

@@ -48,20 +48,36 @@ columnas_monetarias = [
     "total pendiente"
 ]
 
+def limpiar_numero(valor):
+    texto = str(valor).strip()
+
+    if texto == "":
+        return 0
+
+    texto = (
+        texto
+        .replace("$", "")
+        .replace(" ", "")
+        .replace(",", "")
+    )
+
+    if "." in texto:
+        texto = texto.split(".", 1)[0]
+
+    return texto
+
+
 for col in columnas_monetarias:
 
     df_facturacion[col] = (
         df_facturacion[col]
-        .astype(str)
-        .str.replace(".", "", regex=False)
-        .str.replace(",", "", regex=False)
-        .str.strip()
+        .map(limpiar_numero)
     )
 
     df_facturacion[col] = pd.to_numeric(
         df_facturacion[col],
         errors="coerce"
-    )
+    ).fillna(0)
 
 for col in ["Año", "Mes", "Día"]:
 
@@ -155,11 +171,16 @@ with col3:
     .tolist()
 )
 
-    dias = st.multiselect(
+    dias_seleccionados = st.multiselect(
         "Día",
-        lista_dias,
-        default=[]
+        ["Todos"] + lista_dias,
+        default=["Todos"]
     )
+
+    if "Todos" in dias_seleccionados:
+        dias = lista_dias
+    else:
+        dias = dias_seleccionados
 
 # --------------------------------------------------
 # FILTRAR

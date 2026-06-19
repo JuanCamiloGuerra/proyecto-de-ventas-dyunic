@@ -258,6 +258,11 @@ estado_resultados["ingresos acumulados"] = (
     .groupby("anio_norm")["ingresos"]
     .cumsum()
 )
+estado_resultados["utilidad acumulada"] = (
+    estado_resultados
+    .groupby("anio_norm")["utilidad"]
+    .cumsum()
+)
 
 if estado_resultados.empty:
     st.warning("No hay datos para los filtros seleccionados.")
@@ -316,6 +321,87 @@ grafica_barras = (
 
 st.altair_chart(grafica_barras, use_container_width=True)
 
+st.subheader("Utilidad acumulada mes a mes")
+
+grafica_utilidad_acumulada = estado_resultados[
+    ["periodo", "anio_norm", "utilidad acumulada"]
+].copy()
+grafica_utilidad_acumulada["periodo"] = (
+    grafica_utilidad_acumulada["periodo"].dt.strftime("%Y-%m")
+)
+
+max_utilidad_acumulada = grafica_utilidad_acumulada[
+    "utilidad acumulada"
+].max()
+umbral_amarillo = max(max_utilidad_acumulada * 0.15, 1)
+
+grafica_utilidad_acumulada["semaforo"] = pd.cut(
+    grafica_utilidad_acumulada["utilidad acumulada"],
+    bins=[float("-inf"), -1, umbral_amarillo, float("inf")],
+    labels=["Rojo", "Amarillo", "Verde"],
+)
+
+base_utilidad_acumulada = alt.Chart(grafica_utilidad_acumulada).encode(
+    x=alt.X(
+        "periodo:N",
+        title="Periodo",
+        axis=alt.Axis(labelAngle=-35),
+    ),
+    y=alt.Y(
+        "utilidad acumulada:Q",
+        title="Utilidad acumulada",
+    ),
+    color=alt.Color(
+        "semaforo:N",
+        title="Estado",
+        scale=alt.Scale(
+            domain=["Rojo", "Amarillo", "Verde"],
+            range=["#dc2626", "#ca8a04", "#16a34a"],
+        ),
+    ),
+    tooltip=[
+        alt.Tooltip("periodo:N", title="Periodo"),
+        alt.Tooltip("anio_norm:N", title="Año"),
+        alt.Tooltip("semaforo:N", title="Estado"),
+        alt.Tooltip(
+            "utilidad acumulada:Q",
+            title="Utilidad acumulada",
+            format=",.0f",
+        ),
+    ],
+)
+
+area_utilidad = base_utilidad_acumulada.mark_area(
+    opacity=0.22,
+    interpolate="monotone",
+)
+
+linea_utilidad = base_utilidad_acumulada.mark_line(
+    strokeWidth=3,
+    interpolate="monotone",
+)
+
+puntos_utilidad = base_utilidad_acumulada.mark_circle(
+    size=72,
+    opacity=0.95,
+    stroke="#ffffff",
+    strokeWidth=1.5,
+)
+
+linea_cero = (
+    alt.Chart(pd.DataFrame({"cero": [0]}))
+    .mark_rule(color="#525252", strokeDash=[6, 4], opacity=0.75)
+    .encode(y="cero:Q")
+)
+
+grafica_utilidad_acumulada_altair = (
+    area_utilidad + linea_utilidad + puntos_utilidad + linea_cero
+).properties(
+    height=390,
+)
+
+st.altair_chart(grafica_utilidad_acumulada_altair, use_container_width=True)
+
 st.subheader("Estado de resultados mensual")
 
 tabla_resultados = estado_resultados.copy()
@@ -331,6 +417,7 @@ tabla_resultados = tabla_resultados[
         "ingresos acumulados",
         "egresos",
         "utilidad",
+        "utilidad acumulada",
         "margen",
     ]
 ]
@@ -351,6 +438,10 @@ st.dataframe(
         ),
         "egresos": st.column_config.NumberColumn("Egresos", format="$%d"),
         "utilidad": st.column_config.NumberColumn("Utilidad", format="$%d"),
+        "utilidad acumulada": st.column_config.NumberColumn(
+            "Utilidad acumulada",
+            format="$%d",
+        ),
         "margen": st.column_config.NumberColumn("Margen", format="%.1f%%"),
     },
 )

@@ -1,230 +1,449 @@
-import streamlit as st
-import pandas as pd
+import unicodedata
 
-# --------------------------------------------------
-# CONFIGURACIÓN
-# --------------------------------------------------
+import altair as alt
+import pandas as pd
+import streamlit as st
+
+
+FACTURACION_PATH = "tablas/facturacion_ventas.csv"
+EGRESOS_PATH = "tablas/egresos.csv"
+TODOS = "Todos"
+
+MESES = {
+    1: "Enero",
+    2: "Febrero",
+    3: "Marzo",
+    4: "Abril",
+    5: "Mayo",
+    6: "Junio",
+    7: "Julio",
+    8: "Agosto",
+    9: "Septiembre",
+    10: "Octubre",
+    11: "Noviembre",
+    12: "Diciembre",
+}
+
 
 st.set_page_config(
-    page_title="REVISAR VENTAS",
-    page_icon="📋",
-    layout="wide"
+    page_title="Estados financieros",
+    page_icon="📈",
+    layout="wide",
 )
 
-st.title("📋 REVISAR VENTAS")
+st.title("Estados financieros")
 
-# --------------------------------------------------
-# CARGAR VENTAS
-# --------------------------------------------------
 
-df_ventas = pd.read_csv(
-    "tablas/ventas_df.csv",
-    sep=";"
+def normalizar_texto(valor):
+    texto = str(valor).strip().lower()
+    texto = unicodedata.normalize("NFKD", texto)
+    texto = "".join(letra for letra in texto if not unicodedata.combining(letra))
+    return " ".join(texto.split())
+
+
+def obtener_columna(df, nombre):
+    objetivo = normalizar_texto(nombre)
+    columnas = {normalizar_texto(columna): columna for columna in df.columns}
+    if objetivo not in columnas:
+        raise KeyError(f"No existe la columna requerida: {nombre}")
+    return columnas[objetivo]
+
+
+def limpiar_numero(valor):
+    texto = str(valor).strip()
+
+    if texto == "":
+        return 0
+
+    texto = texto.replace("$", "").replace(" ", "").replace(",", "")
+
+    # En estos CSV, el punto aparece como decimal heredado o separador visual.
+    if "." in texto:
+        partes = texto.split(".")
+        if len(partes[-1]) in [1, 2] and partes[-1].isdigit():
+            texto = "".join(partes[:-1])
+        else:
+            texto = "".join(partes)
+
+    return pd.to_numeric(texto, errors="coerce")
+
+
+def preparar_fecha(df, columna_anio, columna_mes, columna_dia):
+    df = df.copy()
+    col_anio = obtener_columna(df, columna_anio)
+    col_mes = obtener_columna(df, columna_mes)
+    col_dia = obtener_columna(df, columna_dia)
+
+    df["anio_norm"] = pd.to_numeric(df[col_anio], errors="coerce")
+    df["mes_norm"] = pd.to_numeric(df[col_mes], errors="coerce")
+    df["dia_norm"] = pd.to_numeric(df[col_dia], errors="coerce")
+
+    df = df[
+        df["anio_norm"].notna()
+        & df["mes_norm"].notna()
+        & df["dia_norm"].notna()
+    ].copy()
+
+    df["anio_norm"] = df["anio_norm"].astype(int)
+    df["mes_norm"] = df["mes_norm"].astype(int)
+    df["dia_norm"] = df["dia_norm"].astype(int)
+
+    df["fecha_dt"] = pd.to_datetime(
+        {
+            "year": df["anio_norm"],
+            "month": df["mes_norm"],
+            "day": df["dia_norm"],
+        },
+        errors="coerce",
+    )
+
+    df = df[df["fecha_dt"].notna()].copy()
+    df["periodo"] = df["fecha_dt"].dt.to_period("M").dt.to_timestamp()
+    df["mes_nombre"] = df["mes_norm"].map(MESES)
+
+    return df
+
+
+@st.cache_data
+def cargar_ingresos():
+    df = pd.read_csv(
+        FACTURACION_PATH,
+        sep=";",
+        dtype=str,
+        keep_default_na=False,
+    )
+    df.columns = df.columns.str.strip()
+
+    df = preparar_fecha(
+        df,
+        columna_anio="Año",
+        columna_mes="Mes",
+        columna_dia="Día",
+    )
+
+    columnas_ingreso = [
+        "total efectivo",
+        "total tarjeta",
+        "total transfencia",
+    ]
+
+    for nombre_columna in columnas_ingreso:
+        columna_real = obtener_columna(df, nombre_columna)
+        df[columna_real] = df[columna_real].map(limpiar_numero).fillna(0)
+
+    df["ingresos"] = sum(
+        df[obtener_columna(df, nombre_columna)]
+        for nombre_columna in columnas_ingreso
+    )
+
+    return df
+
+
+@st.cache_data
+def cargar_egresos():
+    df = pd.read_csv(
+        EGRESOS_PATH,
+        sep=";",
+        dtype=str,
+        keep_default_na=False,
+    )
+    df.columns = df.columns.str.strip()
+
+    df = preparar_fecha(
+        df,
+        columna_anio="año",
+        columna_mes="mes",
+        columna_dia="día",
+    )
+
+    columna_valor = obtener_columna(df, "Valor")
+    df["valor"] = df[columna_valor].map(limpiar_numero).fillna(0)
+    df["egresos"] = df["valor"]
+
+    return df
+
+
+def opciones_con_todos(valores):
+    opciones = (
+        pd.Series(valores)
+        .dropna()
+        .astype(int)
+        .sort_values()
+        .unique()
+        .tolist()
+    )
+    return [TODOS] + opciones
+
+
+def formatear_pesos(valor):
+    return f"${valor:,.0f}"
+
+
+df_ingresos = cargar_ingresos()
+df_egresos = cargar_egresos()
+
+anios_disponibles = sorted(
+    set(df_ingresos["anio_norm"].unique().tolist())
+    | set(df_egresos["anio_norm"].unique().tolist())
 )
-
-# --------------------------------------------------
-# LIMPIAR NOMBRES DE COLUMNAS
-# --------------------------------------------------
-
-df_ventas.columns = df_ventas.columns.str.strip()
-
-# --------------------------------------------------
-# LIMPIAR VALORES NUMÉRICOS
-# --------------------------------------------------
-
-df_ventas["subtotal"] = (
-    df_ventas["subtotal"]
-    .astype(str)
-    .str.replace(".", "", regex=False)
-)
-
-df_ventas["subtotal"] = pd.to_numeric(
-    df_ventas["subtotal"],
-    errors="coerce"
-)
-
-# --------------------------------------------------
-# ASEGURAR TIPOS NUMÉRICOS
-# --------------------------------------------------
-
-df_ventas["año"] = pd.to_numeric(
-    df_ventas["año"],
-    errors="coerce"
-)
-
-df_ventas["mes"] = pd.to_numeric(
-    df_ventas["mes"],
-    errors="coerce"
-)
-
-df_ventas["dia"] = pd.to_numeric(
-    df_ventas["dia"],
-    errors="coerce"
-)
-
-# --------------------------------------------------
-# FILTROS
-# --------------------------------------------------
+anios_con_ingresos = sorted(df_ingresos["anio_norm"].unique().tolist())
+anio_maximo = max(anios_con_ingresos) if anios_con_ingresos else TODOS
 
 st.header("Filtros")
 
-col1, col2, col3 = st.columns(3)
-
-# ----------------------
-# AÑO
-# ----------------------
+col1, col2 = st.columns(2)
 
 with col1:
-
-    lista_años = ["Todos"] + sorted(
-        df_ventas["año"]
-        .dropna()
-        .astype(int)
-        .unique()
-        .tolist()
-    )
-
-    año = st.selectbox(
+    anios = st.multiselect(
         "Año",
-        lista_años
+        opciones_con_todos(anios_disponibles),
+        default=[anio_maximo],
+        key="finanzas_anio",
     )
-
-# ----------------------
-# MES
-# ----------------------
 
 with col2:
-
-    if año == "Todos":
-
-        df_aux = df_ventas.copy()
-
-    else:
-
-        df_aux = df_ventas[
-            df_ventas["año"] == año
-        ]
-
-    lista_meses = ["Todos"] + sorted(
-        df_aux["mes"]
-        .dropna()
-        .astype(int)
-        .unique()
-        .tolist()
+    mes_comparativo = st.selectbox(
+        "Mes para comparar ingresos entre años",
+        [TODOS] + list(MESES.keys()),
+        format_func=lambda valor: (
+            "Todos" if valor == TODOS else MESES.get(valor, str(valor))
+        ),
+        key="finanzas_mes_comparativo",
     )
 
-    mes = st.selectbox(
-        "Mes",
-        lista_meses
-    )
+if TODOS not in anios:
+    df_ingresos_filtrado = df_ingresos[
+        df_ingresos["anio_norm"].isin(anios)
+    ].copy()
+    df_egresos_filtrado = df_egresos[
+        df_egresos["anio_norm"].isin(anios)
+    ].copy()
+else:
+    df_ingresos_filtrado = df_ingresos.copy()
+    df_egresos_filtrado = df_egresos.copy()
 
-# ----------------------
-# DÍA
-# ----------------------
+st.divider()
+
+ingresos_mensuales = (
+    df_ingresos_filtrado
+    .groupby(["periodo", "anio_norm", "mes_norm", "mes_nombre"], as_index=False)
+    .agg(ingresos=("ingresos", "sum"))
+)
+
+egresos_mensuales = (
+    df_egresos_filtrado
+    .groupby(["periodo", "anio_norm", "mes_norm", "mes_nombre"], as_index=False)
+    .agg(egresos=("egresos", "sum"))
+)
+
+estado_resultados = pd.merge(
+    ingresos_mensuales,
+    egresos_mensuales,
+    on=["periodo", "anio_norm", "mes_norm", "mes_nombre"],
+    how="outer",
+).fillna(0)
+
+estado_resultados["utilidad"] = (
+    estado_resultados["ingresos"] - estado_resultados["egresos"]
+)
+estado_resultados["margen"] = estado_resultados.apply(
+    lambda fila: fila["utilidad"] / fila["ingresos"]
+    if fila["ingresos"]
+    else 0,
+    axis=1,
+)
+estado_resultados = estado_resultados.sort_values("periodo")
+estado_resultados["ingresos acumulados"] = (
+    estado_resultados
+    .groupby("anio_norm")["ingresos"]
+    .cumsum()
+)
+
+if estado_resultados.empty:
+    st.warning("No hay datos para los filtros seleccionados.")
+    st.stop()
+
+total_ingresos = estado_resultados["ingresos"].sum()
+total_egresos = estado_resultados["egresos"].sum()
+utilidad_total = estado_resultados["utilidad"].sum()
+margen_total = utilidad_total / total_ingresos if total_ingresos else 0
+
+col1, col2, col3, col4 = st.columns(4)
+
+with col1:
+    st.metric("Ingresos", formatear_pesos(total_ingresos))
+
+with col2:
+    st.metric("Egresos", formatear_pesos(total_egresos))
 
 with col3:
+    st.metric("Utilidad", formatear_pesos(utilidad_total))
 
-    df_aux2 = df_aux.copy()
+with col4:
+    st.metric("Margen", f"{margen_total:.1%}")
 
-    if mes != "Todos":
+st.divider()
 
-        df_aux2 = df_aux2[
-            df_aux2["mes"] == mes
-        ]
+st.subheader("Resultado mensual")
 
-    lista_dias = ["Todos"] + sorted(
-        df_aux2["dia"]
-        .dropna()
-        .astype(int)
-        .unique()
-        .tolist()
+grafica_mensual = estado_resultados[
+    ["periodo", "ingresos", "egresos", "utilidad"]
+].copy()
+grafica_mensual["periodo"] = grafica_mensual["periodo"].dt.strftime("%Y-%m")
+grafica_mensual = grafica_mensual.melt(
+    id_vars="periodo",
+    value_vars=["ingresos", "egresos", "utilidad"],
+    var_name="concepto",
+    value_name="valor",
+)
+
+grafica_barras = (
+    alt.Chart(grafica_mensual)
+    .mark_bar()
+    .encode(
+        x=alt.X("periodo:N", title="Periodo"),
+        xOffset=alt.XOffset("concepto:N"),
+        y=alt.Y("valor:Q", title="Valor"),
+        color=alt.Color("concepto:N", title="Concepto"),
+        tooltip=[
+            alt.Tooltip("periodo:N", title="Periodo"),
+            alt.Tooltip("concepto:N", title="Concepto"),
+            alt.Tooltip("valor:Q", title="Valor", format=",.0f"),
+        ],
+    )
+    .properties(height=420)
+)
+
+st.altair_chart(grafica_barras, use_container_width=True)
+
+st.subheader("Estado de resultados mensual")
+
+tabla_resultados = estado_resultados.copy()
+tabla_resultados["periodo"] = tabla_resultados["periodo"].dt.strftime("%Y-%m")
+tabla_resultados["margen"] = tabla_resultados["margen"] * 100
+tabla_resultados = tabla_resultados[
+    [
+        "periodo",
+        "anio_norm",
+        "mes_norm",
+        "mes_nombre",
+        "ingresos",
+        "ingresos acumulados",
+        "egresos",
+        "utilidad",
+        "margen",
+    ]
+]
+
+st.dataframe(
+    tabla_resultados,
+    use_container_width=True,
+    hide_index=True,
+    column_config={
+        "periodo": "Periodo",
+        "anio_norm": "Año",
+        "mes_norm": "Mes",
+        "mes_nombre": "Mes nombre",
+        "ingresos": st.column_config.NumberColumn("Ingresos", format="$%d"),
+        "ingresos acumulados": st.column_config.NumberColumn(
+            "Ingresos acumulados",
+            format="$%d",
+        ),
+        "egresos": st.column_config.NumberColumn("Egresos", format="$%d"),
+        "utilidad": st.column_config.NumberColumn("Utilidad", format="$%d"),
+        "margen": st.column_config.NumberColumn("Margen", format="%.1f%%"),
+    },
+)
+
+st.divider()
+
+st.subheader("Comparativo de ingresos por mes entre años")
+
+comparativo_ingresos = (
+    df_ingresos
+    .groupby(["anio_norm", "mes_norm", "mes_nombre"], as_index=False)
+    .agg(ingresos=("ingresos", "sum"))
+)
+
+if mes_comparativo != TODOS:
+    comparativo_ingresos = comparativo_ingresos[
+        comparativo_ingresos["mes_norm"] == mes_comparativo
+    ]
+
+if comparativo_ingresos.empty:
+    st.info("No hay ingresos para comparar con ese mes.")
+else:
+    comparativo_tabla = comparativo_ingresos.pivot_table(
+        index="mes_nombre",
+        columns="anio_norm",
+        values="ingresos",
+        aggfunc="sum",
+        fill_value=0,
     )
 
-    dia = st.selectbox(
-        "Día",
-        lista_dias
-    )
-
-# --------------------------------------------------
-# FILTRAR DATAFRAME
-# --------------------------------------------------
-
-df_filtrado = df_ventas.copy()
-
-if año != "Todos":
-
-    df_filtrado = df_filtrado[
-        df_filtrado["año"] == año
+    orden_meses = [
+        MESES[mes]
+        for mes in range(1, 13)
+        if MESES[mes] in comparativo_tabla.index
     ]
+    comparativo_tabla = comparativo_tabla.loc[orden_meses]
 
-if mes != "Todos":
-
-    df_filtrado = df_filtrado[
-        df_filtrado["mes"] == mes
-    ]
-
-if dia != "Todos":
-
-    df_filtrado = df_filtrado[
-        df_filtrado["dia"] == dia
-    ]
-
-# --------------------------------------------------
-# MÉTRICAS
-# --------------------------------------------------
+    st.bar_chart(comparativo_tabla)
+    st.dataframe(comparativo_tabla, use_container_width=True)
 
 st.divider()
 
 col1, col2 = st.columns(2)
 
 with col1:
+    st.subheader("Egresos por grupo")
 
-    st.metric(
-        "Ventas encontradas",
-        len(df_filtrado)
-    )
+    if "Grupo 1" in df_egresos_filtrado.columns:
+        egresos_grupo = (
+            df_egresos_filtrado
+            .groupby("Grupo 1", as_index=False)
+            .agg(egresos=("egresos", "sum"))
+            .sort_values("egresos", ascending=False)
+        )
+
+        st.bar_chart(egresos_grupo.set_index("Grupo 1")["egresos"])
+        st.dataframe(
+            egresos_grupo,
+            use_container_width=True,
+            hide_index=True,
+            column_config={
+                "egresos": st.column_config.NumberColumn(
+                    "Egresos",
+                    format="$%d",
+                )
+            },
+        )
+    else:
+        st.info("No existe la columna Grupo 1 en egresos.csv.")
 
 with col2:
+    st.subheader("Egresos por tipo")
 
-    st.metric(
-        "Valor total",
-        f"${df_filtrado['subtotal'].sum():,.0f}"
-    )
+    if "Tipo de Egreso" in df_egresos_filtrado.columns:
+        egresos_tipo = (
+            df_egresos_filtrado
+            .groupby("Tipo de Egreso", as_index=False)
+            .agg(egresos=("egresos", "sum"))
+            .sort_values("egresos", ascending=False)
+            .head(15)
+        )
 
-# --------------------------------------------------
-# COLUMNAS A OCULTAR
-# --------------------------------------------------
-
-columnas_ocultar = [
-    "dia",
-    "mes",
-    "año",
-    "colegio",
-    "articulo",
-    "talla",
-    "hombro",
-    "talle",
-    "cintura",
-    "largo",
-    "Clasificación_antiguo",
-    "Método de pago_antiguo"
-]
-
-df_mostrar = df_filtrado.drop(
-    columns=columnas_ocultar,
-    errors="ignore"
-)
-
-# --------------------------------------------------
-# TABLA
-# --------------------------------------------------
-
-st.divider()
-
-st.header("Ventas encontradas")
-
-st.dataframe(
-    df_mostrar,
-    use_container_width=True,
-    hide_index=True
-)
+        st.bar_chart(egresos_tipo.set_index("Tipo de Egreso")["egresos"])
+        st.dataframe(
+            egresos_tipo,
+            use_container_width=True,
+            hide_index=True,
+            column_config={
+                "egresos": st.column_config.NumberColumn(
+                    "Egresos",
+                    format="$%d",
+                )
+            },
+        )
+    else:
+        st.info("No existe la columna Tipo de Egreso en egresos.csv.")

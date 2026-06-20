@@ -46,16 +46,33 @@ def limpiar_pesos(valor):
     if texto == "":
         return 0
 
-    texto = texto.replace("$", "").replace(" ", "").replace(",", "")
+    texto = texto.replace("$", "").replace(" ", "")
 
-    if "." in texto:
-        partes = texto.split(".")
+    if "," in texto and "." in texto:
+        if texto.rfind(",") > texto.rfind("."):
+            texto = texto.replace(".", "").replace(",", ".")
+        else:
+            texto = texto.replace(",", "")
+    elif "," in texto:
+        partes = texto.split(",")
         if len(partes[-1]) in [1, 2] and partes[-1].isdigit():
-            texto = "".join(partes[:-1])
+            texto = "".join(partes[:-1]).replace(".", "") + "." + partes[-1]
+        else:
+            texto = "".join(partes)
+    elif "." in texto:
+        partes = texto.split(".")
+        if (
+            len(partes) == 2
+            and len(partes[-1]) in [1, 2]
+            and partes[-1].isdigit()
+            and len(partes[0]) > 3
+        ):
+            texto = partes[0] + "." + partes[-1]
         else:
             texto = "".join(partes)
 
-    return int(pd.to_numeric(texto, errors="coerce") or 0)
+    numero = pd.to_numeric(texto, errors="coerce")
+    return int(round(numero)) if pd.notna(numero) else 0
 
 
 def convertir_fecha(valor):

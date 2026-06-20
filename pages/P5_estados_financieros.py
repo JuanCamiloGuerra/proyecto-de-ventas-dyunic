@@ -1,12 +1,13 @@
 import unicodedata
+from pathlib import Path
 
 import altair as alt
 import pandas as pd
 import streamlit as st
 
 
-FACTURACION_PATH = "tablas/facturacion_ventas.csv"
-EGRESOS_PATH = "tablas/egresos.csv"
+FACTURACION_PATH = Path("tablas/facturacion_ventas.csv")
+EGRESOS_PATH = Path("tablas/egresos.csv")
 TODOS = "Todos"
 
 MESES = {
@@ -55,13 +56,29 @@ def limpiar_numero(valor):
     if texto == "":
         return 0
 
-    texto = texto.replace("$", "").replace(" ", "").replace(",", "")
+    texto = texto.replace("$", "").replace(" ", "")
 
-    # En estos CSV, el punto aparece como decimal heredado o separador visual.
-    if "." in texto:
-        partes = texto.split(".")
+    # Soporta valores tipo 1.000.000, 1000000, 54000.0 y 4726207,95.
+    if "," in texto and "." in texto:
+        if texto.rfind(",") > texto.rfind("."):
+            texto = texto.replace(".", "").replace(",", ".")
+        else:
+            texto = texto.replace(",", "")
+    elif "," in texto:
+        partes = texto.split(",")
         if len(partes[-1]) in [1, 2] and partes[-1].isdigit():
-            texto = "".join(partes[:-1])
+            texto = "".join(partes[:-1]).replace(".", "") + "." + partes[-1]
+        else:
+            texto = "".join(partes)
+    elif "." in texto:
+        partes = texto.split(".")
+        if (
+            len(partes) == 2
+            and len(partes[-1]) in [1, 2]
+            and partes[-1].isdigit()
+            and len(partes[0]) > 3
+        ):
+            texto = partes[0] + "." + partes[-1]
         else:
             texto = "".join(partes)
 
@@ -105,7 +122,7 @@ def preparar_fecha(df, columna_anio, columna_mes, columna_dia):
 
 
 @st.cache_data
-def cargar_ingresos():
+def cargar_ingresos(mtime_archivo):
     df = pd.read_csv(
         FACTURACION_PATH,
         sep=";",
@@ -140,7 +157,7 @@ def cargar_ingresos():
 
 
 @st.cache_data
-def cargar_egresos():
+def cargar_egresos(mtime_archivo):
     df = pd.read_csv(
         EGRESOS_PATH,
         sep=";",
@@ -179,8 +196,8 @@ def formatear_pesos(valor):
     return f"${valor:,.0f}"
 
 
-df_ingresos = cargar_ingresos()
-df_egresos = cargar_egresos()
+df_ingresos = cargar_ingresos(FACTURACION_PATH.stat().st_mtime_ns)
+df_egresos = cargar_egresos(EGRESOS_PATH.stat().st_mtime_ns)
 
 anios_disponibles = sorted(
     set(df_ingresos["anio_norm"].unique().tolist())
@@ -320,6 +337,124 @@ grafica_barras = (
 )
 
 st.altair_chart(grafica_barras, use_container_width=True)
+
+st.subheader("Ventas 2026 vs meta mensual")
+
+ingresos_por_mes_base = (
+    df_ingresos
+    .groupby(["anio_norm", "mes_norm", "mes_nombre"], as_index=False)
+    .agg(ingresos=("ingresos", "sum"))
+)
+
+ventas_2026 = ingresos_por_mes_base[
+    ingresos_por_mes_base["anio_norm"] == 2026
+][["mes_norm", "mes_nombre", "ingresos"]].rename(
+    columns={"ingresos": "ventas 2026"}
+)
+
+meta_2026 = ingresos_por_mes_base[
+    ingresos_por_mes_base["anio_norm"] == 2025
+][["mes_norm", "ingresos"]].rename(
+    columns={"ingresos": "meta"}
+)
+meta_2026["meta"] = meta_2026["meta"] * 1.15
+
+ventas_vs_meta = pd.merge(
+    ventas_2026,
+    meta_2026,
+    on="mes_norm",
+    how="outer",
+).fillna(0)
+
+ventas_vs_meta["mes_nombre"] = ventas_vs_meta["mes_norm"].map(MESES)
+ventas_vs_meta["cumplimiento"] = ventas_vs_meta.apply(
+    lambda fila: fila["ventas 2026"] / fila["meta"]
+    if fila["meta"]
+    else 0,
+    axis=1,
+)
+ventas_vs_meta = ventas_vs_meta.sort_values("mes_norm")
+
+if ventas_vs_meta.empty:
+    st.info("No hay datos suficientes de 2025 y 2026 para calcular la meta.")
+else:
+    ventas_vs_meta_grafica = ventas_vs_meta.melt(
+        id_vars=["mes_norm", "mes_nombre", "cumplimiento"],
+        value_vars=["ventas 2026", "meta"],
+        var_name="concepto",
+        value_name="valor",
+    )
+
+    grafica_ventas_meta = (
+        alt.Chart(ventas_vs_meta_grafica)
+        .mark_bar(cornerRadiusTopLeft=3, cornerRadiusTopRight=3)
+        .encode(
+            x=alt.X(
+                "mes_nombre:N",
+                title="Mes",
+                sort=[
+                    MESES[mes]
+                    for mes in range(1, 13)
+                ],
+            ),
+            xOffset=alt.XOffset("concepto:N"),
+            y=alt.Y("valor:Q", title="Valor"),
+            color=alt.Color(
+                "concepto:N",
+                title="Concepto",
+                scale=alt.Scale(
+                    domain=["ventas 2026", "meta"],
+                    range=["#2563eb", "#f59e0b"],
+                ),
+            ),
+            tooltip=[
+                alt.Tooltip("mes_nombre:N", title="Mes"),
+                alt.Tooltip("concepto:N", title="Concepto"),
+                alt.Tooltip("valor:Q", title="Valor", format=",.0f"),
+                alt.Tooltip(
+                    "cumplimiento:Q",
+                    title="Cumplimiento",
+                    format=".1%",
+                ),
+            ],
+        )
+        .properties(height=380)
+    )
+
+    st.altair_chart(grafica_ventas_meta, use_container_width=True)
+
+    tabla_ventas_vs_meta = ventas_vs_meta.copy()
+    tabla_ventas_vs_meta["cumplimiento"] = (
+        tabla_ventas_vs_meta["cumplimiento"] * 100
+    )
+
+    st.dataframe(
+        tabla_ventas_vs_meta[
+            [
+                "mes_nombre",
+                "ventas 2026",
+                "meta",
+                "cumplimiento",
+            ]
+        ],
+        use_container_width=True,
+        hide_index=True,
+        column_config={
+            "mes_nombre": "Mes",
+            "ventas 2026": st.column_config.NumberColumn(
+                "Ventas 2026",
+                format="$%d",
+            ),
+            "meta": st.column_config.NumberColumn(
+                "Meta 2026",
+                format="$%d",
+            ),
+            "cumplimiento": st.column_config.NumberColumn(
+                "Cumplimiento",
+                format="%.1f%%",
+            ),
+        },
+    )
 
 st.subheader("Utilidad acumulada mes a mes")
 

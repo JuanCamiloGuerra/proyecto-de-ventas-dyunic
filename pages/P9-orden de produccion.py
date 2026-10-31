@@ -270,6 +270,7 @@ def load_data():
     )
     ventas["familia_produccion"] = ventas["item_id_norm"].map(id_family_map)
     ventas["familia_produccion"] = ventas["familia_produccion"].fillna(family_by_key)
+    ventas["familia_produccion"] = ventas["familia_produccion"].fillna("")
     ventas["familia_produccion_norm"] = ventas["familia_produccion"].map(normalize_text)
     ventas = ventas[ventas["familia_produccion_norm"].ne("")].copy()
 
@@ -291,162 +292,39 @@ def load_data():
     return ventas, inventario
 
 
-def month_forecast(monthly, key, month):
-    subset = monthly[
-        (monthly["month"] == month)
-        & (monthly["school_norm"] == key["school_norm"])
-        & (monthly["product_norm"] == key["product_norm"])
-        & (monthly["size_norm"] == key["size_norm"])
-        & (monthly["familia_produccion"] == key["familia_produccion"])
-    ]["qty"]
-
-    if subset.empty:
-        avg_qty = 0.0
-        p75_qty = 0.0
-        std_qty = 0.0
-        recent_qty = 0.0
-    else:
-        avg_qty = float(subset.mean())
-        p75_qty = float(subset.quantile(0.75))
-        std_qty = float(subset.std(ddof=0))
-        recent = monthly[
-            (monthly["month"] == month)
-            & (monthly["year"] == TARGET_YEAR - 1)
-            & (monthly["school_norm"] == key["school_norm"])
-            & (monthly["product_norm"] == key["product_norm"])
-            & (monthly["size_norm"] == key["size_norm"])
-            & (monthly["familia_produccion"] == key["familia_produccion"])
-        ]["qty"]
-        recent_qty = float(recent.iloc[0]) if not recent.empty else 0.0
-
-    weighted_recent = (recent_qty * 0.6) + (avg_qty * 0.4)
-    forecast = math.ceil(max(avg_qty, p75_qty, weighted_recent))
-    safety = math.ceil(max(forecast * 0.2, std_qty)) if forecast else 0
-    return forecast, safety
-
-
 def build_order():
+    from production_forecast import calculate_order
+
     ventas, inventario = load_data()
-
-    history = ventas[
-        (ventas["year"] < TARGET_YEAR)
-        & (ventas["month"].isin(TARGET_MONTHS))
-    ]
-    monthly = (
-        history
-        .groupby(
-            ["month", "year", "school_norm", "product_norm", "size_norm", "familia_produccion"],
-            dropna=False,
-        )["qty"]
-        .sum()
-        .reset_index()
-    )
-
-    current_year = (
-        ventas[
-            (ventas["year"] == TARGET_YEAR)
-            & (ventas["month"].isin(TARGET_MONTHS))
-        ]
-        .groupby(
-            ["month", "school_norm", "product_norm", "size_norm", "familia_produccion"],
-            dropna=False,
-        )["qty"]
-        .sum()
-        .reset_index(name="current_qty")
-    )
-
-    inventory_group = (
-        inventario
-        .groupby(
-            ["school_norm", "product_norm", "size_norm", "familia_produccion"],
-            dropna=False,
-        )["stock"]
-        .sum()
-        .reset_index()
-    )
-
-    keys = pd.concat(
-        [
-            monthly[["school_norm", "product_norm", "size_norm", "familia_produccion"]],
-            current_year[["school_norm", "product_norm", "size_norm", "familia_produccion"]],
-            inventory_group[["school_norm", "product_norm", "size_norm", "familia_produccion"]],
-        ],
-        ignore_index=True,
-    ).drop_duplicates()
-
-    rows = []
-
-    for _, key in keys.iterrows():
-        forecast_total = 0
-        safety_total = 0
-
-        for month in TARGET_MONTHS:
-            forecast, safety = month_forecast(monthly, key, month)
-            current_match = current_year[
-                (current_year["month"] == month)
-                & (current_year["school_norm"] == key["school_norm"])
-                & (current_year["product_norm"] == key["product_norm"])
-                & (current_year["size_norm"] == key["size_norm"])
-                & (current_year["familia_produccion"] == key["familia_produccion"])
-            ]["current_qty"]
-            current_qty = float(current_match.iloc[0]) if not current_match.empty else 0.0
-
-            forecast_total += max(forecast, math.ceil(current_qty))
-            safety_total += safety
-
-        stock_match = inventory_group[
-            (inventory_group["school_norm"] == key["school_norm"])
-            & (inventory_group["product_norm"] == key["product_norm"])
-            & (inventory_group["size_norm"] == key["size_norm"])
-            & (inventory_group["familia_produccion"] == key["familia_produccion"])
-        ]["stock"]
-        stock = float(stock_match.iloc[0]) if not stock_match.empty else 0.0
-
-        raw_order = max(0, forecast_total + safety_total - stock)
-        production = round_up_to_5(raw_order)
-
-        if production > 0:
-            rows.append(
-                {
-                    "colegio": key["school_norm"],
-                    "articulo": key["product_norm"],
-                    "familia_produccion": key["familia_produccion"],
-                    "colegio_prenda": f"{key['school_norm']} | {key['product_norm']}",
-                    "talla": str(key["size_norm"]),
-                    "inventario": int(round(stock)),
-                    "pronostico_cierre": int(forecast_total),
-                    "stock_minimo": int(safety_total),
-                    "orden_sin_redondeo": int(math.ceil(raw_order)),
-                    "orden_produccion": production,
-                }
-            )
-
-    detail = pd.DataFrame(rows)
+    detail = calculate_order(ventas, inventario, TARGET_YEAR, TARGET_MONTHS, now_bogota().date())
     if detail.empty:
         return detail, pd.DataFrame()
-
-    detail = detail.sort_values(
-        ["familia_produccion", "colegio", "articulo", "talla"],
-        key=lambda col: col.astype(str),
-    )
-
+    detail = detail[detail.orden_produccion.gt(0)].copy()
     return detail, build_pivot(detail)
 
 
-def build_pivot(detail):
+def build_pivot(detail, by_family=False, mixed=False):
     if detail.empty:
         return pd.DataFrame()
 
     pivot = detail.pivot_table(
-        index=["colegio", "colegio_prenda"],
+        index=(["familia_produccion", "colegio_prenda"] if mixed else
+               "familia_produccion" if by_family else ["colegio", "colegio_prenda"]),
         columns="talla",
         values="orden_produccion",
         aggfunc="sum",
         fill_value=0,
     )
-    pivot = pivot.sort_index(level=[0, 1])
+    pivot = pivot.sort_index() if by_family else pivot.sort_index(level=[0, 1])
     pivot = pivot[[column for column in sorted(pivot.columns, key=sort_size)]]
-    pivot.insert(0, "colegio y prenda", [idx[1] for idx in pivot.index])
+    if mixed:
+        return pivot.reset_index().rename(columns={
+            "familia_produccion": "familia de producción",
+            "colegio_prenda": "colegio y prenda",
+        })
+    label = "familia de producción" if by_family else "colegio y prenda"
+    labels = pivot.index.tolist() if by_family else [idx[1] for idx in pivot.index]
+    pivot.insert(0, label, labels)
     pivot = pivot.reset_index(drop=True)
 
     return pivot
@@ -472,9 +350,10 @@ def add_total_row(df, label_column):
     numeric_columns = [
         column
         for column in df.columns
-        if column != label_column
+        if pd.api.types.is_numeric_dtype(df[column])
     ]
-    total_row = {column: int(df[column].sum()) for column in numeric_columns}
+    total_row = {column: "" for column in df.columns}
+    total_row.update({column: int(df[column].sum()) for column in numeric_columns})
     total_row[label_column] = "TOTAL POR TALLA"
     return pd.concat([df, pd.DataFrame([total_row])], ignore_index=True)
 
@@ -526,6 +405,7 @@ def build_excel_download(
     buffer = BytesIO()
     sheet_name = "Orden produccion"
     startrow = 4
+    label_count = sum(not pd.api.types.is_numeric_dtype(visible_order_df[c]) for c in visible_order_df.columns)
 
     with pd.ExcelWriter(buffer, engine="openpyxl") as writer:
         visible_order_df.to_excel(
@@ -588,17 +468,17 @@ def build_excel_download(
             for cell in row:
                 cell.border = thin_border
                 cell.alignment = Alignment(
-                    horizontal="left" if cell.column == 1 else "right",
+                    horizontal="left" if cell.column <= label_count else "right",
                     vertical="center",
-                    wrap_text=cell.column == 1,
+                    wrap_text=cell.column <= label_count,
                 )
 
                 if is_total_row:
                     cell.fill = header_fill
                     cell.font = header_font
-                    if cell.column > 1:
+                    if cell.column > label_count:
                         cell.number_format = '#,##0'
-                elif cell.column > 1:
+                elif cell.column > label_count:
                     cell.number_format = '#,##0'
                     value = cell.value or 0
                     if value > 15:
@@ -608,9 +488,8 @@ def build_excel_download(
                         cell.fill = yellow_fill
                         cell.font = yellow_font
 
-        worksheet.column_dimensions["A"].width = 44
-        for column_idx in range(2, max_col + 1):
-            worksheet.column_dimensions[get_column_letter(column_idx)].width = 10
+        for column_idx in range(1, max_col + 1):
+            worksheet.column_dimensions[get_column_letter(column_idx)].width = 44 if column_idx <= label_count else 10
 
         table_ref = f"A{header_row}:{last_col_letter}{max_row}"
         excel_table = ExcelTable(displayName="OrdenProduccion", ref=table_ref)
@@ -622,7 +501,7 @@ def build_excel_download(
             showColumnStripes=False,
         )
         worksheet.add_table(excel_table)
-        worksheet.freeze_panes = f"B{first_data_row}"
+        worksheet.freeze_panes = f"{get_column_letter(label_count + 1)}{first_data_row}"
         worksheet.auto_filter.ref = table_ref
 
     buffer.seek(0)
@@ -706,6 +585,7 @@ def build_pdf_download(
 
     story = []
     columns = list(visible_order_df.columns)
+    label_count = sum(not pd.api.types.is_numeric_dtype(visible_order_df[c]) for c in columns)
 
     for page_index, chunk in enumerate(dataframe_chunks(visible_order_df), start=1):
         title = f"Orden de produccion - {TARGET_PERIOD_LABEL}"
@@ -732,24 +612,24 @@ def build_pdf_download(
         for _, row in chunk.iterrows():
             data.append(
                 [
-                    make_paragraph(row[columns[0]], left_cell_style),
+                    *[make_paragraph(row[c], left_cell_style) for c in columns[:label_count]],
                     *[
                         make_paragraph(
                             "" if int(row[column]) == 0 else f"{int(row[column]):,}",
                             number_cell_style,
                         )
-                        for column in columns[1:]
+                        for column in columns[label_count:]
                     ],
                 ]
             )
 
-        first_width = 6.9 * cm
-        remaining_width = doc.width - first_width
-        size_width = max(0.75 * cm, remaining_width / max(1, len(columns) - 1))
+        label_widths = [4.2 * cm, 6.0 * cm] if label_count == 2 else [6.9 * cm]
+        remaining_width = doc.width - sum(label_widths)
+        size_width = remaining_width / max(1, len(columns) - label_count)
         table = Table(
             data,
             repeatRows=1,
-            colWidths=[first_width] + [size_width] * (len(columns) - 1),
+            colWidths=label_widths + [size_width] * (len(columns) - label_count),
         )
         commands = [
             ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#243b53")),
@@ -774,7 +654,7 @@ def build_pdf_download(
                 )
                 continue
 
-            for column_index, column in enumerate(columns[1:], start=1):
+            for column_index, column in enumerate(columns[label_count:], start=label_count):
                 value = int(row[column])
                 if value > 15:
                     commands.append(
@@ -851,7 +731,16 @@ if selected_families:
 else:
     detail_df = detail_df.iloc[0:0].copy()
 
-order_df = build_pivot(detail_df)
+grouping = st.segmented_control(
+    "Agrupar tabla por",
+    options=["Colegio y prenda", "Familia de producción", "Agrupación mixta"],
+    default="Colegio y prenda",
+    key="p9_agrupacion_tabla",
+)
+by_family = grouping == "Familia de producción"
+mixed = grouping == "Agrupación mixta"
+order_df = build_pivot(detail_df, by_family=by_family, mixed=mixed)
+label_column = "familia de producción" if by_family or mixed else "colegio y prenda"
 
 if detail_df.empty or order_df.empty:
     st.warning("No hay necesidades de produccion para las familias seleccionadas.")
@@ -867,14 +756,20 @@ with col1:
     st.metric("Unidades proyectadas", f"{total_units:,}")
 
 with col2:
-    st.metric("Filas colegio/prenda", f"{total_rows:,}")
+    st.metric("Familias de producción" if by_family else "Filas colegio/prenda", f"{total_rows:,}")
 
 with col3:
     st.metric("Referencias/tallas", f"{total_skus:,}")
 
 st.caption(
     f"Orden proyectada para {TARGET_PERIOD_LABEL} con inventario descontado, "
-    "inventarios negativos tratados como cero y redondeo hacia arriba a multiplos de 5."
+    "crecimiento del 10%, reserva del 10% y lotes de 5 por familia y talla."
+)
+st.caption(
+    "Histórico ponderado: 50% del año anterior, 30% del segundo y 20% del tercero. "
+    "Se reserva inventario para las ventas estimadas antes de enero. "
+    "Las cantidades negativas se compensan dentro de cada mes; un saldo mensual "
+    "negativo se toma como cero. No se descuentan órdenes en fabricación."
 )
 st.caption(
     f"Ultima actualizacion de datos: {format_bogota(data_updated_at)} Bogota | "
@@ -885,12 +780,12 @@ st.caption(
 numeric_columns = [
     column
     for column in order_df.columns
-    if column != "colegio y prenda"
+    if pd.api.types.is_numeric_dtype(order_df[column])
 ]
 
 display_df = order_df.copy()
 display_df[numeric_columns] = display_df[numeric_columns].astype(int)
-display_df_with_total = add_total_row(display_df, "colegio y prenda")
+display_df_with_total = add_total_row(display_df, label_column)
 
 pdf_generated_at = now_bogota()
 pdf_bytes = build_pdf_download(
@@ -961,7 +856,11 @@ with st.expander("Ver detalle de calculo"):
             "familia_produccion",
             "talla",
             "inventario",
+            "consumo_pretemporada",
+            "inventario_disponible",
             "pronostico_cierre",
+            "vendido_temporada",
+            "demanda_pendiente",
             "stock_minimo",
             "orden_sin_redondeo",
             "orden_produccion",

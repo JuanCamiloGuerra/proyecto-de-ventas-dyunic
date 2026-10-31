@@ -1,6 +1,6 @@
 param(
     [string]$ProjectRoot = "C:\Users\juanc\Documents\GitHub\proyecto-de-ventas-dyunic",
-    [string]$PythonPath = "C:\Users\juanc\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe",
+    [string]$PythonPath = "",
     [ValidateSet("auto", "onedrive", "desktop")]
     [string]$Source = "auto",
     [switch]$SkipGitSync
@@ -19,7 +19,46 @@ New-Item -ItemType Directory -Path $LogDir -Force | Out-Null
 function Write-Log {
     param([string]$Message)
     $Timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-    Add-Content -LiteralPath $LogPath -Value "[$Timestamp] $Message" -Encoding UTF8
+    $LogLine = "[$Timestamp] $Message"
+    for ($Attempt = 1; $Attempt -le 5; $Attempt++) {
+        try {
+            Add-Content -LiteralPath $LogPath -Value $LogLine -Encoding UTF8 -ErrorAction Stop
+            return
+        }
+        catch {
+            if ($Attempt -eq 5) {
+                throw
+            }
+            Start-Sleep -Milliseconds (100 * $Attempt)
+        }
+    }
+}
+
+function Invoke-PythonSync {
+    param(
+        [string]$PythonExecutable,
+        [string]$ScriptPath
+    )
+
+    # Windows PowerShell convierte stderr nativo en ErrorRecord. Con Stop activo
+    # solo conservaba la primera linea del traceback; Continue permite capturarlo completo.
+    $PreviousErrorActionPreference = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+    try {
+        $CommandOutput = @(
+            & $PythonExecutable $ScriptPath --project-root $ProjectRoot --include-large 2>&1 |
+                ForEach-Object { $_.ToString() }
+        )
+        $CommandExitCode = $LASTEXITCODE
+    }
+    finally {
+        $ErrorActionPreference = $PreviousErrorActionPreference
+    }
+
+    return [pscustomobject]@{
+        Output = $CommandOutput
+        ExitCode = $CommandExitCode
+    }
 }
 
 function Invoke-GitSync {
@@ -27,7 +66,8 @@ function Invoke-GitSync {
     $PreviousErrorActionPreference = $ErrorActionPreference
     $ErrorActionPreference = "Continue"
     try {
-        $GitStatus = @(git status --porcelain 2>&1)
+        $TablePathspec = ":(glob)tablas/*.csv"
+        $GitStatus = @(git status --porcelain -- $TablePathspec 2>&1)
         $GitStatusExitCode = $LASTEXITCODE
         if ($GitStatusExitCode -ne 0) {
             throw "No se pudo revisar el estado de Git: $($GitStatus -join ' ')"
@@ -39,7 +79,7 @@ function Invoke-GitSync {
         }
 
         Write-Log "Git: cambios detectados. Preparando commit automatico."
-        $GitAddOutput = @(git add -A 2>&1)
+        $GitAddOutput = @(git add -- $TablePathspec 2>&1)
         $GitAddExitCode = $LASTEXITCODE
         foreach ($Line in $GitAddOutput) {
             Write-Log "Git add: $Line"
@@ -78,9 +118,13 @@ function Invoke-GitSync {
 try {
     Write-Log "Inicio sincronizacion Excel -> Streamlit"
 
+    if ([string]::IsNullOrWhiteSpace($PythonPath)) {
+        $PythonPath = Join-Path $ProjectRoot ".venv\Scripts\python.exe"
+    }
+
     if (-not (Test-Path -LiteralPath $PythonPath)) {
         $PythonPath = "python"
-        Write-Log "Python empaquetado no encontrado. Usando python del PATH."
+        Write-Log "Python del entorno del proyecto no encontrado. Usando python del PATH."
     }
 
     $UseOneDrive = $false
@@ -93,13 +137,15 @@ try {
 
     if ($UseOneDrive) {
         Write-Log "Fuente seleccionada: OneDrive"
-        $Output = & $PythonPath $OneDriveScriptPath --project-root $ProjectRoot --include-large 2>&1
-        $ExitCode = $LASTEXITCODE
+        $SyncResult = Invoke-PythonSync -PythonExecutable $PythonPath -ScriptPath $OneDriveScriptPath
+        $Output = $SyncResult.Output
+        $ExitCode = $SyncResult.ExitCode
     }
     else {
         Write-Log "Fuente seleccionada: Excel de escritorio"
-        $Output = & $PythonPath $DesktopScriptPath --project-root $ProjectRoot --include-large 2>&1
-        $ExitCode = $LASTEXITCODE
+        $SyncResult = Invoke-PythonSync -PythonExecutable $PythonPath -ScriptPath $DesktopScriptPath
+        $Output = $SyncResult.Output
+        $ExitCode = $SyncResult.ExitCode
     }
 
     if ($ExitCode -ne 0 -and $Source -eq "auto" -and $UseOneDrive) {
@@ -107,8 +153,9 @@ try {
             Write-Log $Line
         }
         Write-Log "OneDrive fallo en modo auto. Intentando respaldo con Excel de escritorio."
-        $Output = & $PythonPath $DesktopScriptPath --project-root $ProjectRoot --include-large 2>&1
-        $ExitCode = $LASTEXITCODE
+        $SyncResult = Invoke-PythonSync -PythonExecutable $PythonPath -ScriptPath $DesktopScriptPath
+        $Output = $SyncResult.Output
+        $ExitCode = $SyncResult.ExitCode
     }
 
     foreach ($Line in $Output) {
